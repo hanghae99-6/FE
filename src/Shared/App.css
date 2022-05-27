@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+.App {
+  width:1920px;
+  text-align: center;
+  overflow:hidden;
+  margin:0 auto;
+}
+
+opv-session {
+  background:red;
+  width:50%;
+  border-radius: 20px;
+
+}
+
+*{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.MyVideoBox{
+  width:370px;
+  height:500px;
+  border-radius:20px;
+}
+
+.YoutVideoBox{
+  width:350px;
+  height:500px;
+  border-radius:20px;
+  margin-left:-10px;
+  margin-top:-10px;
+}
+
+#dropdown-menu-align-right{
+  width:160px;
+  background: #F5F6F8;
+  color:#767676;
+  font-size:14px;
+  border:none;
+  width:fixed;
+  height:fixed;
+}
+#dropdown-menu-5{
+  width:80px;
+  background: #F5F6F8;
+  color:#767676;
+  font-size:14px;
+  border:none;
+  height:48px;
+  width:fixed;
+  border-radius:10px 0px 0px 10px;
+}
+#dropdown-menu-5:focus{
+  outline:none;
+  box-shadow:none;
+}
+.dropdown1{
+  width:80px;
+}
+
+#dropdown-menu-align-right:focus{
+  outline:none;
+  box-shadow: none !important;
+}
+
+button {
+  display: block;
+  margin: 0px auto;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  border:none;
+  width:100%;
+}
+
+.web-rtc-page .video-container {
+  display: flex;
+  justify-content: center;
+}
+
+.loader {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin: 0px auto 10px auto;
+  position: relative;
+  border: 10px solid rgba(255, 255, 255, 0.2);
+  border-top: 10px solid #ffffff;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.custom-dot-list-style {
+      position: absolute;
+      top: 340px;
+}
+
+
+/* DebateRoom PopOver */
+#popover-positioned-scrolling-right{
+  border:none;
+  padding:10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.pagination{
+ cursor:pointer;
+}
+.pagination li{
+  display:inline-block;
+}
+.pagination li a{
+  text-decoration: none;
+  width:30px;
+  height:30px;
+  padding:10px;
+  box-sizing: border-box;
+  border:transparent;
+  color:#505050;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.pagination li a:hover{
+  background-color:transparent;
+  color:#FF5912;
+}
+.pagination li a:focus{
+  color:black;
+  background-color:transparent;
+  box-shadow:none;
+}
+.pagination li a:hover{
+  background-color:transparent;
+}
+.pagination li a:active{
+  background-color:transparent;
+  outline:none;
+}
+.page-link{
+  transition:none;
+}
+
+
+.All:hover {
+  fill: #9497A1;
+}
+.Politics:hover {
+  fill: #9497A1;
+}
+.Economics:hover {
+  fill: #9497A1;
+}
+.Social:hover {
+  fill: #9497A1;
+}
+.Daily:hover {
+  fill: #9497A1;
+}
+.Art:hover {
+  fill: #9497A1;
+}
+.World:hover {
+  fill: #9497A1;
+}
+.Science:hover {
+  fill: #9497A1;
+}
+.Etc:hover {
+  fill: #9497A1;
+}
