@@ -32,7 +32,6 @@ const DebateRoom = () =>{
   const [start,setStart]=useState(false);
   const topic=roomData?.topic;
   const content=roomData?.content;
-
   const prosCons=roomData?.side?.name;
   const isUser=roomData?.user;
   const role=roomData?.role;
@@ -213,6 +212,7 @@ const DebateRoom = () =>{
       
           <GreyBox>토론자가 아직 입장하지 않았습니다</GreyBox>
           <GreyBox2>토론자가 아직 입장하지 않았습니다</GreyBox2>
+         
           <div id="video-container" className="col-md-6"></div>
    
        
@@ -265,6 +265,7 @@ display:flex;
 border:1px solid red;
 `
 const StartBtn=styled.button`
+max-width:120px;
 min-width: 119px;
 height: 40px;
 background: #FF5912;

@@ -24,24 +24,25 @@ const initialState = {
     DebateCnt:"",
     };
 
-    const savePostDB = (prosCons,opinion,evidences,roomId) => {
+    const savePostDB = (opinion,evidences,roomId) => {
         const cookies = new Cookies(); 
         const token = cookies.get("token");
         const userInfo= jwt_decode(document.cookie)?jwt_decode(document.cookie):null; 
         const userEmail = userInfo.EMAIL;
+        console.log(userInfo);
+        console.log(opinion,evidences,roomId)
         return function (dispatch, getState, { history }) {
           const state = getState();
             axios
             .post(`https://api.wepeech.com:8443/debate/${roomId}`,{
-                "prosCons":prosCons,
                 "opinion":opinion,
                 "evidences":evidences,
               },{headers: { "Authorization": token },})
             .then(
               (res) =>{
+                console.log(res);
                 if(res.data.status==true){
                     history.replace(`/userprofile/${userEmail}`)
-                    const evidence=null;
                     dispatch(getEvidence(evidence))
                 }else if(res.data.msg=="unMatch"){
                     window.alert("찬/반을 잘못 선택하셨습니다!")
@@ -109,6 +110,12 @@ const initialState = {
         };
       };
 
+      
+
+    
+
+
+
 
     export default handleActions(
         {
@@ -124,7 +131,9 @@ const initialState = {
         [DELETE_EVIDENCE]:(state, action)=>
             produce(state, (draft) => {
             const deleteIndex=action.payload.evidenceIndex;
+            console.log(deleteIndex);
             draft.evidence.splice(deleteIndex,1);
+            console.log(draft.evidence);
             }),
         [LOAD_POST]: (state, action) =>
             produce(state, (draft) => {

@@ -1,7 +1,7 @@
-html {
+/* html {
 	position: relative;
 	min-height: 100%;
-}
+} */
 
 nav {
 	height: 50px;
@@ -225,26 +225,37 @@ a:hover .demo-logo {
 	margin-top: 20px;
 }
 
+#video-container{
+  display:flex;
+  width:940px;
+  justify-content: space-between;
+}
 #video-container video {
   border-radius: 30px;
   max-width:447px;
+  max-height:624px;
+  min-width:447px;
+  min-height:624px;
 	position: relative;
 	float: left;
 	width: 50%;
 	cursor: pointer;
-  margin-right:20px;
   margin-top:-622px;
 }
 
 
 #video-container div {
-	float: left;
-	width: 50%;
+	width: 460px;
 	position: relative;
-	margin-left: -50%;
 }
 
+/* #data-main-videodata{
+  width:447px;
+  border:1px solid red;
+} */
+
 #video-container p {
+  min-width:150px;
   width:auto;
 	display: inline-block;
   color:white;
@@ -254,12 +265,10 @@ a:hover .demo-logo {
 	font-weight: bold;
 	border-radius: 0px 0px 0px 0px;
   margin-top:-580px;
-  margin-left:213px;
-  position:absolute;
   z-index:5;
+  margin-left:-447px;
   font-family:Roboto;
-  /* margin-left:340px;
-  margin-top:-30px; */
+  position:absolute;
 }
 
 #video-container p.userName {
