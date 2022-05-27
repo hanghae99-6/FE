@@ -1,44 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import styled from "styled-components";
-import {Grid, Text, Button, Image, IconButtons} from "../../../Elements/index";
-import Agree from "../../../Assets/Agree.png";
-import Denial from "../../../Assets/Denial.png";
-import peechtotal from "../../../Assets/peechtotal.png"
-import { IconButton } from '@mui/material';
-
-const PeachCard =(props)=>{
+import {useHistory} from "react-router-dom";
+import { Grid, IconButtons } from "../Elements/index";
+const LiveRoomItem =(props)=>{
+    const history =useHistory();
     console.log(props);
-    const history = useHistory();
-    const dispatch = useDispatch();
-    const debateId = props.debateId;
-    const pros = props.totalPros;
-    const cons = props.totalCons;
-    const totalReply = props.totalReply;
-    const totalVotes = pros+cons;
-    const prosLength = (totalVotes === 0)? 50:(pros/totalVotes)*100;
-    const consLength = (totalVotes === 0)? 50: 100 - prosLength;
+    const roomId=props?.roomId
+    console.log(roomId);
+    const liveDebate=()=>{
+        console.log("가즈아")
+        history.push(`/debate/${roomId}`);
+    }
 
         return(
         <Wrapper>
-            <CardBox onClick={()=>(history.push(`/detailed/${debateId}`))}>
+            <CardBox onClick={liveDebate}>
                 <CardHeader>
-                    <Category>{props.categoryName}</Category>
+                    <Grid display="flex" height="30px">
+                        <Category>경제</Category>
+                        <Category>{props.status}</Category>
+                    </Grid>
+                    
                     <Grid is_flex="true" justifyContent="space-between" alignItems="center" width="auto">
                         {/* <Image shape="rectangle" src={peechtotal} width="24px" height="24px"/> */}
-                        <Grid>
+                        {/* <Grid>
                             <IconButtons chat color="#CCCDCE" size="24"/>
-                        </Grid>
+                        </Grid> */}
                         <Grid height="24px" margin="5px 0px 0px 10px">
-                            <TotalVotes>{totalReply}</TotalVotes>
+                            <TotalVotes>{props.enterUserCnt}/10</TotalVotes> 
                         </Grid>
                     </Grid>
                 </CardHeader>
                 <Grid width="90%" height="50px" padding="10px 0 0 0" margin="0 auto 55px">
                     <ProgressTitle>{props.topic}</ProgressTitle>
                 </Grid>
-                <ProgressSection>
+                {/* <ProgressSection>
                         <Grid width="100%" position="absolute" top="-18px" is_flex="true" justifyContent="spaceBetween">
                             <AgreeWrap>
                                 <Image shape="rectangle" src={Agree} width="36px" height="36px" cursor="pointer"/>
@@ -61,8 +57,8 @@ const PeachCard =(props)=>{
                                 <Image shape="rectangle" src={Denial} width="36px" height="36px" cursor="pointer"/>                                
                             </DenailWrap>
                         </Grid>
-                </ProgressSection>
-                <ProsConsTotal>
+                </ProgressSection> */}
+                {/* <ProsConsTotal>
                     <Grid display="flex" alignItems="center" justifyContent="center" width="90px" height="30px" margin="10px 0px 0px 0px">
                         <ContentText>찬성</ContentText>
                         <AgreeText>{props.totalPros ? props.totalPros:0}</AgreeText>
@@ -71,14 +67,24 @@ const PeachCard =(props)=>{
                         <ContentText>반대</ContentText>  
                         <DenialText>{props.totalCons? props.totalCons:0}</DenialText>
                     </Grid>
-                </ProsConsTotal>            
+                </ProsConsTotal>             */}
             </CardBox>
         </Wrapper>
     )
 
 }
  
-
+// function LiveRoomItem(props) {
+   
+//   return (
+//       <Wrapper onClick={liveDebate}>
+//       <div>{props.topic}</div>
+//       <div>{props.content}</div>
+//       <div>{props.status}</div>
+//       <div>{props.enterUserCnt}/10</div>
+//       </Wrapper>
+//   )
+// }
 
 const Wrapper = styled.div`
 width:auto;
@@ -242,6 +248,4 @@ right:0;
 z-index:10;
 `
 
-export default  PeachCard;
-
-
+export default LiveRoomItem

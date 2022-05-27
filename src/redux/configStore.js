@@ -12,6 +12,7 @@ import Profile from "./modules/profile";
 import Detail from "./modules/detail";
 import Comment from "./modules/comment";
 import ProsCons from "./modules/proscons";
+import Livenow from "./modules/livenow";
 
 export const history = createBrowserHistory();
 
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   detail:Detail,
   comment:Comment,
   proscons:ProsCons,
+  livenow:Livenow,
   router: connectRouter(history),
 });
 

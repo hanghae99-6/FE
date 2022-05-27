@@ -59,7 +59,6 @@ function SaveDebate(props) {
                         <TitleText>토론 종료</TitleText>
                     </div>
                 </div>
-                    {/* <SectionText>{prosCons}</SectionText> */}
                     <SectionText>사람들을 설득할 나의 마지막 한마디를 적어주세요(최대 100자)</SectionText>
                 <div style={{marginTop:"10px"}}>
                     <FullInput maxLength={100} onChange={(e) => {setOpinion(e.target.value)}} placeholder="예)사형제도는 폐지되어야 한다"/>
