@@ -4,7 +4,7 @@ import { Grid, Text, Button, Image } from "../Elements/index";
 import { useHistory } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 import { useCookies } from "react-cookie";
-
+import Livenow from '../Components/Livenow';
 import mainlogo from "../Assets/wepeech.png";
 import grayprofile from "../Assets/basicprofile(gray).png";
 import navarrow from "../Assets/navarrow.png";
@@ -34,6 +34,10 @@ const Header = () => {
     const goMain=() => {
         history.push("/")
     }
+    const goLiveNow=()=>{
+        console.log("고우라이브나우")
+        history.push("/livenow")
+    }
     if(document.cookie){
         const userInfo= jwt_decode(document.cookie);
         const userName = userInfo.NICK_NAME;
@@ -46,6 +50,7 @@ const Header = () => {
                         <MainLogo src={mainlogo} onClick={goMain}/>
                         {/* <Logo onClick={()=>history.push("/")}>wepeech</Logo> */}
                         <Grid height="46px" width= "15%" is_flex="true" justifyContent="space-between" alignItems="center" padding="0">
+                        <div onClick={goLiveNow}>LiveNow</div>
                             <Grid margin="0 0 0 50px" is_flex= "true" flexDirection="row" alignItems="center" justifyContent="flex-end" width="240px">
                                 <Text margin="3px 5px 0 0" width="100px" textAlign="end">{userName} 님</Text>
                                 <img style={{width:"24px" ,height: "24px",borderRadius:"12px",cursur:"pointer"}} src={userProfile} onClick={goProfile}/>
