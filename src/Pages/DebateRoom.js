@@ -17,7 +17,6 @@ const DebateRoom = () =>{
  
   const userInfo= jwt_decode(document.cookie);
   const nickname = userInfo?.NICK_NAME;
-  
   const dispatch =useDispatch();
   const history =useHistory();
   const location=useLocation();
@@ -41,6 +40,33 @@ const DebateRoom = () =>{
   console.log(nickName,prosCons,isUser,role,roomId,Roomtoken);
   let [mySession,setMySession]=useState("")
   let [token,setToken]=useState("")
+
+  window.addEventListener('beforeunload', (event) => {
+    event.preventDefault();
+    leaveSession();
+  });
+
+
+  const _backConfirm = async () => {
+    leaveSession();
+    let event =  history.replace(`/saveDebate/${roomId}`)
+    if(event){
+        window.history.pushState(null, "", window.location.href);
+    }
+}
+const _confirm = (e) => {
+    var confirmationMessage = "\o/";
+    e.returnValue = confirmationMessage;
+    return confirmationMessage;
+}
+useEffect(()=>{
+  window.addEventListener("beforeunload", _confirm);
+  window.history.pushState(null, "", window.location.href);
+  window.onpopstate = _backConfirm;
+},[])
+//   const onbeforeunload = (event)=> {
+//   this.leaveSession();
+// }
 
   if(isUser==undefined){
     history.push(`/userCheck/${roomId}`)
@@ -156,14 +182,18 @@ const DebateRoom = () =>{
       $(this).html('');
     });
   }
-
-  function leaveSession() {
-   
-    dispatch(RoomActions.leaveRoomDB(roomId,Roomtoken))
-    mySession.disconnect();
-    mySession = null;
-    cleanSessionView();
-    // removeUser()
+  
+  function leaveSession() {   
+    if(role=='PUBLISHER'){
+      dispatch(RoomActions.leaveRoomDB(roomId,Roomtoken))
+      mySession.disconnect();
+      mySession = null;
+      cleanSessionView();
+    }else{
+      mySession.disconnect();
+      mySession = null;
+      cleanSessionView();
+    }
   }
 
 
@@ -194,7 +224,7 @@ const DebateRoom = () =>{
     <ModalBg/>
     <DetailModal>
       {nickname}님, 토론방에 입장하시겠습니까?
-      <StartBtn onClick={joinSession}>토론방 입장하기</StartBtn>
+      <EnterBtn onClick={joinSession}>토론방 입장하기</EnterBtn>
     </DetailModal>
     </>
     
@@ -281,6 +311,24 @@ border:none;
 cursor:pointer;
 margin:10px;
 `
+
+const EnterBtn=styled.button`
+max-width:120px;
+min-width: 119px;
+height: 40px;
+background: #FF5912;
+border-radius: 24px;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 24px;
+letter-spacing: -0.03em;
+color: #FFFFFF;
+border:none;
+cursor:pointer;
+margin:10px;
+`
 const VideoSection=styled.div`
 width:900px;
 // text-align:center;
@@ -298,21 +346,20 @@ color:#191919;
 margin-top:10px;
 `
 const ModalBg=styled.div`
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-position:fixed;
-z-index:100;
-top:0;
-left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  position:fixed;
+  z-index:100;
+  top:0;
+  left:0;
 `
 const DetailModal = styled.div`
-  max-width: 773px;
-  width: 773px;
+  width: 400px;
   padding:50px 50px;
   box-sizing:border-box;
   background: white;
-  height:216px;
+  height:200px;
   border-radius:20px;
   position: fixed;
   top: 50%;
@@ -321,6 +368,7 @@ const DetailModal = styled.div`
   display: flex;
   flex-direction:column;
   z-index: 105;
+  align-items:center;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
@@ -329,7 +377,6 @@ const DetailModal = styled.div`
 const GreyBox =styled.div`
 width: 447px;
 height: 624px;
-// border:1px solid red;
 background: #F5F6F8;
 border-radius: 30px;
 display:flex;

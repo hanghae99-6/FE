@@ -1,43 +1,4 @@
-/* html {
-	position: relative;
-	min-height: 100%;
-} */
 
-nav {
-	height: 50px;
-	width: 100%;
-	z-index: 1;
-	background-color: #4d4d4d !important;
-	border-color: #4d4d4d !important;
-	border-top-right-radius: 0 !important;
-	border-top-left-radius: 0 !important;
-}
-
-.navbar-header {
-	width: 100%;
-}
-
-.nav-icon {
-	padding: 5px 15px 5px 15px;
-	float: right;
-}
-
-nav a {
-	color: #ccc !important;
-}
-
-nav i.fa {
-	font-size: 40px;
-	color: #ccc;
-}
-
-nav a:hover {
-	color: #a9a9a9 !important;
-}
-
-nav i.fa:hover {
-	color: #a9a9a9;
-}
 
 #main-container {
   /* border:1px solid red; */
@@ -245,7 +206,7 @@ a:hover .demo-logo {
 
 
 #video-container div {
-	width: 460px;
+	width: 492px;
 	position: relative;
 }
 
@@ -255,15 +216,14 @@ a:hover .demo-logo {
 } */
 
 #video-container p {
-  min-width:150px;
   width:auto;
-	display: inline-block;
+  display: inline-block;
   color:white;
-	background: #191919;
+  background: #191919;
   padding:5px 10px;
   box-sizing:border-box;
-	font-weight: bold;
-	border-radius: 0px 0px 0px 0px;
+  font-weight: bold;
+  border-radius: 0px 0px 0px 0px;
   margin-top:-580px;
   z-index:5;
   margin-left:-447px;
@@ -272,7 +232,7 @@ a:hover .demo-logo {
 }
 
 #video-container p.userName {
-	  float: right;
+	float: right;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 0px;
     font-weight: lighter;

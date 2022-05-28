@@ -3,6 +3,7 @@ import { Grid } from "../Elements/index";
 import Debate from './Debate';
 import {SpinnerCircular} from "spinners-react";
 import styled from "styled-components";
+import "../Shared/App.css"
 
 
 const Posts = ({ posts, loading }) => {
