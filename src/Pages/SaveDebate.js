@@ -59,12 +59,12 @@ function SaveDebate(props) {
                         <TitleText>토론 종료</TitleText>
                     </div>
                 </div>
-                    <SectionText>사람들을 설득할 나의 마지막 한마디를 적어주세요(최대 100자)</SectionText>
+                    <SectionText>나의주장</SectionText>
                 <div style={{marginTop:"10px"}}>
                     <FullInput maxLength={100} onChange={(e) => {setOpinion(e.target.value)}} placeholder="예)사형제도는 폐지되어야 한다"/>
                 </div>
                 <div style={{marginTop:"30px", display:"flex", flexDirection:"column"}}>
-                    <SectionText>사람들을 설득할 내 주장에 대한 근거들을 추가해주세요(최대 5개)</SectionText>
+                    <SectionText>근거(최대 5개)</SectionText>
                     <div style={{margin:"10px 0px",position:"relative", display:"flex", alignItems:"center", justifyContent:"space-between"}}>
                         <FullInput value={evidence} onChange={(e) => {setEvidence(e.target.value)}} onKeyPress={onKeyPress}/>
                         <Addbutton disabled={!evidence||evidences?.length>=5} onClick={addEvidence}  >+ 추가</Addbutton>
@@ -114,7 +114,7 @@ const ModalBg = styled.div`
 
 
 const FullInput = styled.input`
-    width:432px;
+    width:100%;
     padding:10px;
     background: #F5F6F8;
     border:none;
@@ -144,6 +144,7 @@ color: #505050;
 const Addbutton =styled.button`
 width:80px;
 height:40px;
+margin-left:10px;
 border: 1px solid #CED2D9;
 border-radius: 8px;
 color:#767676;

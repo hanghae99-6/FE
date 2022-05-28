@@ -5,6 +5,7 @@ import { actionCreators as Actions} from "../../redux/modules/main"
 import {Grid, Text, Button, Image} from "../../Elements/index";
 import styled from "styled-components";
 import Slider from "./MainParts/Slider";
+import CategoryBtn from './CategoryBtn';
 
 import mainPpImg from "../../Assets/mainPpImg.png"
 
@@ -20,6 +21,7 @@ const HotPeech = () => {
             {/* <Image shape="rectangle" width="60.22" src={mainPpImg}/> */}
             <Title>이번주 PEECH</Title>
             <SubText>어떤 토론들이 있었는지 살펴보고 나의 의견을 공유해보세요</SubText>
+            <CategoryBtn></CategoryBtn>
             <Slider/>
         </HotPeechWrapper>
     )

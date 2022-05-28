@@ -20,10 +20,14 @@ import { RiEmotionHappyFill } from "react-icons/ri";
 import { BsFillTrashFill } from "react-icons/bs";
 import { IoMdThumbsUp } from "react-icons/io";
 import { RiPencilFill } from "react-icons/ri";
+import { IoIosAlert } from "react-icons/io";
+import { IoIosCheckmarkCircle } from "react-icons/io";
 
 const IconButtons = (props) => {
   const {
     _onClick,
+    alert,
+    checked,
     chat,
     trash,
     happyFill,
@@ -67,6 +71,25 @@ const IconButtons = (props) => {
   };
 
   //아이콘 작동
+  if (alert) {
+    return (
+      <React.Fragment>
+        <Icon {...styles}>
+          <IoIosAlert size={size} onClick={_onClick}></IoIosAlert >
+        </Icon>
+      </React.Fragment>
+    );
+  }
+  if (checked) {
+    return (
+      <React.Fragment>
+        <Icon {...styles}>
+          <IoIosCheckmarkCircle  size={size} onClick={_onClick}></IoIosCheckmarkCircle >
+        </Icon>
+      </React.Fragment>
+    );
+  }
+
 
   if (VideocamIcon) {
     return (

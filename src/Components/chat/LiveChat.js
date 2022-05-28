@@ -4,19 +4,25 @@ import Stomp from "stompjs";
 import SockJS from "sockjs-client";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import jwt_decode from "jwt-decode";
 
 // let stompClient;
 
 const ChatingPage = (props) => {
+  console.log(props);
   const [loaded, setLoaded] = useState(false);
   const [messages, setMessages] = useState([]);
   const [enterMsg, setEnterMsg] = useState(null);
   const [content, setContent] = useState("");
-  const [roomId, setRoomId] = useState("faaa902e-f2d4-4221-a0ca-e413025f8834");
+  // const [roomId, setRoomId] = useState("faaa902e-f2d4-4221-a0ca-e413025f8834");
+  const roomId=location.pathname.split("/debate/")[1];
+  // console.log(RoomId);
 
-  const userId = "jjj123";
   const cookies = new Cookies(); 
   const token = cookies.get("token");
+  const userInfo= jwt_decode(document.cookie);
+  const email = userInfo.EMAIL;
+  const userId = "email";
 
   const latestChatWrapRef = useRef();
     const devTarget = "https://api.wepeech.com:8443/wss-stomp";
@@ -127,17 +133,18 @@ const ChatingPage = (props) => {
     console.log("메세지임", messages)
   }, [messages]);
 
-  const sender="jjj123"
+  // const sender="jjj123"
 //   if (!userId) return <>로그인이 필요합니다.</>;
 
 return (
+  
     <ChatDisplay>
       <ChatHeader>
         <ChatText>관전 중</ChatText>
         <UserTotal>32명</UserTotal>
       </ChatHeader>
       <ChatContents>
-        {messages.map((item, index) => {
+        {messages?.length>0&&messages.map((item, index) => {
           return (
             <ChatWrap key={index} ref={index === messages.length - 1 ? latestChatWrapRef : null} align={item.sender === userId ? "flex-end" : "flex-start"} >
                 <ChatUser>{item.sender}</ChatUser>
@@ -150,7 +157,7 @@ return (
       </ChatContents>
       <ChatInputMenu>
         <ChatInput type="text" placeholder="채팅을 입력해주세요" value={content} onChange={handleChange} onKeyUp={handleKeyUp} />
-        <ChatBtn disabled={!content} onClick={sendMessage}>
+        <ChatBtn onClick={sendMessage}>
           전송
         </ChatBtn>
       </ChatInputMenu>
@@ -162,13 +169,11 @@ const ChatDisplay = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 382px;
+  min-width: 318px;
   width: 15%;
-  height: 800px;
-  margin: 300px auto 0;
-  /* background-color:lightblue; */
-  border: 1px solid lightgrey;
-  border-radius: 30px;
+  height: 624px;
+  background:#F5F6F8;
+  border-radius: 16px;
 `;
 const ChatHeader = styled.div`
   width: 100%;
@@ -203,12 +208,11 @@ const ChatContents = styled.div`
   font-size: 15px;
   overflow: auto;
   padding: 20px 5px;
-  background-color:green;
 `;
 const ChatWrap = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: ${(props) => props.align};
+  // align-items: ${(props) => props.align};
   margin: 10px 0;
   padding: 0 10px;
 `;
@@ -221,8 +225,8 @@ const MsgWrap = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  background-color: ${(props) => props.bg};
-  align-items: ${(props) => props.align};
+  // background-color: ${(props) => props.bg};
+  // align-items: ${(props) => props.align};
   border: 1px solid lightgrey;
   width: max-content;
   max-width:80%;
@@ -257,7 +261,7 @@ const ChatInput = styled.input`
 `;
 const ChatBtn = styled.button`
   /* padding: ; */
-  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
+  // cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   width: 15%;
   height: 60%;
   font-weight: 700;

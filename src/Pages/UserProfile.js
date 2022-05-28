@@ -11,7 +11,9 @@ import { ActionCreators as commentActions } from '../redux/modules/comment';
 import { ActionCreators as profileActions } from "../redux/modules/profile";
 import DebateList from "../Pages/DebateList";
 import ReplyList from "../Pages/ReplyList";
-import GoDebateImg from "../Assets/mainPpImg.png";
+import GoDebateImg2 from "../Assets/실시간토론하기가운데.svg";
+// import GoDebateImg from "../Assets/mainPpImg.png";
+import GoDebateImg from "../Assets/토론하러가기.svg"
 
 function UserProfile() {
   const history =useHistory();
@@ -107,35 +109,58 @@ function UserProfile() {
         <MyDebates>
            {panel=="debate"&&
            <>
+           {DebateCnt>0?
+            <>
             <div style={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
                 <Title>{userNickname}님,<br/> 토론 내용을 되돌아보고 정리해보세요! </Title>
                 <Grid width="230px">
-                    <img src={GoDebateImg} style={{marginLeft:"80px"}}/>
-                    <GoDebate onClick={goCreateDebate}>실시간 토론하러 가기</GoDebate>
+                    <Grid>
+                        <img src={GoDebateImg} onClick={goCreateDebate} style={{cursor:"pointer"}}/>
+                    </Grid>
                 </Grid>
             </div>
                 <div style={{display:"flex", marginTop:"60px"}}>
                     <ListTitle>내가 참여한 토론 {DebateCnt}</ListTitle>
                 </div>
                 <div style={{marginTop:"20px"}}>
-                    {DebateCnt>0?<DebateList/>:<NoReply>토론 참여 내역이 없습니다</NoReply>}
+                   <DebateList/>
                 </div>
-           </>
-            }
-            {panel=="reply"&&
+           </>:
+            <> 
+            <ListTitle>내가 참여한 토론 {DebateCnt}</ListTitle>
+            <NoNav> 
+                <NotYet>아직 참여한 토론이 없어요</NotYet>
+                <NotYetSub>논리적으로 말하는 연습을 통해 스피치 실력을 키워보는 건 어떨까요?</NotYetSub>
+                <img src={GoDebateImg2}/>
+            </NoNav>
+            
+            </>
+           
+           }
+
+            </>}
+            {panel=="reply"&&<>
+           {ReplyCnt>0? 
            <>
            <div style={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
-                <Title>위피치에서 활발하게 활동하고<br/>대중의 공감을 받아보세요! </Title>
-            </div>
-                <div style={{marginTop:"60px"}}>
-                    <ListTitle>댓글로 참여한 방{ReplyCnt}</ListTitle>
-                   <div style={{marginTop:"20px"}}>
-                       {ReplyCnt>0? <ReplyList/>: <NoReply >댓글 작성 내역이 없습니다</NoReply>}
-                       
-                   </div>
-                </div>
+              <Title>위피치에서 활발하게 활동하고<br/>대중의 공감을 받아보세요! </Title>
+          </div>
+              <div style={{marginTop:"60px"}}>
+                  <ListTitle>댓글로 참여한 방{ReplyCnt}</ListTitle>
+                    <ReplyList/>
+              </div>
+           </>
+              :
+              <>
+              <ListTitle>내가 쓴 댓글 {DebateCnt}</ListTitle>
+            <NoNav> 
+                <NotYet>아직 작성한 토론이 없어요</NotYet>
+                <NotYetSub>HOT PEECH에서 나의 의견을 남겨보시고 사고력을 키워보세요!</NotYetSub>
+                {/* <img src={GoDebateImg2}/> */}
+            </NoNav>
             </>
-            }
+           }
+            </>}
         </MyDebates>
 
       </Wrapper>
@@ -185,6 +210,40 @@ margin-top:157px;
 padding:40px 15px;
 box-sizing:border-box;
 `
+
+const NoNav=styled.div`
+width: 999px;
+height: 591px;
+border: 2px solid #E8E9EC;
+border-radius: 24px;
+text-align:center;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+`
+
+const NotYet=styled.p`
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 30px;
+letter-spacing: -0.03em;
+color: #767676;
+`
+const NotYetSub=styled.p`
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 22px;
+text-align: center;
+letter-spacing: -0.03em;
+color: #767676;
+
+`
+
 
 const ChangeNickBtn=styled.div`
 width:40px;
@@ -320,9 +379,13 @@ padding-top:26px;
 box-sizing:border-box;
 `
 const Title =styled.div`
-font-weight:700;
-font-size:22px;
-color:black;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 30px;
+letter-spacing: -0.03em;
+color: #191919;
 `
 const ListTitle=styled.div`
 font-size:14px;
