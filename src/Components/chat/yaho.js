@@ -192,7 +192,7 @@ const ChatWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: ${(props) => props.align};
-  margin: 1rem 0;
+  /* margin: 1rem 0; */
 `;
 const ChatUser = styled.div`
   margin-left: 10px;
@@ -217,7 +217,7 @@ const ChatInput = styled.input`
   border: 0;
 `;
 const ChatBtn = styled.button`
-  padding: 1rem;
+  /* padding: 1rem; */
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   width: max-content;
   outline: none;

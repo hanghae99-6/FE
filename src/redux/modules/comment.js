@@ -101,7 +101,8 @@ const initialState = {
             .put(`https://api.wepeech.com:8443/main/reply/${id}`,{reply:newComment,status:status},{headers: { "Authorization": token },})
             .then(
               (res) =>{
-                const fixedcomments = res;
+                const fixedcomments = res.data;
+                console.log("dasd",fixedcomments)
                 dispatch(fixComment(fixedcomments));
               }
             )
