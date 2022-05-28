@@ -51,14 +51,63 @@ opv-session {
   width:fixed;
   border-radius:10px 0px 0px 10px;
 }
-#dropdown-menu-5:focus{
-  outline:none;
-  box-shadow:none;
+#dropdownitem1:focus{
+  background:#FF5912;
 }
-.dropdown1{
-  width:80px;
+#dropdownitem2:focus{
+  background:#FF5912;
+}
+#dropdownitem3:focus{
+  background:#FF5912;
+}
+#dropdownitem4:focus{
+  background:#FF5912;
+}
+#dropdownitem5:focus{
+  background:#FF5912;
+}
+#dropdownitem6:focus{
+  background:#FF5912;
+}
+#dropdownitem7:focus{
+  background:#FF5912;
 }
 
+#dropdownitem8:focus{
+  background:#FF5912;
+}
+
+#dropdownitem9:focus{
+  background:#FF5912;
+}
+
+#dropdownitem10:focus{
+  background:#FF5912;
+}
+
+#dropdown-menu-7:focus{
+  outline:none;
+  box-shadow:none;
+  background:none;
+}
+#dropdown-menu-8:focus{
+  outline:none;
+  box-shadow:none;
+  background:none;
+}
+
+.dropdown-item:hover{
+  color:none;
+}
+.dropdown-item:active{
+  color:none;
+}
+.dropdown-item:focus{
+  color:none;
+}
+.dropdown-menu-dark{
+  background-color: none;
+}
 #dropdown-menu-align-right:focus{
   outline:none;
   box-shadow: none !important;

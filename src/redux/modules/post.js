@@ -17,6 +17,14 @@ const deleteEvidence=createAction(DELETE_EVIDENCE,(evidenceIndex)=>({evidenceInd
 const savePost=createAction(SAVE_POST,(post)=>({post}));
 const loadPost=createAction(LOAD_POST,(postlist)=>({postlist}));
 
+const roomApi = axios.create({
+  baseURL:"https://spring-prc.site:443",
+  // baseURL: "https://api.wepeech.com:8443/",
+  headers: {
+    "content-type": "application/json;charset=UTF-8",
+    accept: "application/json",
+  },
+});
 
 const initialState = {
     post:[],
@@ -33,8 +41,8 @@ const initialState = {
         console.log(opinion,evidences,roomId)
         return function (dispatch, getState, { history }) {
           const state = getState();
-            axios
-            .post(`https://api.wepeech.com:8443/debate/${roomId}`,{
+            roomApi
+            .post(`/debate/${roomId}`,{
                 "opinion":opinion,
                 "evidences":evidences,
               },{headers: { "Authorization": token },})

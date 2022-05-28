@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from "styled-components";
 import {useHistory} from "react-router-dom";
-import { Grid, IconButtons } from "../Elements/index";
+import { Grid, Image} from "../Elements/index";
 const LiveRoomItem =(props)=>{
     const history =useHistory();
-    console.log(props);
     const roomId=props?.roomId
-    console.log(roomId);
+    const prosNickName=props?.prosNickName;
+    const consNickName=props?.consNickName;
+    const prosImage=props?.prosImage;
+    const consImage=props?.consImage;
     const liveDebate=()=>{
-        console.log("가즈아")
         history.push(`/debate/${roomId}`);
     }
 
@@ -22,10 +23,6 @@ const LiveRoomItem =(props)=>{
                     </Grid>
                     
                     <Grid is_flex="true" justifyContent="space-between" alignItems="center" width="auto">
-                        {/* <Image shape="rectangle" src={peechtotal} width="24px" height="24px"/> */}
-                        {/* <Grid>
-                            <IconButtons chat color="#CCCDCE" size="24"/>
-                        </Grid> */}
                         <Grid height="24px" margin="5px 0px 0px 10px">
                             <TotalVotes>{props.enterUserCnt}/10</TotalVotes> 
                         </Grid>
@@ -34,57 +31,33 @@ const LiveRoomItem =(props)=>{
                 <Grid width="90%" height="50px" padding="10px 0 0 0" margin="0 auto 55px">
                     <ProgressTitle>{props.topic}</ProgressTitle>
                 </Grid>
-                {/* <ProgressSection>
-                        <Grid width="100%" position="absolute" top="-18px" is_flex="true" justifyContent="spaceBetween">
-                            <AgreeWrap>
-                                <Image shape="rectangle" src={Agree} width="36px" height="36px" cursor="pointer"/>
-                            </AgreeWrap>
-                            <Grid padding="0">
-                                <ProgressBg>
-                                    <ProgressPros style={{
-                                        width: `${prosLength}%`,
-                                        zIndex: (props.totalPros > props.totalCons)? 9:8,
-                                        background: "#FFAC89",
-                                    }}/> 
-                                    <ProgressCons style={{
-                                        width: `${consLength}%`,
-                                        zIndex: (props.totalPros > props.totalCons)? 9:8,
-                                        background:"#E8DCFF",
-                                    }}/>
-                                </ProgressBg>
-                            </Grid>
-                            <DenailWrap>
-                                <Image shape="rectangle" src={Denial} width="36px" height="36px" cursor="pointer"/>                                
-                            </DenailWrap>
+                <Grid display="flex">
+                    <Grid display="flex" flexDirection="column" alignItems="center">
+                            <div>{prosNickName}(찬성)</div>
+                           <Image src={prosImage}/>
                         </Grid>
-                </ProgressSection> */}
-                {/* <ProsConsTotal>
-                    <Grid display="flex" alignItems="center" justifyContent="center" width="90px" height="30px" margin="10px 0px 0px 0px">
-                        <ContentText>찬성</ContentText>
-                        <AgreeText>{props.totalPros ? props.totalPros:0}</AgreeText>
+                        <Grid display="flex" flexDirection="column" alignItems="center">
+                            <div>{consNickName}(반대)</div>
+                            <Image src={consImage}/>
                     </Grid>
-                    <Grid display="flex" alignItems="center" justifyContent="center" width="90px" height="30px" margin="10px 0px 0px 0px">
-                        <ContentText>반대</ContentText>  
-                        <DenialText>{props.totalCons? props.totalCons:0}</DenialText>
-                    </Grid>
-                </ProsConsTotal>             */}
+                </Grid>
+                        
+                        
             </CardBox>
         </Wrapper>
     )
 
 }
  
-// function LiveRoomItem(props) {
-   
-//   return (
-//       <Wrapper onClick={liveDebate}>
-//       <div>{props.topic}</div>
-//       <div>{props.content}</div>
-//       <div>{props.status}</div>
-//       <div>{props.enterUserCnt}/10</div>
-//       </Wrapper>
-//   )
-// }
+
+
+const ProsImage =styled.div`
+width:50px;
+height:50px;
+border-radius:50%;
+background-image:{prosImage};
+`
+
 
 const Wrapper = styled.div`
 width:auto;
@@ -205,10 +178,7 @@ const ProgressSection=styled.div`
 margin: 0 auto; 
 width:85%;
 height:100px;
-// background:pink;
 position:relative;
-// display:flex;
-// justify-content:space-between;
 `
 const ProgressPros=styled.div`
 height:13px;

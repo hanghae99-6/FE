@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { Grid , IconButtons } from "../Elements/index";
 import { ActionCreators as profileAction } from "../redux/modules/profile";
 
+
 function Debate(props) {
     const history =useHistory();
     const dispatch =useDispatch();
@@ -52,10 +53,6 @@ function Debate(props) {
                 <Text>{Date}</Text>
             </Grid>
         </DebateItemWrapper>
-            // {/* <Grid width="14px" height="14px" zIndex="10">
-            //     <IconButtons _onClick={()=>{deleteList(debateId)}} trash color="lightgray" width="14px" height="14px" size="14px"/>
-            // </Grid> */}
-    //   {/* </Wrapper> */}
   )
 }
 
@@ -129,7 +126,6 @@ color:#191919;
 font-weight:400;
 font-size:14px;
 margin-left:10px;
-// background:yellow;
 `
 
 

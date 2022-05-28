@@ -3,7 +3,18 @@ import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
+import room from "./room";
 
+
+
+const roomApi = axios.create({
+    baseURL:"https://spring-prc.site:443",
+    // baseURL: "https://api.wepeech.com:8443/",
+    headers: {
+      "content-type": "application/json;charset=UTF-8",
+      accept: "application/json",
+    },
+  });
 // const SAVE_POST = "SAVE_POST";
 const GET_LIVEROOM = "GET_LIVEROOM";
 
@@ -21,8 +32,8 @@ liverooms:[]
         const userEmail = userInfo.EMAIL;
         return function (dispatch, getState, { history }) {
           const state = getState();
-            axios
-            .get(`https://api.wepeech.com:8443/live`,{
+            roomApi
+            .get(`/live`,{
               
               })
             .then(

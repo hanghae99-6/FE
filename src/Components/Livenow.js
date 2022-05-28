@@ -7,14 +7,14 @@ import LiveRoomItem from './LiveRoomItem';
 const Livenow =() =>{
 const dispatch =useDispatch();
 const liverooms =useSelector((state)=>state?.livenow?.liverooms[0])
-console.log(liverooms);
 
 useEffect(()=>{
     dispatch(liveActions.getLiveRoomtDB())
 },[])
-
+console.log(liverooms);
   return (
     <Wrapper>
+        {liverooms?.length==0&&<div>현재 진행중인 토론방이 없습니다</div>}
         {liverooms?liverooms.map((item,index)=>{
                 return <LiveRoomItem {...item} key={index}/>
                 }):null}
@@ -27,7 +27,6 @@ margin:10px auto;
 display: flex;
 flex-wrap: wrap;
 margin-top:150px;
-
 `
 
 

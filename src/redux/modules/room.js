@@ -2,14 +2,15 @@ import Cookies from "universal-cookie";
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from 'axios';
+import { IoMdReturnRight } from "react-icons/io";
 // import { roomApi } from "../../Shared/axios";
 
 
 // import { apis } from "../../shared/api";
 
 const roomApi = axios.create({
-  // baseURL:"https://spring-prc.site:443",
-  baseURL: "https://api.wepeech.com:8443/",
+  baseURL:"https://spring-prc.site:443",
+  // baseURL: "https://api.wepeech.com:8443/",
   headers: {
     "content-type": "application/json;charset=UTF-8",
     accept: "application/json",
@@ -20,20 +21,70 @@ const CREATE_ROOM = "CREATE_ROOM";
 const GET_ROOM = "GET_ROOM";
 const ROOM_CHECK ="ROOM_CHECK";
 const LEAVE_ROOM="LEAVE_ROOM";
+const PROSUSER_CHECK="PROSUSER_CHECK";
+const CONSUSER_CHECK="CONSUSER_CHECK";
 
 
 const createRoom = createAction(CREATE_ROOM, (room) => ({ room }));
 const getRoom = createAction(GET_ROOM, (room_data) => ({room_data}));
 const roomCheck =createAction(ROOM_CHECK,(roomData)=>({roomData}));
 const leaveRoom =createAction(LEAVE_ROOM,(debateData)=>({debateData}));
+const prosUserCheck=createAction(PROSUSER_CHECK,(userchecked)=>({userchecked}));
+const consUserCheck=createAction(CONSUSER_CHECK,(userchecked)=>({userchecked}));
 
 
 const initialState = {
   roomdata:[],
   is_room:false,
   is_user:false,
-  debateData:{}
+  debateData:{},
+  prosUserChecked:false,
+  consUserChecked:false,
   };
+
+ 
+  const prosUserCheckDB = (userEmail) => {
+    const cookies = new Cookies(); 
+    const token = cookies.get("token");
+    return function (dispatch, getState, { history }) {
+      const state = getState();
+        roomApi
+        .post(`/debate/emailCheck/pros?email=${userEmail}`,{headers: { "Authorization": token },})
+        .then(
+          (res) =>{
+            console.log(res);
+            const userChecked=res.data.status
+            dispatch(prosUserCheck(userChecked))
+
+          }
+        )
+        .catch((error) => {
+            console.log(error);
+        });
+    };
+  };
+
+  const consUserCheckDB = (userEmail) => {
+    const cookies = new Cookies(); 
+    const token = cookies.get("token");
+    return function (dispatch, getState, { history }) {
+      const state = getState();
+        roomApi
+        .post(`/debate/emailCheck/cons?email=${userEmail}`,{headers: { "Authorization": token },})
+        .then(
+          (res) =>{
+            console.log(res);
+            const userChecked=res.data.status
+            dispatch(consUserCheck(userChecked))
+          }
+        )
+        .catch((error) => {
+            console.log(error);
+        });
+    };
+  };
+
+
 
   const createRoomDB = (topic,categoryName,prosName,consName,content) => {
     const cookies = new Cookies(); 
@@ -85,6 +136,8 @@ const initialState = {
         )
         .catch((error) => {
             console.log(error);
+            window.alert("유효하지 않은 입장입니다")
+            history.replace("/");
         });
     };
   };
@@ -111,7 +164,7 @@ const initialState = {
     };
   };
 
-  const leaveRoomDB =(roomId,RoomToken) =>{
+  const leaveRoomDB = (roomId,RoomToken) =>{
     console.log(roomId,RoomToken);
     const cookies = new Cookies(); 
     const token = cookies.get("token");
@@ -135,55 +188,7 @@ const initialState = {
     };
   }
   
-  // const usernameCheckDB = (roomId,username) => {
-  //   console.log(roomId);
-  //   console.log(username);
-  //   console.log("체크체크");
-  //   return function (dispatch, getState, { history }) {
-  //     const state = getState();
-  //       axios
-  //       .post(`https://spring-prc.site:443/debate/userName/check`,{
-  //         "roomId":roomId,
-  //         "username":username,
-  //       })
-  //       .then(
-  //         (res) =>{
-  //         const is_publisher=res.data.user;
-  //         dispatch(usernameCheck(is_publisher));
-  //         }
-  //       )
-  //       .catch((error) => {
-  //           console.log(error);
-  //       });
-  //   };
-  // };
 
- 
-
-  // const enterRoomDB = (room_id,username) => {
-  //   console.log(room_id,username);
-  //   return function (dispatch, getState, { history }) {
-  //     const state = getState();
-  //       axios
-  //       .post(`https://api.wepeech.com:8443/debate/check`,{
-  //         "roomId":room_id,
-  //         "username":username
-  //       })
-  //       .then(
-  //         (res) =>{
-  //         console.log(res);
-  //         const is_room=res.data.roomId;
-  //         const is_publisher=res.data.user;
-  //         console.log(is_room,is_publisher);
-  //         dispatch(enterRoom({is_room,is_publisher}))
-  //         }
-  //       )
-  //       .catch((error) => {
-  //           console.log(error);
-  //       });
-  //   };
-  // };
-  
   export default handleActions(
     {
       [CREATE_ROOM]: (state, action) =>
@@ -203,6 +208,18 @@ const initialState = {
       draft.debateData=action.payload.debateData
 
         }),
+
+        [PROSUSER_CHECK]: (state, action) =>
+        produce(state, (draft) => {
+        draft.prosUserChecked=action.payload.userchecked
+
+        }),
+
+        [CONSUSER_CHECK]: (state, action) =>
+        produce(state, (draft) => {
+          draft.consUserChecked=action.payload.userchecked
+
+        }),
  
 
  
@@ -214,8 +231,8 @@ const initialState = {
     getRoomDB,
     roomCheckDB,
     leaveRoomDB,
-    // usernameCheckDB,
-    // usernameCheck,
+    prosUserCheckDB,
+    consUserCheckDB,
   };
 
   export { ActionCreators };
