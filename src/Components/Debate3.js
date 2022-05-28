@@ -16,7 +16,8 @@ function CommentItem(props) {
     const [pencil, setPencil] = useState(false);
     const [newComment, setNewComment] = useState("");
     const LikeHates = useSelector((state)=>state.comment);
-    const FixedComment = useSelector((state)=>state.comment.fixedComments);
+    const fixedComment = useSelector((state)=>state.comment.fixedComments);
+    console.log("klasdfl",fixedComment)
     const status = props.status;
     const nickname= props.user.nickName? props.user.nickName:null;
     const reply= props.reply? props.reply:null;
@@ -49,14 +50,18 @@ function CommentItem(props) {
     }
     const fixComment = (newComment) => {
         dispatch(commentActions.fixComment(newComment,id,status));
+
     }
-    const pencilHandler = () => {
-        if(pencil==false){
-            setPencil(true);
-        } else {
-            setPencil(false);
-        }
-    }
+    // const pencilHandler = () => {
+    //     if(pencil==false){
+    //         setPencil("nowfix");
+    //     } else if(pencil=="nowfix"){
+    //         setPencil(true);
+    //     } 
+    //     else {
+    //         setPencil(false);
+    //     }
+    // }
 
     return (
         <Wrapper>
@@ -67,14 +72,13 @@ function CommentItem(props) {
             </UserSection>
             <CommentSection>
                 <CommentText>
-                    {pencil?
+                    {pencil==true?
                         <FixWrap>
                             <FixInput placeholder="댓글을 수정하세요" 
                             onChange={(e) => setNewComment(e.target.value)}
                             onKeyPress={(e) => {if(e.key === "Enter"){setNewComment(e.target.value)}}}
                             type="text" name="sendinput"></FixInput>
-                            <FixBtn onClick={fixComment(newComment)}
-                            
+                            <FixBtn onClick={setPencil(false)}
                             >수정</FixBtn>
                             <FixBtn onClick={pencilHandler}>취소</FixBtn>
                         </FixWrap>
@@ -121,7 +125,7 @@ function CommentItem(props) {
                             )}
                             {isMe?
                             <>
-                                <IconButtons margin="0 0 0 12px" size="14px" Pencil _onClick={pencilHandler} color="#C5C5C5"/>
+                                <IconButtons margin="0 0 0 12px" size="14px" Pencil _onClick={setPencil(true)} color="#C5C5C5"/>
                                 <IconButtons margin="0 0 0 5px" size="14px" trash _onClick={()=>{deleteComment(id)}} color="#C5C5C5"/>
                             </>
                             :""}

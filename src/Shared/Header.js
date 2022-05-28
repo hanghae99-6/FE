@@ -114,7 +114,7 @@ background:white;
 width:100%;
 `
 const LoginButton=styled.div`
-width:45%;
+width:20%;
 height:60px;
 font-family:'Roboto';
 font-style: normal;
