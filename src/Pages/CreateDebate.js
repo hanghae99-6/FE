@@ -67,18 +67,26 @@ const CreateDebate = (props) => {
                     <FullInput maxLength ={100} value={topic} onChange={(e) => {setTopic(e.target.value)}} placeholder="평서문으로 토론주제를 입력해주세요"/>
                     <ExText>예)살인죄의 공소시효는 폐지되어야 한다(최대 100자)</ExText>
                 </div>
-                <div style={{marginTop:"30px", display:"flex", flexDirection:"column"}}>
-                    <SectionText>토론자 이메일(카카오톡 로그인 아이디)</SectionText>
-                    <Grid display="flex" alignItems="end">
+                <Grid display="flex" height="100px">
+                    <Grid margin="0px 10px 0px 0px">
+                        <SectionText>찬성측 토론자 이메일</SectionText>
                         <EmailInput value={prosName} onChange={(e) => {setPros(e.target.value)}} placeholder="찬성측 이메일을 입력해주세요"/>
+                        <div style={{position:"absolute",top:"235px", left:"325px"}}>
+                        {prosUserCheck?<IconButton checked color="#00AB66"/>:<IconButton alert color="#E2252B"/>}
+                        </div>
                         {prosUserCheck?<UserCheckdText>등록된 유저입니다</UserCheckdText>:<UserUnCheckdText>등록되지 않은 유저입니다</UserUnCheckdText>}
-                        
-                    </Grid>                
-                   <Grid display="flex" alignItems="end" margin="10px 0px 0px 0px">
+                    </Grid> 
+                   <Grid margin="0px 0px 0px 0px">
+                   <SectionText>반대측 토론자 이메일</SectionText>       
                         <EmailInput value={consName} onChange={(e) => {setCons(e.target.value)}} placeholder="반대측 이메일을 입력해주세요"/>
+                        <div style={{position:"absolute",top:"235px", left:"645px"}}>
+                        {consUserCheck?<IconButton checked color="#00AB66"/>:<IconButton alert color="#E2252B"/>}
+                        </div>
                         {consUserCheck?<UserCheckdText>등록된 유저입니다</UserCheckdText>:<UserUnCheckdText>등록되지 않은 유저입니다</UserUnCheckdText>}
                    </Grid>
-                </div>
+                </Grid>
+
+      
                     <SectionText>토론시간</SectionText>
                     <DropDown2 setSpeechMinute={setSpeechMinute}>{speechMinute}</DropDown2>
                 <div style={{marginTop:"30px"}}>
@@ -167,7 +175,7 @@ const FullInput = styled.input`
 
 
 const EmailInput=styled.input`
-width:40%;
+width:100%;
 padding:10px;
 background: #F5F6F8;
 border:none;

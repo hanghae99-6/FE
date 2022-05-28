@@ -11,6 +11,7 @@ import { ActionCreators as RoomActions} from "../redux/modules/room";
 import DebateNotice from "../Components/DebateNotice";
 import jwt_decode from "jwt-decode";
 import { useCookies } from "react-cookie";
+import LiveChat from "../Components/chat/LiveChat";
 
 
 const DebateRoom = () =>{
@@ -182,7 +183,7 @@ useEffect(()=>{
       $(this).html('');
     });
   }
-  
+
   function leaveSession() {   
     if(role=='PUBLISHER'){
       dispatch(RoomActions.leaveRoomDB(roomId,Roomtoken))
@@ -231,21 +232,23 @@ useEffect(()=>{
     }
     {start&&isUser&&
     <Wrapper>
+      <div style={{position:"fixed", right:"300px", bottom:"100px"}}>
+      <LiveChat/>
+      </div>
+         
       <Grid display="flex" alignItems="center" justifyContent="space-between" width="920px">
         <TitleText>{topic}</TitleText>
           <StartBtn onClick={leaveSession}>토론방나가기</StartBtn>
       </Grid>
+      
       <div id="main-video" className="col-md-6">
         <video autoPlay playsInline style={{display:"none"}}>
         </video>
       </div>
-      
           <GreyBox>토론자가 아직 입장하지 않았습니다</GreyBox>
           <GreyBox2>토론자가 아직 입장하지 않았습니다</GreyBox2>
-         
-          <div id="video-container" className="col-md-6"></div>
-   
-       
+          <div id="video-container" className="col-md-6">
+          </div>
         <DebateBottom>
             <SectionText>토론내용</SectionText>
             <ContentText>{content}</ContentText>

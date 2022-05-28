@@ -29,7 +29,7 @@ const Main = () => {
   return (
     <Wrapper>
       <MainSection/>
-      <CategoryBtn/>
+      {/* <CategoryBtn/> */}
       <Banner>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1CkE0xfazapP6S-0G6O2Pbd-R8FvSkRhsabwF3hnnoANLpQ/viewform?vc=0&c=0&w=1&flr=0">
           <Image src={banner1} />

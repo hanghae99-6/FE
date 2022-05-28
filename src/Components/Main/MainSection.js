@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from "styled-components";
 import {useHistory} from 'react-router-dom'
-import MainImage from "../../Assets/일러스트.png";
+import MainImage from "../../Assets/Group 436.svg";
 import jwt_decode from "jwt-decode";
 import Cookies from "universal-cookie";
+
 
 const MainSection = () => {
     const history = useHistory();
@@ -28,7 +29,7 @@ const MainSection = () => {
                     <MainButton onClick={goCreateRoom} >토론방 만들기</MainButton>
                 </TextSection>
                 <ImageSection>
-                    <img src={MainImage}/>
+                    <img src={MainImage} style={{marginTop:"55px"}}/>
                 </ImageSection>
             </MainBanner>
         </Wrapper>
@@ -39,7 +40,7 @@ margin-top:72px;
 width:100%;
 height:600px;
 margin:0 auto;
-background:#FFEEE7;
+background:#FAFAFB;
 `
 const MainBanner=styled.div`
 width:1260px;

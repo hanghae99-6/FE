@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 import { useCookies } from "react-cookie";
 import Livenow from '../Components/Livenow';
-import mainlogo from "../Assets/wepeech.png";
+import mainlogo from "../Assets/Group.svg";
 import grayprofile from "../Assets/basicprofile(gray).png";
 import navarrow from "../Assets/navarrow.png";
 import Kakaobase from "../Assets/kakaobase.png";
