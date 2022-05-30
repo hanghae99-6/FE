@@ -8,8 +8,8 @@ import room from "./room";
 
 
 const roomApi = axios.create({
-    baseURL:"https://spring-prc.site:443",
-    // baseURL: "https://api.wepeech.com:8443/",
+    // baseURL:"https://spring-prc.site:443",
+    baseURL: "https://api.wepeech.com:8443",
     headers: {
       "content-type": "application/json;charset=UTF-8",
       accept: "application/json",
@@ -33,9 +33,7 @@ liverooms:[]
         return function (dispatch, getState, { history }) {
           const state = getState();
             roomApi
-            .get(`/live`,{
-              
-              })
+            .get("/live")
             .then(
               (res) =>{
                 const liverooms=res.data;
@@ -48,9 +46,6 @@ liverooms:[]
         };
       };
 
-
-
-  
       export default handleActions(
         {
           [GET_LIVEROOM]: (state, action) =>

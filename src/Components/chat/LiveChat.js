@@ -82,9 +82,9 @@ const ChatingPage = (props) => {
     );
   };
   
-  const startTimer =(end,init)=>{
-    useInterval(() => time((end - init) / 1000), time);
-  }
+  // const startTimer =(end,init)=>{
+  //   useInterval(() => time((end - init) / 1000), time);
+  // }
 
   // 메세지 보내기(stringfy해서 보낸 후 쓴 메세지 초기화)
   const sendMessage = () => {
