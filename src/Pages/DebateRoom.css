@@ -220,15 +220,24 @@ a:hover .demo-logo {
   display: inline-block;
   color:white;
   background: #191919;
-  padding:5px 10px;
+  padding:5px 15px;
   box-sizing:border-box;
-  font-weight: bold;
-  border-radius: 0px 0px 0px 0px;
-  margin-top:-580px;
+  border-radius: 20px;
+  margin-top:-50px;
   z-index:5;
-  margin-left:-447px;
+  margin-left:-423px;
   font-family:Roboto;
   position:absolute;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+/* identical to box height, or 157% */
+
+letter-spacing: -0.03em;
+
+color: #FFFFFF;
 }
 
 #video-container p.userName {

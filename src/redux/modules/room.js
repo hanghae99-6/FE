@@ -3,6 +3,7 @@ import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from 'axios';
 import { IoMdReturnRight } from "react-icons/io";
+import jwt_decode from "jwt-decode";
 // import { roomApi } from "../../Shared/axios";
 
 
@@ -23,6 +24,7 @@ const ROOM_CHECK ="ROOM_CHECK";
 const LEAVE_ROOM="LEAVE_ROOM";
 const PROSUSER_CHECK="PROSUSER_CHECK";
 const CONSUSER_CHECK="CONSUSER_CHECK";
+const START_DEBATE="START_DEBATE";
 
 
 const createRoom = createAction(CREATE_ROOM, (room) => ({ room }));
@@ -31,6 +33,7 @@ const roomCheck =createAction(ROOM_CHECK,(roomData)=>({roomData}));
 const leaveRoom =createAction(LEAVE_ROOM,(debateData)=>({debateData}));
 const prosUserCheck=createAction(PROSUSER_CHECK,(userchecked)=>({userchecked}));
 const consUserCheck=createAction(CONSUSER_CHECK,(userchecked)=>({userchecked}));
+const startDebate=createAction(START_DEBATE,(time)=>({time}))
 
 
 const initialState = {
@@ -40,9 +43,33 @@ const initialState = {
   debateData:{},
   prosUserChecked:false,
   consUserChecked:false,
+  debateStartTime:null,
+  debateEndTime:null,
   };
 
- 
+  const starteDebateDB = (roomId) => {
+    const cookies = new Cookies(); 
+    const token = cookies.get("token");
+    console.log(token);
+    return function (dispatch, getState, { history }) {
+      const state = getState();
+        roomApi
+        .get(`/debate/${roomId}/start-timer`,{headers: { "Authorization": token }})
+        .then(
+          (res) =>{
+            const timeInfo=res.data;
+            dispatch(startDebate(timeInfo));
+          }
+        )
+        .catch((error) => {
+            console.log(error);
+        });
+    };
+  };
+
+
+
+
   const prosUserCheckDB = (userEmail) => {
     const cookies = new Cookies(); 
     const token = cookies.get("token");
@@ -86,7 +113,7 @@ const initialState = {
 
 
 
-  const createRoomDB = (topic,categoryName,prosName,consName,content) => {
+  const createRoomDB = (topic,categoryName,prosName,consName,content,speechMinute) => {
     const cookies = new Cookies(); 
     const token = cookies.get("token");
     return function (dispatch, getState, { history }) {
@@ -97,7 +124,8 @@ const initialState = {
             "categoryName":categoryName,
             "prosName":prosName ,
             "consName":consName,
-            "content":content
+            "content":content,
+            "debateTime":speechMinute,
           },{headers: { "Authorization": token },})
         .then(
           (res) =>{
@@ -142,27 +170,6 @@ const initialState = {
     };
   };
 
-  // const getRoomDB = (roomId) => {
-  //   const cookies = new Cookies(); 
-  //   const token = cookies.get("token");
-  //   return function (dispatch, getState, { history }) {
-  //     const state = getState();
-  //       roomApi
-  //       .get(`/debate/${roomId}`,
-  //         {headers: { "Authorization": token }}
-  //       )
-  //       .then(
-  //         (res) =>{
-  //           console.log(res);
-  //          const roomData=res.data
-  //          dispatch(getRoom(roomData));
-  //         }
-  //       )
-  //       .catch((error) => {
-  //           console.log(error);
-  //       });
-  //   };
-  // };
 
   const leaveRoomDB = (roomId,RoomToken) =>{
     console.log(roomId,RoomToken);
@@ -220,6 +227,16 @@ const initialState = {
           draft.consUserChecked=action.payload.userchecked
 
         }),
+
+        [START_DEBATE]: (state, action) =>
+        produce(state, (draft) => {
+         draft.debateStartTime=action.payload.time.debateStartTime;
+         draft.debateEndTime=action.payload.time.debateEndTime;
+
+        }),
+
+
+
  
 
  
@@ -233,6 +250,7 @@ const initialState = {
     leaveRoomDB,
     prosUserCheckDB,
     consUserCheckDB,
+    starteDebateDB,
   };
 
   export { ActionCreators };

@@ -30,7 +30,7 @@ const CreateDebate = (props) => {
             window.alert("찬성측 이메일과 반대측 이메일이 같습니다")    
         }
         else{
-            dispatch(RoomActions.createRoomDB(topic,categoryName,prosName,consName,content));
+            dispatch(RoomActions.createRoomDB(topic,categoryName,prosName,consName,content,speechMinute));
         }
         
     }

@@ -22,6 +22,7 @@ import { IoMdThumbsUp } from "react-icons/io";
 import { RiPencilFill } from "react-icons/ri";
 import { IoIosAlert } from "react-icons/io";
 import { IoIosCheckmarkCircle } from "react-icons/io";
+import { RiTimerFill } from "react-icons/ri";
 
 const IconButtons = (props) => {
   const {
@@ -33,6 +34,7 @@ const IconButtons = (props) => {
     happyFill,
     VideocamIcon,
     Airplane,
+    clock,
     MicOff,
     MicOn,
     size,
@@ -71,6 +73,15 @@ const IconButtons = (props) => {
   };
 
   //아이콘 작동
+  if (clock) {
+    return (
+      <React.Fragment>
+        <Icon {...styles}>
+          <RiTimerFill size={size} onClick={_onClick}></RiTimerFill >
+        </Icon>
+      </React.Fragment>
+    );
+  }
   if (alert) {
     return (
       <React.Fragment>
