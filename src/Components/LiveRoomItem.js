@@ -24,7 +24,7 @@ const LiveRoomItem =(props)=>{
                     
                     <Grid is_flex="true" justifyContent="space-between" alignItems="center" width="auto">
                         <Grid height="24px" margin="5px 0px 0px 10px">
-                            <TotalVotes>{props.enterUserCnt}/10</TotalVotes> 
+                            <TotalVotes>{props.enterUserCnt}/10</TotalVotes>
                         </Grid>
                     </Grid>
                 </CardHeader>

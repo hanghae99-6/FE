@@ -121,10 +121,10 @@ function CommentItem(props) {
                             </ButtonSection>
                             )}
                             {isMe?
-                            <>
-                                <IconButtons margin="0 0 0 12px" size="14px" Pencil _onClick={()=>{setPencil(true)}} color="#C5C5C5"/>
-                                <IconButtons margin="0 0 0 5px" size="14px" trash _onClick={()=>{deleteComment(id)}} color="#C5C5C5"/>
-                            </>
+                                <>
+                                    <IconButtons margin="0 0 0 12px" size="14px" Pencil _onClick={()=>{setPencil(true)}} color="#C5C5C5"/>
+                                    <IconButtons margin="0 0 0 5px" size="14px" trash _onClick={()=>{deleteComment(id)}} color="#C5C5C5"/>
+                                </>
                             :""}
                         </ DateText>
                     </Grid>        
