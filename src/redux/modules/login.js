@@ -15,11 +15,17 @@ const api = axios.create({
 });
 
 // 리프레시 토큰 관련 부분입니다
-  const setCookie = (name, value, exp = 3) => {
-    let date = new Date();
-    date.setTime(date.getTime() + exp * 24 * 60 * 60 * 1000);
-    document.cookie = `${name}=${value}; expires=${date.toUTCString()} ;path=/`;
-  };
+
+const setCookie = (name, value, exp = 3) => {
+  let date = new Date();
+  date.setTime(date.getTime() + exp * 24 * 60 * 60 * 1000);
+  document.cookie = `${name}=${value}; expires=${date.toUTCString()} ;path=/ ;secure= ${true} ; sameSite= none`;
+};
+  // const setCookie = (name, value, exp = 3) => {
+  //   let date = new Date();
+  //   date.setTime(date.getTime() + exp * 24 * 60 * 60 * 1000);
+  //   document.cookie = `${name}=${value}; expires=${date.toUTCString()} ;path=/`;
+  // };
 
 const KAKAO_LOGIN = "KAKAO_LOGIN";
 const kakaologin = createAction(KAKAO_LOGIN, (data) => ({data}));

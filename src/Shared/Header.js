@@ -46,11 +46,11 @@ const Header = () => {
         return(
             <HeaderWrapper>
                 <Grid padding="0" margin="0 auto" />
-                    <Grid name="inner" width="1260px" height="72px" margin="0 auto" is_flex="true" justifyContent="space-between">
+                    <Grid name="inner" width="1260px" height="72px" margin="0 auto" is_flex="true" justifyContent="space-between" alignItems="center">
                         <MainLogo src={mainlogo} onClick={goMain}/>
                         {/* <Logo onClick={()=>history.push("/")}>wepeech</Logo> */}
                         <Grid height="46px" width= "15%" is_flex="true" justifyContent="space-between" alignItems="center" padding="0">
-                        <div onClick={goLiveNow}>LiveNow</div>
+                            <LiveNowRound/><LiverNowText onClick={goLiveNow}>LiveNow</LiverNowText>
                             <Grid margin="0 0 0 50px" is_flex= "true" flexDirection="row" alignItems="center" justifyContent="flex-end" width="240px">
                                 <Text margin="3px 5px 0 0" width="100px" textAlign="end">{userName} 님</Text>
                                 <img style={{width:"24px" ,height: "24px",borderRadius:"12px",cursur:"pointer"}} src={userProfile} onClick={goProfile}/>
@@ -103,7 +103,27 @@ const Header = () => {
     }
 }
 
+const LiveNowRound=styled.div`
+min-width: 6px;
+min-height: 6px;
+background: #FF5912;
+border-radius:50%;
+margin-right:5px;
+margin-top:5px;
+`
 
+
+const LiverNowText=styled.div`
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: -0.03em;
+color: #000000;
+margin-top:5px;
+
+`
 const HeaderWrapper=styled.div`
 position:fixed;
 margin: 0 auto;
