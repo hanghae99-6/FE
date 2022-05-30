@@ -27,9 +27,7 @@ const Timer = (props) => {
   const init = new Date(UTC+KR_TIME_DIFF);
   var diff = Math.abs(end.getTime() - init.getTime());
   const [time, setTime] = useState((diff) /60); // 남은 시간
-
-    useInterval(() => setTime((end - init) / 1000), time,endtime);
-
+    useInterval(() => setTime((end - init) / 1000), time);
   const minutes = Math.floor(time / 60); // 분
   const seconds = Math.floor(time % 60); // 초
   const roomData=useSelector((state)=>state?.room?.roomdata?state.room.roomdata:null)
@@ -52,11 +50,10 @@ const Timer = (props) => {
     (frame) => {ws.subscribe("/sub/chat/room/" + roomId,
     (message) => {
           const res = JSON.parse(message.body);
-          console.log(res);
+          
           if(res.type=="START"){
               setEndTime(res.debateEndTime);
           }
-   
             console.log("소켓연결 성공");
           },
         { "Authorization": token }
@@ -80,13 +77,6 @@ const Timer = (props) => {
   };
   
   
-  // 채팅방 입장시 사용하는 코드들
-  
-  // 메세지 보내기(stringfy해서 보낸 후 쓴 메세지 초기화)
-  const sendMessage = () => {
-    ws.send("/pub/timer",{ "Authorization": token }, JSON.stringify({ type: "TALK", roomId: roomId, sender: userId, message: content, createdAt: "" }));
-    setContent("");
-  };
   const startDebate = () => {
     console.log("토론 시작")
     ws.send("/pub/timer",{ "Authorization": token }, JSON.stringify({ type: "TIMER", roomId: roomId, sender: userId, message: content, createdAt: "" }));
@@ -157,12 +147,12 @@ const Timer = (props) => {
 return (
   <>
   {roomData.roomKing==true&& <StartBtn onClick={startDebate}>토론방시작하기</StartBtn>}
-  {isStarted&&
+
   <TimerBox>
   <IconButtons clock color="grey" size="15"/>
   <Minutes>{minutes}:</Minutes>
   <Seconds>{seconds}</Seconds>
-  </TimerBox>}
+  </TimerBox>
   </>
     
   );
