@@ -28,7 +28,7 @@ const Timer = (props) => {
   var diff = Math.abs(end.getTime() - init.getTime());
   const [time, setTime] = useState((diff) /60); // 남은 시간
 
-    useInterval(() => setTime((end - init) / 1000), time,endtime);
+    useInterval(() => setTime((end - init) / 1000), time);
 
   const minutes = Math.floor(time / 60); // 분
   const seconds = Math.floor(time % 60); // 초

@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 
-export const useInterval = (callback, time, endtime) => {
-    console.log(endtime);
-    if(endtime!=null){
+export const useInterval = (callback, time) => {
+
+
         const savedCallback = useRef();
 
         useEffect(() => {
@@ -18,6 +18,6 @@ export const useInterval = (callback, time, endtime) => {
           let id = setInterval(tick, 1000);
           return () => clearInterval(id);
         }, []);
-    }
+ 
   
 };
