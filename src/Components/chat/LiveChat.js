@@ -16,7 +16,7 @@ const ChatingPage = (props) => {
   const [messages, setMessages] = useState([]);
   const [enterMsg, setEnterMsg] = useState(null);
   const [content, setContent] = useState("");
-  const [endtime,setEndTime] =useState(null)
+  const [endtime,setEndTime] =useState(null);
   let [time,setTime]=useState(null);
   
   // const [roomId, setRoomId] = useState("faaa902e-f2d4-4221-a0ca-e413025f8834");
