@@ -41,15 +41,25 @@ const ChatingPage = (props) => {
     (frame) => {ws.subscribe("/sub/chat/room/" + roomId,
     (message) => {
           const res = JSON.parse(message.body);
-          if(res.type=="ENTER"||res.type=="TALK"){
+          if(res.type=="START"){
+            const debateEndTime =res.debateEndTime;
+            // setEndTime(debateEndTime);
+            const end = new Date(debateEndTime)
+            var NOW_DATE = new Date();
+            const UTC = NOW_DATE.getTime() + (NOW_DATE.getTimezoneOffset() * 60 * 1000); 
+            const KR_TIME_DIFF = 9 * 60 * 60 * 1000;
+            const init = new Date(UTC+KR_TIME_DIFF);
+            var diff = Math.abs(end.getTime() - init.getTime());
+            // var time=((diff) /60); 
+            console.log(end,init,diff,time,end.getTime(), init.getTime());
+            startTimer();
+          }else{
             const roomId = res.roomId;
-            getMessageList(roomId);
-            setLoaded(true);
-            setEnterMsg(res);
-            resMessage(res);
+              getMessageList(roomId);
+              setLoaded(true);
+              setEnterMsg(res);
+              resMessage(res);
           }
-              
-            
             console.log("소켓연결 성공");
           },
         { "Authorization": token }
@@ -72,8 +82,10 @@ const ChatingPage = (props) => {
     );
   };
   
-  
-  // 채팅방 입장시 사용하는 코드들
+  const startTimer =(end,init)=>{
+    useInterval(() => time((end - init) / 1000), time);
+  }
+
   // 메세지 보내기(stringfy해서 보낸 후 쓴 메세지 초기화)
   const sendMessage = () => {
     ws.send("/pub/chat/message",{ "Authorization": token }, JSON.stringify({ type: "TALK", roomId: roomId, sender: userId, message: content, createdAt: "" }));
@@ -142,7 +154,6 @@ const ChatingPage = (props) => {
     console.log("메세지임", messages)
   }, [messages]);
 
- 
 
   if (!userId) return <>로그인이 필요합니다.</>;
 
@@ -155,10 +166,7 @@ return (
   <Minutes>{minutes}:</Minutes>
   <Seconds>{seconds}</Seconds>
   </Timer>
-
-  
  } */}
-  
   <ChatDisplay>
       <ChatHeader>
         <ChatText>실시간채팅</ChatText>
@@ -218,7 +226,7 @@ color: #191919;
 width: 40px;
 display: flex;
 justify-content: flex-end;
-`;
+`
 
 const Seconds = styled.div`
 font-family: 'Roboto';
@@ -230,8 +238,8 @@ letter-spacing: -0.03em;
 color: #191919;
 width: 40px;
 display: flex; 
-  justify-content: flex-start;
-`;
+justify-content: flex-start;
+`
 const ChatInfo=styled.div`
 display:flex;
 align-items:center;

@@ -152,7 +152,6 @@ const initialState = {
             [ADD_COMMENT]: (state, action) =>
             produce(state, (draft) => {
             draft.commentList=action.payload.reply
-            // window.location.reload();
             }),
             [GET_COMMENT]: (state, action) =>
             produce(state, (draft) => {

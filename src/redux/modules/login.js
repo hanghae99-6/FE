@@ -1,31 +1,24 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from "axios";
-// import
+// import {cooKies} from "react-cookie";
 
 
 const api = axios.create({
   baseURL: "https://api.wepeech.com:8443",
   // baseURL: "http://localhost:3000/",
-
   headers: {
     "content-type": "application/json;charset=UTF-8",
     accept: "application/json",
   },
 });
 
-// 리프레시 토큰 관련 부분입니다
 
 const setCookie = (name, value, exp = 3) => {
   let date = new Date();
   date.setTime(date.getTime() + exp * 24 * 60 * 60 * 1000);
   document.cookie = `${name}=${value}; expires=${date.toUTCString()} ;path=/ ;secure= ${true} ; sameSite= none`;
 };
-  // const setCookie = (name, value, exp = 3) => {
-  //   let date = new Date();
-  //   date.setTime(date.getTime() + exp * 24 * 60 * 60 * 1000);
-  //   document.cookie = `${name}=${value}; expires=${date.toUTCString()} ;path=/`;
-  // };
 
 const KAKAO_LOGIN = "KAKAO_LOGIN";
 const kakaologin = createAction(KAKAO_LOGIN, (data) => ({data}));
