@@ -27,9 +27,7 @@ const Timer = (props) => {
   const init = new Date(UTC+KR_TIME_DIFF);
   var diff = Math.abs(end.getTime() - init.getTime());
   const [time, setTime] = useState((diff) /60); // 남은 시간
-
     useInterval(() => setTime((end - init) / 1000), time);
-
   const minutes = Math.floor(time / 60); // 분
   const seconds = Math.floor(time % 60); // 초
   const roomData=useSelector((state)=>state?.room?.roomdata?state.room.roomdata:null)
@@ -56,7 +54,6 @@ const Timer = (props) => {
           if(res.type=="START"){
               setEndTime(res.debateEndTime);
           }
-   
             console.log("소켓연결 성공");
           },
         { "Authorization": token }
@@ -157,12 +154,12 @@ const Timer = (props) => {
 return (
   <>
   {roomData.roomKing==true&& <StartBtn onClick={startDebate}>토론방시작하기</StartBtn>}
-  {isStarted&&
+
   <TimerBox>
   <IconButtons clock color="grey" size="15"/>
   <Minutes>{minutes}:</Minutes>
   <Seconds>{seconds}</Seconds>
-  </TimerBox>}
+  </TimerBox>
   </>
     
   );
