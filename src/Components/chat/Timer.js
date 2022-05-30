@@ -13,7 +13,7 @@ import { Icon } from "@mui/material";
 
 // let stompClient;
 
-const ChatingPage = (props) => {
+const Timer = (props) => {
   const [loaded, setLoaded] = useState(false);
   const [messages, setMessages] = useState([]);
   const [enterMsg, setEnterMsg] = useState(null);
@@ -21,6 +21,17 @@ const ChatingPage = (props) => {
   const [endtime,setEndTime] =useState(null)
   const end = new Date(endtime);
   const [isStarted,setIsStarted]=useState(false);
+  var NOW_DATE = new Date(); 
+  const UTC = NOW_DATE.getTime() + (NOW_DATE.getTimezoneOffset() * 60 * 1000); 
+  const KR_TIME_DIFF = 9 * 60 * 60 * 1000;
+  const init = new Date(UTC+KR_TIME_DIFF);
+  var diff = Math.abs(end.getTime() - init.getTime());
+  const [time, setTime] = useState((diff) /60); // 남은 시간
+
+    useInterval(() => setTime((end - init) / 1000), time,endtime);
+
+  const minutes = Math.floor(time / 60); // 분
+  const seconds = Math.floor(time % 60); // 초
   const roomData=useSelector((state)=>state?.room?.roomdata?state.room.roomdata:null)
   const roomId=location.pathname.split("/debate/")[1];
   const cookies = new Cookies(); 
@@ -41,30 +52,16 @@ const ChatingPage = (props) => {
     (frame) => {ws.subscribe("/sub/chat/room/" + roomId,
     (message) => {
           const res = JSON.parse(message.body);
+          console.log(res);
           if(res.type=="START"){
-            const debateEndTime =res.debateEndTime;
-            // setEndTime(debateEndTime);
-            const end = new Date(debateEndTime)
-            var NOW_DATE = new Date();
-            const UTC = NOW_DATE.getTime() + (NOW_DATE.getTimezoneOffset() * 60 * 1000); 
-            const KR_TIME_DIFF = 9 * 60 * 60 * 1000;
-            const init = new Date(UTC+KR_TIME_DIFF);
-            var diff = Math.abs(end.getTime() - init.getTime());
-            // var time=((diff) /60); 
-            console.log(end,init,diff,time,end.getTime(), init.getTime());
-            startTimer();
-          }else{
-            const roomId = res.roomId;
-              getMessageList(roomId);
-              setLoaded(true);
-              setEnterMsg(res);
-              resMessage(res);
+              setEndTime(res.debateEndTime);
           }
+   
             console.log("소켓연결 성공");
           },
         { "Authorization": token }
       );
-      ws.send("/pub/chat/message",
+      ws.send("/pub/timer",
         { "Authorization": token },
         JSON.stringify({ type: "ENTER", roomId: roomId, sender: userId, message: "구독!", createdAt: "" })
       );
@@ -82,18 +79,17 @@ const ChatingPage = (props) => {
     );
   };
   
-  const startTimer =(end,init)=>{
-    useInterval(() => time((end - init) / 1000), time);
-  }
-
+  
+  // 채팅방 입장시 사용하는 코드들
+  
   // 메세지 보내기(stringfy해서 보낸 후 쓴 메세지 초기화)
   const sendMessage = () => {
-    ws.send("/pub/chat/message",{ "Authorization": token }, JSON.stringify({ type: "TALK", roomId: roomId, sender: userId, message: content, createdAt: "" }));
+    ws.send("/pub/timer",{ "Authorization": token }, JSON.stringify({ type: "TALK", roomId: roomId, sender: userId, message: content, createdAt: "" }));
     setContent("");
   };
   const startDebate = () => {
     console.log("토론 시작")
-    ws.send("/pub/chat/message",{ "Authorization": token }, JSON.stringify({ type: "TIMER", roomId: roomId, sender: userId, message: content, createdAt: "" }));
+    ws.send("/pub/timer",{ "Authorization": token }, JSON.stringify({ type: "TIMER", roomId: roomId, sender: userId, message: content, createdAt: "" }));
     setContent("");
     setIsStarted(true);
   };
@@ -105,7 +101,7 @@ const ChatingPage = (props) => {
   // 저장된 메시지 출력
   const getMessageList = (roomId) => {
     axios
-      .get(`https://api.wepeech.com:8443/chat/message/${roomId}`,
+      .get(`https://api.wepeech.com:8443/timer/${roomId}`,
       {headers: { "Authorization": token }})
       .then((res) => {
         setMessages(res.data);
@@ -154,58 +150,44 @@ const ChatingPage = (props) => {
     console.log("메세지임", messages)
   }, [messages]);
 
+ 
 
   if (!userId) return <>로그인이 필요합니다.</>;
 
 return (
   <>
-  {/* {roomData.roomKing==true&& <button onClick={startDebate}>토론방시작하기</button>}
+  {roomData.roomKing==true&& <StartBtn onClick={startDebate}>토론방시작하기</StartBtn>}
   {isStarted&&
-  <Timer>
+  <TimerBox>
   <IconButtons clock color="grey" size="15"/>
   <Minutes>{minutes}:</Minutes>
   <Seconds>{seconds}</Seconds>
-  </Timer>
- } */}
-  <ChatDisplay>
-      <ChatHeader>
-        <ChatText>실시간채팅</ChatText>
-        <UserTotal>32명</UserTotal>
-      </ChatHeader>
-      <ChatContents>
-        {messages.map((item, index) => {
-          return (
-            <ChatWrap key={index} ref={index === messages.length - 1 ? latestChatWrapRef : null} align={item?.sender === userId ? "flex-end" : "flex-start"} >
-                <ChatInfo direction={item?.sendor===userId?"row":"row-reverse"}>
-                  <ChatUser>{item?.sender?item.sender:null}</ChatUser>
-                  <Image src={item?.userImage?item.userImage:null} size="20"/>
-                </ChatInfo>
-              <MsgWrap bg={item?.sender === userId ? "#E5E8EF" : "white"} radius={item?.sender === userId ? "16px 0px 16px 16px" : "0px 16px 16px 16px"}>
-                <ChatMsg >{item?.message?item.message:null}</ChatMsg>
-              </MsgWrap>
-              <CreaatedAtText>{item?.createdAt?.split(" ")[1]?item?.createdAt?.split(" ")[1]:null}</CreaatedAtText>
-            </ChatWrap>
-          );
-        })}
-       
-      </ChatContents>
-      <ChatInputMenu>
-        <ChatInput type="text" placeholder="채팅을 입력해주세요" value={content} onChange={handleChange} onKeyUp={handleKeyUp} />
-        <SendBtn onClick={sendMessage}>
-          <Grid margin="-3px 3px 3px 5px">
-           <IconButtons Airplane size="16"/>
-          </Grid>
-        </SendBtn>
-      </ChatInputMenu>
-    </ChatDisplay>
-  
+  </TimerBox>}
   </>
     
   );
 };
 
-
-const Timer =styled.div`
+const StartBtn=styled.div`
+max-width:120px;
+min-width: 119px;
+height: 40px;
+background: #FF5912;
+border-radius: 24px;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 24px;
+letter-spacing: -0.03em;
+color: #FFFFFF;
+border:none;
+cursor:pointer;
+margin:10px;
+line-height:40px;
+text-align:center;
+`
+const TimerBox =styled.div`
 width: 87px;
 height: 30px;
 background: #F5F6F8;
@@ -226,7 +208,7 @@ color: #191919;
 width: 40px;
 display: flex;
 justify-content: flex-end;
-`
+`;
 
 const Seconds = styled.div`
 font-family: 'Roboto';
@@ -238,8 +220,8 @@ letter-spacing: -0.03em;
 color: #191919;
 width: 40px;
 display: flex; 
-justify-content: flex-start;
-`
+  justify-content: flex-start;
+`;
 const ChatInfo=styled.div`
 display:flex;
 align-items:center;
@@ -395,4 +377,4 @@ const ChatBtn = styled.button`
   }
 `;
 
-export default ChatingPage;
+export default Timer;

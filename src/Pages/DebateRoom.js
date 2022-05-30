@@ -12,10 +12,32 @@ import DebateNotice from "../Components/DebateNotice";
 import jwt_decode from "jwt-decode";
 import { useCookies } from "react-cookie";
 import LiveChat from "../Components/chat/LiveChat";
+import { ActionCreators as roomActions } from "../redux/modules/room";
+import { useInterval } from "../redux/modules/useInterval";
+import Timer from "../Components/chat/Timer";
 
 
 const DebateRoom = () =>{
- 
+  // const endTime =useSelector((state)=>state?.room?.debateEndTime)
+  // const startTime= useSelector((state)=>state?.room?.debateStartTime)
+  // const end = new Date(endTime);
+  // var NOW_DATE = new Date(); 
+  // const UTC = NOW_DATE.getTime() + (NOW_DATE.getTimezoneOffset() * 60 * 1000); 
+  // const KR_TIME_DIFF = 9 * 60 * 60 * 1000;
+  // const init = new Date(UTC+KR_TIME_DIFF);
+  // console.log(init)
+  // console.log(end); //invalid 
+  // console.log(end.getTime());//Nan
+  // console.log(init.getTime());
+  // var diff = Math.abs(end.getTime() - init.getTime());
+  // const [time, setTime] = useState((diff) /60); // 남은 시간
+
+  // useInterval(() => setTime((end - init) / 1000), time);
+  // const minutes = Math.floor(time / 60); // 분
+  // const seconds = Math.floor(time % 60); // 초
+  // console.log(endTime)
+  // console.log(startTime)
+  // console.log(endTime-startTime);
   const userInfo= jwt_decode(document.cookie);
   const nickname = userInfo?.NICK_NAME;
   const dispatch =useDispatch();
@@ -129,7 +151,7 @@ useEffect(()=>{
   
     return false;
   }
-
+  // publisher.publishAudio(audioEnabled);
   function appendUserData(videoElement, connection) {
     var clientData;
     var serverData;
@@ -194,6 +216,8 @@ useEffect(()=>{
       mySession.disconnect();
       mySession = null;
       cleanSessionView();
+      window.alert("토론방을 나가셨습니다")
+      history.push("/");
     }
   }
 
@@ -216,7 +240,9 @@ useEffect(()=>{
   function removeAllUserData() {
     $(".data-node").remove();
   }
-  
+  const startDebate =()=>{
+    dispatch(RoomActions.starteDebateDB(roomId));
+  }
   return(
 
     <>
@@ -225,6 +251,7 @@ useEffect(()=>{
     <ModalBg/>
     <DetailModal>
       {nickname}님, 토론방에 입장하시겠습니까?
+     
       <EnterBtn onClick={joinSession}>토론방 입장하기</EnterBtn>
     </DetailModal>
     </>
@@ -232,20 +259,24 @@ useEffect(()=>{
     }
     {start&&isUser&&
     <Wrapper>
-      <div style={{position:"fixed", right:"300px", bottom:"100px"}}>
+      <div style={{position:"absolute", right:"100px", top:"80px"}}>
       <LiveChat/>
       </div>
-         
+        {/* <Minutes>{minutes.toString().padStart(2, "0")}</Minutes> :
+        <Seconds>{seconds.toString().padStart(2, "0")}</Seconds> */}
       <Grid display="flex" alignItems="center" justifyContent="space-between" width="920px">
         <TitleText>{topic}</TitleText>
+        {/* <Timer/> */}
           <StartBtn onClick={leaveSession}>토론방나가기</StartBtn>
+          <Timer/>
       </Grid>
       
       <div id="main-video" className="col-md-6">
         <video autoPlay playsInline style={{display:"none"}}>
         </video>
       </div>
-          <GreyBox>토론자가 아직 입장하지 않았습니다</GreyBox>
+ 
+        <GreyBox>토론자가 아직 입장하지 않았습니다</GreyBox>
           <GreyBox2>토론자가 아직 입장하지 않았습니다</GreyBox2>
           <div id="video-container" className="col-md-6">
           </div>
@@ -257,10 +288,26 @@ useEffect(()=>{
     </>
   )
 }
+
+
+
+const Minutes = styled.div`
+  width: 40px;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const Seconds = styled.div`
+  width: 40px;
+  display: flex;
+  justify-content: flex-start;
+`;
+
 const Wrapper=styled.div`
 width:1360px;
 margin:0 auto;
 margin-top:100px;
+position:relative;
 // border:1px solid red;
 `
 const TitleText=styled.div`
@@ -378,8 +425,8 @@ const DetailModal = styled.div`
 `;
 
 const GreyBox =styled.div`
-width: 447px;
-height: 624px;
+min-width: 447px;
+min-height: 624px;
 background: #F5F6F8;
 border-radius: 30px;
 display:flex;
@@ -390,8 +437,8 @@ z-index:-1;
 `
 
 const GreyBox2 =styled.div`
-width: 447px;
-height: 624px;
+min-width: 447px;
+min-height: 624px;
 background: #F5F6F8;
 border-radius: 30px;
 display:flex;
