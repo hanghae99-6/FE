@@ -42,25 +42,13 @@ const ChatingPage = (props) => {
     (frame) => {ws.subscribe("/sub/chat/room/" + roomId,
     (message) => {
           const res = JSON.parse(message.body);
-          if(res.type=="START"){
-            const debateEndTime =res.debateEndTime;
-            // setEndTime(debateEndTime);
-            const end = new Date(debateEndTime)
-            var NOW_DATE = new Date();
-            const UTC = NOW_DATE.getTime() + (NOW_DATE.getTimezoneOffset() * 60 * 1000); 
-            const KR_TIME_DIFF = 9 * 60 * 60 * 1000;
-            const init = new Date(UTC+KR_TIME_DIFF);
-            var diff = Math.abs(end.getTime() - init.getTime());
-            // var time=((diff) /60); 
-            console.log(end,init,diff,time,end.getTime(), init.getTime());
-            startTimer();
-          }else{
+        
             const roomId = res.roomId;
               getMessageList(roomId);
               setLoaded(true);
               setEnterMsg(res);
               resMessage(res);
-          }
+          
             console.log("소켓연결 성공");
           },
         { "Authorization": token }
@@ -262,6 +250,7 @@ const ChatDisplay = styled.div`
   height: 624px;
   background:#F5F6F8;
   border-radius: 16px;
+  margin-top:30px;
 
 `;
 const ChatHeader = styled.div`

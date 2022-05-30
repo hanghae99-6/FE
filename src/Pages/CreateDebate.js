@@ -52,7 +52,6 @@ const CreateDebate = (props) => {
   return (
       <>
       <Main/>
-       
         <ModalBg/>
             <Wrapper>
                 <div style={{display:"flex", alignItems:"center"}}>
@@ -111,7 +110,7 @@ background:white;
 border:1px solid #d3d3d3;
 color:#404040;
 width:730px;
-height:750px;
+height:710px;
 padding:24px 50px;
 box-sizing:border-box;
 border-radius:20px;

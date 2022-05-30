@@ -21,7 +21,6 @@ const LiveRoomItem =(props)=>{
                         <Category>경제</Category>
                         <Category>{props.status}</Category>
                     </Grid>
-                    
                     <Grid is_flex="true" justifyContent="space-between" alignItems="center" width="auto">
                         <Grid height="24px" margin="5px 0px 0px 10px">
                             <TotalVotes>{props.enterUserCnt}/10</TotalVotes>
@@ -40,9 +39,7 @@ const LiveRoomItem =(props)=>{
                             <div>{consNickName}(반대)</div>
                             <Image src={consImage}/>
                     </Grid>
-                </Grid>
-                        
-                        
+                </Grid>         
             </CardBox>
         </Wrapper>
     )
@@ -51,12 +48,7 @@ const LiveRoomItem =(props)=>{
  
 
 
-const ProsImage =styled.div`
-width:50px;
-height:50px;
-border-radius:50%;
-background-image:{prosImage};
-`
+
 
 
 const Wrapper = styled.div`
