@@ -27,6 +27,7 @@ const ChatingPage = (props) => {
   const token = cookies.get("token");
   const userInfo= jwt_decode(document.cookie);
   const nickname = userInfo.NICK_NAME;
+  console.log(nickname);
   const userId = nickname;
   const latestChatWrapRef = useRef();
     const devTarget = "https://api.wepeech.com:8443/wss-stomp";
@@ -176,9 +177,9 @@ return (
         {messages.map((item, index) => {
           return (
             <ChatWrap key={index} ref={index === messages.length - 1 ? latestChatWrapRef : null} align={item?.sender === userId ? "flex-end" : "flex-start"} >
-                <ChatInfo direction={item?.sendor===userId?"row":"row-reverse"}>
+                <ChatInfo direction={item?.sender===userId?"row":"row-reverse"}>
                   <ChatUser>{item?.sender?item.sender:null}</ChatUser>
-                  <Image src={item?.userImage?item.userImage:null} size="20"/>
+                  <ImageBox src={item?.userImage?item.userImage:null} display={item?.sender=="\uD83D\uDC51 PEECH KING \uD83D\uDC51"? "none":"block"}/>
                 </ChatInfo>
               <MsgWrap bg={item?.sender === userId ? "#E5E8EF" : "white"} radius={item?.sender === userId ? "16px 0px 16px 16px" : "0px 16px 16px 16px"}>
                 <ChatMsg >{item?.message?item.message:null}</ChatMsg>
@@ -203,7 +204,12 @@ return (
     
   );
 };
-
+const ImageBox=styled.img`
+width:20px;
+height:20px;
+border-radius:50%;
+display:${(props) => props.display};
+`
 
 const Timer =styled.div`
 width: 87px;
