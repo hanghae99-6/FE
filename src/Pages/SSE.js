@@ -19,7 +19,7 @@ function SSE() {
 
   useEffect(() => {
     if (!listening) {
-      eventSource = new EventSource(`https://api.wepeech.com:8443/subscribe/${roomId}`); //구독
+      eventSource = new EventSource(`https://api.wepeech.com:8443/subscribe/${roomId}`,); //구독
       msetEventSource(eventSource);
       console.log("eventSource", eventSource);
 
@@ -32,7 +32,7 @@ function SSE() {
         setValue(event.data);
       };
 
-      eventSource.onerror = event => {
+        eventSource.onerror = event => {
         console.log(event.target.readyState);
         if (event.target.readyState === EventSource.CLOSED) {
           console.log("eventsource closed (" + event.target.readyState + ")");

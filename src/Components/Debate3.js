@@ -15,12 +15,9 @@ function CommentItem(props) {
     const [thumbs, setThumbs] = useState();
     const [pencil, setPencil] = useState(false);
     const [newComment, setNewComment] = useState("");
-    const LikeHates = useSelector((state)=>state.comment);
-    const fixedComment = useSelector((state)=>state.comment.fixedComments);
-    const deletedComment = useSelector((state)=>state.comment.deletecomment);
-    console.log("klasdfl",fixedComment);
     const status = props.status;
     const nickname= props.user.nickName? props.user.nickName:null;
+    // const comment = fixedReply? fixedReply: reply;
     const reply= props.reply? props.reply:null;
     const profile= props.user.profileImg=="null" ? baseProfile : props.user.profileImg;
     const id = props.replyId;
@@ -35,7 +32,7 @@ function CommentItem(props) {
 
     const postLikeHates = (status) => {
         dispatch(commentActions.postLikeHates(id,status));
-    }
+    };
     useEffect(()=>{
         if(status==1){
             setThumbs(true);
@@ -50,8 +47,8 @@ function CommentItem(props) {
         dispatch(commentActions.deleteComment(id));
     }
     const fixComment = (newComment) => {
-        dispatch(commentActions.fixComment(newComment,id,status));
-        setPencil(true);
+        dispatch(commentActions.fixComments(newComment,id,prosOrCons));
+        setPencil(false);
     }
     const pencilHandler = () => {
         if(pencil==false){
@@ -73,9 +70,9 @@ function CommentItem(props) {
                         <FixWrap>
                             <FixInput placeholder="댓글을 수정하세요" 
                             onChange={(e) => setNewComment(e.target.value)}
-                            onKeyPress={(e) => {if(e.key === "Enter"){setNewComment(e.target.value)}}}
+                            // onKeyPress={(e) => {if(e.key === "Enter"){setNewComment(e.target.value)}}}
                             type="text" name="sendinput"></FixInput>
-                            <FixBtn onClick={()=>fixComment()}
+                            <FixBtn onClick={()=>fixComment(newComment)}
                             >수정</FixBtn>
                             <FixBtn onClick={()=>{setPencil(false)}}>취소</FixBtn>
                         </FixWrap>

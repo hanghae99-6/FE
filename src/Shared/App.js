@@ -38,7 +38,6 @@ function App() {
         <Route path="/detailed/:debateId" exact component={DebateDetail}/>
         <Route path="/livechat" exact component={LiveChat}/>
         <Route path="/livenow" exact component={Livenow}/>
-        <Route path="/test" exact component ={SSE}/>
       </ConnectedRouter>
     </React.Fragment>
   );
