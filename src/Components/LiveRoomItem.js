@@ -2,6 +2,9 @@ import React from 'react';
 import styled from "styled-components";
 import {useHistory} from "react-router-dom";
 import { Grid, Image} from "../Elements/index";
+
+import livenowman from "../Assets/livenowman.png"
+
 const LiveRoomItem =(props)=>{
     console.log("livenow props", props);
     const history =useHistory();
@@ -18,32 +21,35 @@ const LiveRoomItem =(props)=>{
         <Wrapper>
             <CardBox onClick={liveDebate}>
                 <CardHeader>
-                    <Grid display="flex" height="30px">
-                        <Category>경제</Category>
-                        <Category>{props.status}</Category>
+                    <Grid is_flex="true" justifyContent="flex-start" height="30px">
+                        <Category>{props.category}</Category>
+                        
+                        {props.status== "진행중" ? 
+                        <OnAir>{props.status}</OnAir>
+                        :
+                        <OffAir>{props.status}</OffAir>
+                    }
                     </Grid>
-                    
                     <Grid is_flex="true" justifyContent="space-between" alignItems="center" width="auto">
                         <Grid height="24px" margin="5px 0px 0px 10px">
-                            <TotalVotes>{props.enterUserCnt}/10</TotalVotes>
                         </Grid>
                     </Grid>
                 </CardHeader>
                 <Grid width="90%" height="50px" padding="10px 0 0 0" margin="0 auto 55px">
                     <ProgressTitle>{props.topic}</ProgressTitle>
                 </Grid>
-                <Grid display="flex">
-                    <Grid display="flex" flexDirection="column" alignItems="center">
-                            <div>{prosNickName}(찬성)</div>
-                           <Image src={prosImage}/>
-                        </Grid>
-                        <Grid display="flex" flexDirection="column" alignItems="center">
-                            <div>{consNickName}(반대)</div>
-                            <Image src={consImage}/>
+                <Grid is_flex="true" alignItems="center">
+                    <Grid display="flex" flexDirection="row" alignItems="center">
+                        {/* <div>{prosNickName}(찬성)</div> */}
+                        <Image width="34px" height="34px" border="3px solid #FF5912" margin="0 8px 0 0" src={prosImage}/>
+                        {/* <div>{consNickName}(반대)</div> */}
+                        <Image width="34px" height="34px" border="3px solid #8A4FFF" src={consImage}/>
                     </Grid>
-                </Grid>
-                        
-                        
+                    <Grid display="flex" flexDirection="row" justifyContent="flex-end" alignItems="center" height="auto" >
+                        <Image shape="rectangle" width="14px" height="16px" src={livenowman}/>
+                        <TotalVotes>{props.enterUserCnt}/10</TotalVotes>
+                    </Grid>
+                </Grid>      
             </CardBox>
         </Wrapper>
     )
@@ -53,8 +59,23 @@ const LiveRoomItem =(props)=>{
 
 
 const Wrapper = styled.div`
-width:auto;
-height: 308px;
+height: 275px;
+`
+const CardBox=styled.div`
+display: flex;
+flex-direction: column;
+align-items:center;
+width:398px;
+height:258px;
+border:2.3px solid #E8E9EC;
+border-radius:40px;
+padding: 32px 32px 20px;
+margin:0px 10px;
+cursor:pointer;
+:hover{
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        transition: box-shadow 0.3s ease-in-out;
+    }
 `
 const ContentText=styled.p`
 font-family: 'Roboto';
@@ -69,9 +90,10 @@ font-family: 'Roboto';
 font-style: normal;
 font-weight: 400;
 font-size: 14px;
-line-height: 14px;
 color:#505050;
-height:24px;
+height:14px;
+line-height:14px;
+margin: 0;
 `
 const AgreeText=styled.p`
 font-family: 'Roboto';
@@ -97,27 +119,7 @@ color: #8A4FFF;
 margin-top:1px;
 margin-left:3px;
 `
-const CardBox=styled.div`
-display: flex;
-flex-direction: column;
-align-items:center;
-min-width:390px;
-width:390px;
-max-width:404px;
-height:278px;
-border:2.3px solid #E8E9EC;
-border-radius:40px;
-padding:28px 25px;
-box-sizing:border-box;
-margin:0px 10px;
-cursor:pointer;
-:hover{
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-        transition: box-shadow 0.3s ease-in-out;
-    }
-`
 const CardHeader=styled.div`
-padding:10px 30px;
 width: 100%;
 height:80px;
 display:flex;
@@ -127,6 +129,7 @@ align-items: center;
 `
 const Category =styled.div`
 /* width: 72px; */
+margin-right: 10px;
 height:auto;
 padding:5px 10px;
 border-radius:17px;
@@ -135,6 +138,30 @@ color:#505050;
 background-color: #F1F2F4;
 font-size:14px;
 `
+const OnAir =styled.div`
+/* width: 72px; */
+margin-right: 10px;
+height:auto;
+padding:5px 10px;
+border-radius:17px;
+background: white;
+color:#FF5912;
+background-color: #FFE7DD;
+font-size:14px;
+`
+const OffAir =styled.div`
+/* width: 72px; */
+margin-right: 10px;
+height:auto;
+padding:5px 10px;
+border-radius:17px;
+background: white;
+color:#505050;
+background-color: #F1F2F4;
+font-size:14px;
+`
+
+
 const ProgressBg=styled.div`
 padding-top:5px;
 margin: 0 auto;
@@ -155,7 +182,7 @@ font-style: normal;
 font-weight: 700;
 font-size: 16px;
 line-height: 24px;
-margin: 0 auto;
+margin: 10px auto 0;
 width: 90%;
 height: 50px;
 text-align:center;

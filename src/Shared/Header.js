@@ -56,7 +56,8 @@ const Header = () => {
                                 <img style={{width:"24px" ,height: "24px",borderRadius:"12px",cursur:"pointer"}} src={userProfile} onClick={goProfile}/>
                                 <UserNavWrapper onClick={navBtnHandle}>
                                 <Image shape="rectangle" width= "18px" height= "17px" src={navarrow}/>
-                                {navClick&&
+                                {
+                                navClick&&
                                 <>
                                     <UserNav>   
                                         <UserNavBtn onClick={goProfile}
@@ -64,7 +65,8 @@ const Header = () => {
                                         <UserNavBtn onClick={()=> {Logout()}}
                                         >로그아웃</UserNavBtn>
                                     </UserNav>
-                                </>}
+                                </>
+                                }
                                 </UserNavWrapper>
                             </Grid>
                         </Grid>                
@@ -111,8 +113,6 @@ border-radius:50%;
 margin-right:5px;
 margin-top:5px;
 `
-
-
 const LiverNowText=styled.div`
 font-family: 'Roboto';
 font-style: normal;
@@ -122,7 +122,7 @@ line-height: 24px;
 letter-spacing: -0.03em;
 color: #000000;
 margin-top:5px;
-
+cursor: pointer;
 `
 const HeaderWrapper=styled.div`
 position:fixed;

@@ -16,9 +16,6 @@ const CommentList = (props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(6);
   const commentList=useSelector((state)=>state.comment.commentList);
-  // const fixedComment = useSelector((state)=>state.comment.fixedComments);
-  // const fixedReply= fixedComment.data;
-  // console.log("last",fixedReply);
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);

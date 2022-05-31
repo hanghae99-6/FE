@@ -46,8 +46,8 @@ function CommentItem(props) {
     const deleteComment = (id) => {
         dispatch(commentActions.deleteComment(id));
     }
-    const fixComment = (newComment,id,status) => {
-        dispatch(commentActions.fixComments(newComment,id,status));
+    const fixComment = (newComment) => {
+        dispatch(commentActions.fixComments(newComment,id,prosOrCons));
         setPencil(false);
     }
     const pencilHandler = () => {
@@ -72,7 +72,7 @@ function CommentItem(props) {
                             onChange={(e) => setNewComment(e.target.value)}
                             // onKeyPress={(e) => {if(e.key === "Enter"){setNewComment(e.target.value)}}}
                             type="text" name="sendinput"></FixInput>
-                            <FixBtn onClick={()=>fixComment(newComment,id,status)}
+                            <FixBtn onClick={()=>fixComment(newComment)}
                             >수정</FixBtn>
                             <FixBtn onClick={()=>{setPencil(false)}}>취소</FixBtn>
                         </FixWrap>
@@ -236,9 +236,16 @@ display: flex;
 flex-direction: row;
 
 `
-const FixInput= styled.input`
+const FixInput= styled.textarea`
+width: 850px;
+padding: 10px 20px;
+white-space: pre-line;
+border : 1px solid lightgray;
+border-radius: 15px;
+outline: none;
+resize: none;
 :focus {
-    border: solid 2px lightblue;
+    border: solid 1.1px black;
   }
 `
 const FixBtn= styled.button`

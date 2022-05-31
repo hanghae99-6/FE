@@ -176,7 +176,6 @@ return (
             </ChatWrap>
           );
         })}
-       
       </ChatContents>
       <ChatInputMenu>
         <ChatInput type="text" placeholder="채팅을 입력해주세요" value={content} onChange={handleChange} onKeyUp={handleKeyUp} />

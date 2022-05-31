@@ -91,17 +91,18 @@ const initialState = {
         };
       };  
 
-      const fixComments = (newComment,id,status) => {
+      const fixComments = (newComment,id,prosOrCons) => {
         const cookies = new Cookies(); 
         const token = cookies.get("token");
         return function (dispatch, getState, { history }) {
           const state = getState();
             axios
-            .put(`https://api.wepeech.com:8443/main/reply/${id}`,{reply:newComment,status:status},{headers: { "Authorization": token },})
+            .put(`https://api.wepeech.com:8443/main/reply/${id}`,{reply:newComment,side:prosOrCons},{headers: { "Authorization": token }})
             .then(
               (res) =>{
                 const fixedComment = res.data;
-                dispatch(fixComment({fixedComment,id}));
+                console.log("aaaaaaaaaaaaaa",fixedComment);
+                dispatch(fixComment(fixedComment));
               }
             )
             .catch((error) => {
@@ -109,16 +110,19 @@ const initialState = {
             });
         };
       };
+
       const deleteComment = (replyId) => {
         const cookies = new Cookies(); 
         const token = cookies.get("token");
         return function (dispatch, getState, { history }) {
           const state = getState();
             axios
-            .delete(`https://api.wepeech.com:8443/main/reply/${replyId}`,{headers: { "Authorization": token },})
+            .delete(`https://api.wepeech.com:8443/main/reply/${replyId}`,{headers: { "Authorization": token }})
             .then(
               (res) =>{
-                window.alert("삭제 되었습니다")
+                const deletedList = res.data;
+                dispatch(delComment(deletedList))
+                window.alert("삭제 되었습니다");
                   // console.log(res);
               }
             )
@@ -149,11 +153,11 @@ const initialState = {
         {
             [ADD_COMMENT]: (state, action) =>
             produce(state, (draft) => {
-            draft.commentList=action.payload.reply
+            draft.commentList= action.payload.reply
             }),
             [GET_COMMENT]: (state, action) =>
             produce(state, (draft) => {
-            draft.commentList=action.payload.replylist;
+            draft.commentList= action.payload.replylist;
             }),
             [GET_MYCOMMENT]: (state, action) =>
             produce(state, (draft) => {
@@ -166,20 +170,11 @@ const initialState = {
             }), 
             [FIX_COMMENT]: (state, action) =>
             produce(state, (draft) => {
-              const List = state.commentList;
-
-              // .fixedCommnet , .id
-              const fixed = action.payload;
-              const fixedId = fixed.id
-              console.log("aaaaaaaaaaaaaaaaaaaaaaa",List.replyId);
-              // const fixedComment = find(comment => comment.Id === Id);
-              // console.log("bbbbbbb",fixedComment)
-              // post.comments.push({});
-            }), 
+              draft.commentList= action.payload.fixcomment;
+            }),
             [DELETE_COMMENT]: (state, action) =>
             produce(state, (draft) => {
-              // window.alert("댓글이 삭제되었습니다.")
-              console.log("댓글이 삭제되었습니다.")
+            draft.commentList= action.payload.deletecomment;
             }), 
         },
         initialState
