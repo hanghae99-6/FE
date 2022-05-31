@@ -15,6 +15,7 @@ import LiveChat from "../Components/chat/LiveChat";
 import { ActionCreators as roomActions } from "../redux/modules/room";
 import { useInterval } from "../redux/modules/useInterval";
 import Timer from "../Components/chat/Timer";
+import SSE from "../Pages/SSE";
 
 
 const DebateRoom = () =>{
@@ -245,7 +246,8 @@ useEffect(()=>{
       <LiveChat/>
       </div>
       <Grid display="flex">
-        <Timer/>
+        <SSE/>
+        {/* <Timer/> */}
       </Grid>
 
       <Grid display="flex" alignItems="center" justifyContent="space-between" width="920px" margin="10px 0px 0px 0px">
