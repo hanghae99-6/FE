@@ -15,6 +15,7 @@ import UserProfile from "../Pages/UserProfile";
 import DebateDetail from "../Pages/DebateDetail";
 import LiveChat from "../Components/chat/LiveChat";
 import Livenow from "../Components/Livenow";
+import SSE from "../Pages/SSE";
 import jwt_decode from "jwt-decode";
 
 // import Test from "../Pages/Test";
@@ -37,6 +38,7 @@ function App() {
         <Route path="/detailed/:debateId" exact component={DebateDetail}/>
         <Route path="/livechat" exact component={LiveChat}/>
         <Route path="/livenow" exact component={Livenow}/>
+        <Route path="/test" exact component ={SSE}/>
       </ConnectedRouter>
     </React.Fragment>
   );

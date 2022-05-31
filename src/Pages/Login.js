@@ -18,12 +18,6 @@ const Login =()=>{
             스피치는 위피치에서!</Title>
                 <ButtonWrapper>
                         <LoginButton provider="Kakao"/>
-                        {/* <LoginButton provider="Naver"/>
-                        <GoogleLogin >
-                            <img src={GoogleLogo} style={{width:"24px", height:"24px", margin:"0px 5px"}}/>
-                            Sign In with Google</GoogleLogin> */}
-                        {/* <img src={GoogleLogo} style={height="40px"}/> */}
-                        {/* <LoginButton provider="Google"/> */}
                 </ButtonWrapper>
         </LoginBox>
         </Wrapper>

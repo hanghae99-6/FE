@@ -15,29 +15,10 @@ import LiveChat from "../Components/chat/LiveChat";
 import { ActionCreators as roomActions } from "../redux/modules/room";
 import { useInterval } from "../redux/modules/useInterval";
 import Timer from "../Components/chat/Timer";
+import SSE from "../Pages/SSE";
 
 
 const DebateRoom = () =>{
-  // const endTime =useSelector((state)=>state?.room?.debateEndTime)
-  // const startTime= useSelector((state)=>state?.room?.debateStartTime)
-  // const end = new Date(endTime);
-  // var NOW_DATE = new Date(); 
-  // const UTC = NOW_DATE.getTime() + (NOW_DATE.getTimezoneOffset() * 60 * 1000); 
-  // const KR_TIME_DIFF = 9 * 60 * 60 * 1000;
-  // const init = new Date(UTC+KR_TIME_DIFF);
-  // console.log(init)
-  // console.log(end); //invalid 
-  // console.log(end.getTime());//Nan
-  // console.log(init.getTime());
-  // var diff = Math.abs(end.getTime() - init.getTime());
-  // const [time, setTime] = useState((diff) /60); // 남은 시간
-
-  // useInterval(() => setTime((end - init) / 1000), time);
-  // const minutes = Math.floor(time / 60); // 분
-  // const seconds = Math.floor(time % 60); // 초
-  // console.log(endTime)
-  // console.log(startTime)
-  // console.log(endTime-startTime);
   const userInfo= jwt_decode(document.cookie);
   const nickname = userInfo?.NICK_NAME;
   const dispatch =useDispatch();
@@ -49,7 +30,9 @@ const DebateRoom = () =>{
   const [userName,setUserName]=useState("");
   const [sessionName,setSessionName]=useState("");
   const [isSession,setIsSession]=useState(false)
+  const [debateState,setDebateState] =useState(false);
   const roomData=useSelector((state)=>state?.room?.roomdata?state.room.roomdata:null)
+  console.log(roomData.roomKing);
   const nickName=roomData?.nickName;
   const [start,setStart]=useState(false);
   const topic=roomData?.topic;
@@ -262,14 +245,18 @@ useEffect(()=>{
       <div style={{position:"absolute", right:"100px", top:"80px"}}>
       <LiveChat/>
       </div>
-        {/* <Minutes>{minutes.toString().padStart(2, "0")}</Minutes> :
-        <Seconds>{seconds.toString().padStart(2, "0")}</Seconds> */}
-      <Grid display="flex" alignItems="center" justifyContent="space-between" width="920px">
-        <TitleText>{topic}</TitleText>
+      <Grid display="flex">
+        <SSE/>
         {/* <Timer/> */}
-          <StartBtn onClick={leaveSession}>토론방나가기</StartBtn>
-          <Timer/>
       </Grid>
+
+      <Grid display="flex" alignItems="center" justifyContent="space-between" width="920px" margin="10px 0px 0px 0px">
+        <TitleText>{topic}</TitleText>
+       
+        <StartBtn onClick={leaveSession}>토론방나가기</StartBtn>
+         
+      </Grid>
+     
       
       <div id="main-video" className="col-md-6">
         <video autoPlay playsInline style={{display:"none"}}>
@@ -291,17 +278,6 @@ useEffect(()=>{
 
 
 
-const Minutes = styled.div`
-  width: 40px;
-  display: flex;
-  justify-content: flex-end;
-`;
-
-const Seconds = styled.div`
-  width: 40px;
-  display: flex;
-  justify-content: flex-start;
-`;
 
 const Wrapper=styled.div`
 width:1360px;
@@ -348,7 +324,6 @@ const StartBtn=styled.button`
 max-width:120px;
 min-width: 119px;
 height: 40px;
-background: #FF5912;
 border-radius: 24px;
 font-family: 'Roboto';
 font-style: normal;
@@ -356,10 +331,13 @@ font-weight: 400;
 font-size: 14px;
 line-height: 24px;
 letter-spacing: -0.03em;
-color: #FFFFFF;
-border:none;
+color: #191919;
 cursor:pointer;
 margin:10px;
+width: 119px;
+height: 36px;
+border: 1px solid #C4C4C4;
+border-radius: 24px;
 `
 
 const EnterBtn=styled.button`
