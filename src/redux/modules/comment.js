@@ -18,7 +18,7 @@ const getComment = createAction(GET_COMMENT,(replylist)=>({replylist}));
 const getMyComment =createAction(GET_MYCOMMENT,(replyCnt)=>({replyCnt}));
 const postLikeHate = createAction(POST_LIKEHATE,(likehates)=> ({ likehates }));
 const delComment = createAction(DELETE_COMMENT,(deletecomment)=> ({ deletecomment }));
-const fixCommnet = createAction(FIX_COMMENT,(fixcomment)=> ({ fixcomment }));
+const fixComment = createAction(FIX_COMMENT,(fixcomment)=> ({ fixcomment }));
 
 
 const initialState = {
@@ -26,7 +26,6 @@ const initialState = {
   commentList:[],
   Likehates : {},
   deletecomment: {},
-  fixedComments:{}
 };
 
     const addCommentDB = (debateId,reply,prosCons) => {
@@ -57,12 +56,12 @@ const initialState = {
       };
 
       const getCommentDB = (debateId) => {
-        const cookies = new Cookies(); 
+        const cookies = new Cookies();
         const token = cookies.get("token");
         return function (dispatch, getState, { history }) {
           const state = getState();
             axios
-            .get(`https://api.wepeech.com:8443/main/${debateId}/reply`,{headers: { "Authorization": token }})
+            .get(`https://api.wepeech.com:8443/main/${debateId}/reply`, {headers: { "Authorization": token }})
             .then(
               (res) =>{
                     const commentList=res.data;
@@ -79,7 +78,7 @@ const initialState = {
         return function (dispatch, getState, { history }) {
           const state = getState();
             axios
-            .get(`https://api.wepeech.com:8443/user/profile/myreply`,{headers: { "Authorization": token },})
+            .get(`https://api.wepeech.com:8443/user/profile/myreply`,{headers: { "Authorization": token }})
             .then(
               (res) =>{
                 const myReplyCnt=res.data.length;
@@ -92,18 +91,18 @@ const initialState = {
         };
       };  
 
-      const fixComment = (newComment,id,status) => {
+      const fixComments = (newComment,id,prosOrCons) => {
         const cookies = new Cookies(); 
         const token = cookies.get("token");
         return function (dispatch, getState, { history }) {
           const state = getState();
             axios
-            .put(`https://api.wepeech.com:8443/main/reply/${id}`,{reply:newComment,status:status},{headers: { "Authorization": token },})
+            .put(`https://api.wepeech.com:8443/main/reply/${id}`,{reply:newComment,side:prosOrCons},{headers: { "Authorization": token }})
             .then(
               (res) =>{
-                const fixedcomments = res.data;
-                console.log("dasd",fixedcomments)
-                dispatch(fixComment(fixedcomments));
+                const fixedComment = res.data;
+                console.log("aaaaaaaaaaaaaa",fixedComment);
+                dispatch(fixComment(fixedComment));
               }
             )
             .catch((error) => {
@@ -111,16 +110,17 @@ const initialState = {
             });
         };
       };
+
       const deleteComment = (replyId) => {
         const cookies = new Cookies(); 
         const token = cookies.get("token");
         return function (dispatch, getState, { history }) {
           const state = getState();
             axios
-            .delete(`https://api.wepeech.com:8443/main/reply/${replyId}`,{headers: { "Authorization": token },})
+            .delete(`https://api.wepeech.com:8443/main/reply/${replyId}`,{headers: { "Authorization": token }})
             .then(
               (res) =>{
-                window.alert("삭제 되었습니다")
+                window.alert("삭제 되었습니다");
                   // console.log(res);
               }
             )
@@ -151,11 +151,11 @@ const initialState = {
         {
             [ADD_COMMENT]: (state, action) =>
             produce(state, (draft) => {
-            draft.commentList=action.payload.reply
+            draft.commentList= action.payload.reply
             }),
             [GET_COMMENT]: (state, action) =>
             produce(state, (draft) => {
-            draft.commentList=action.payload.replylist;
+            draft.commentList= action.payload.replylist;
             }),
             [GET_MYCOMMENT]: (state, action) =>
             produce(state, (draft) => {
@@ -168,8 +168,8 @@ const initialState = {
             }), 
             [FIX_COMMENT]: (state, action) =>
             produce(state, (draft) => {
-            draft.fixedComments= action.payload.fixedcomments;
-            }), 
+              draft.commentList= action.payload.fixcomment;
+            }),
             [DELETE_COMMENT]: (state, action) =>
             produce(state, (draft) => {
               // window.alert("댓글이 삭제되었습니다.")
@@ -184,7 +184,7 @@ const initialState = {
         getMyCommentDB,
         postLikeHates,
         deleteComment,
-        fixComment,
+        fixComments,
       };
     
       export { ActionCreators };

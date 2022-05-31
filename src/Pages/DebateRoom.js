@@ -86,9 +86,7 @@ useEffect(()=>{
       setMySession(session);
       console.log("session? ", session)
       session.on('streamCreated', (event) => {
-        console.log("들어오나요?", event)
         var subscriber = session.subscribe(event.stream, 'video-container');
-        
         subscriber.on('videoElementCreated', (event) => {
           appendUserData(event.element, subscriber.stream.connection);
         });
@@ -226,6 +224,11 @@ useEffect(()=>{
   const startDebate =()=>{
     dispatch(RoomActions.starteDebateDB(roomId));
   }
+
+
+ 
+ 
+
   return(
 
     <>
@@ -252,9 +255,7 @@ useEffect(()=>{
 
       <Grid display="flex" alignItems="center" justifyContent="space-between" width="920px" margin="10px 0px 0px 0px">
         <TitleText>{topic}</TitleText>
-       
         <StartBtn onClick={leaveSession}>토론방나가기</StartBtn>
-         
       </Grid>
      
       

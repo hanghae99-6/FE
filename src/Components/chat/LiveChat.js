@@ -172,7 +172,7 @@ return (
   <ChatDisplay>
       <ChatHeader>
         <ChatText>실시간채팅</ChatText>
-        <UserTotal>32명</UserTotal>
+        {/* <UserTotal>32명</UserTotal> */}
       </ChatHeader>
       <ChatContents>
         {messages.map((item, index) => {
@@ -330,7 +330,7 @@ const ChatDisplay = styled.div`
   height: 624px;
   background:#F5F6F8;
   border-radius: 16px;
-  margin-top:30px;
+  margin-top:10px;
 
 `;
 const ChatHeader = styled.div`
