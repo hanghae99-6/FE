@@ -3,8 +3,9 @@ import styled from "styled-components";
 import {useHistory} from "react-router-dom";
 import { Grid, Image} from "../Elements/index";
 const LiveRoomItem =(props)=>{
+    console.log("livenow props", props);
     const history =useHistory();
-    const roomId=props?.roomId
+    const roomId=props?.roomId;
     const prosNickName=props?.prosNickName;
     const consNickName=props?.consNickName;
     const prosImage=props?.prosImage;
@@ -49,14 +50,6 @@ const LiveRoomItem =(props)=>{
 
 }
  
-
-
-const ProsImage =styled.div`
-width:50px;
-height:50px;
-border-radius:50%;
-background-image:{prosImage};
-`
 
 
 const Wrapper = styled.div`

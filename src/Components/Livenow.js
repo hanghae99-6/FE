@@ -11,7 +11,6 @@ const liverooms =useSelector((state)=>state?.livenow?.liverooms[0])
 useEffect(()=>{
     dispatch(liveActions.getLiveRoomtDB())
 },[])
-console.log(liverooms);
   return (
     <Wrapper>
         {liverooms?.length==0&&<div>현재 진행중인 토론방이 없습니다</div>}

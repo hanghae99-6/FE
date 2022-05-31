@@ -10,6 +10,7 @@ import { useInterval } from "../../redux/modules/useInterval";
 import { useSelector, useDispatch} from "react-redux";
 import { SettingsRemoteRounded } from "@material-ui/icons";
 import { Icon } from "@mui/material";
+import { ImGift } from "react-icons/im";
 
 // let stompClient;
 
@@ -50,9 +51,17 @@ const Timer = (props) => {
     (frame) => {ws.subscribe("/sub/chat/room/" + roomId,
     (message) => {
           const res = JSON.parse(message.body);
-          
+          console.log(res);
           if(res.type=="START"){
+              console.log("스타트 실행")
               setEndTime(res.debateEndTime);
+              setIsStarted(true);
+          }else{
+            
+            // const roomId = res.roomId;
+            getDebateInfo(roomId);
+            console.log("endtime",endtime);
+            console.log("resresresres",res);
           }
             console.log("소켓연결 성공");
           },
@@ -81,7 +90,6 @@ const Timer = (props) => {
     console.log("토론 시작")
     ws.send("/pub/timer",{ "Authorization": token }, JSON.stringify({ type: "TIMER", roomId: roomId, sender: userId, message: content, createdAt: "" }));
     setContent("");
-    setIsStarted(true);
   };
   // 메세지 받기
   const resMessage = (message) => {
@@ -89,12 +97,14 @@ const Timer = (props) => {
   };
 
   // 저장된 메시지 출력
-  const getMessageList = (roomId) => {
+  const getDebateInfo = (roomId) => {
+    console.log(roomId);
     axios
       .get(`https://api.wepeech.com:8443/timer/${roomId}`,
       {headers: { "Authorization": token }})
       .then((res) => {
-        setMessages(res.data);
+        setEndTime(res.debateEndTime);
+        setIsStarted(true);
       })
       .catch((err) => console.log(err));
   };
@@ -146,19 +156,51 @@ const Timer = (props) => {
 
 return (
   <>
-  {roomData.roomKing==true&& <StartBtn onClick={startDebate}>토론방시작하기</StartBtn>}
-
+  {roomData.roomKing==true&&!isStarted&& <StartBtn onClick={startDebate}>토론방시작하기</StartBtn>}
+  {isStarted? <StartedState>토론중</StartedState>:<UnStartedState>대기중</UnStartedState>}
   <TimerBox>
   <IconButtons clock color="grey" size="15"/>
-  <Minutes>{minutes}:</Minutes>
-  <Seconds>{seconds}</Seconds>
+  <Minutes>{Number(minutes)>=0?minutes:0}:</Minutes>
+  <Seconds>{Number(seconds)>=0?seconds:0}</Seconds>
   </TimerBox>
   </>
     
   );
 };
+const StartedState=styled.div`
+text-align:center;
+width: 61px;
+height: 30px;
+background: #FF5912;
+border-radius: 6px;font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+letter-spacing: -0.03em;
+color: #FFFFFF;
+line-height:30px;
+margin-right:10px;
+`
+
+const UnStartedState=styled.div`
+text-align:center;
+width: 61px;
+height: 30px;
+background: #F5F6F8;
+border-radius: 6px;font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+letter-spacing: -0.03em;
+color: black;
+line-height:30px;
+margin-right:10px;
+`
 
 const StartBtn=styled.div`
+
 max-width:120px;
 min-width: 119px;
 height: 40px;
@@ -176,6 +218,9 @@ cursor:pointer;
 margin:10px;
 line-height:40px;
 text-align:center;
+position:absolute;
+top:50px;
+right:440px;
 `
 const TimerBox =styled.div`
 width: 87px;

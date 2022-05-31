@@ -18,7 +18,7 @@ const getComment = createAction(GET_COMMENT,(replylist)=>({replylist}));
 const getMyComment =createAction(GET_MYCOMMENT,(replyCnt)=>({replyCnt}));
 const postLikeHate = createAction(POST_LIKEHATE,(likehates)=> ({ likehates }));
 const delComment = createAction(DELETE_COMMENT,(deletecomment)=> ({ deletecomment }));
-const fixCommnet = createAction(FIX_COMMENT,(fixcomment)=> ({ fixcomment }));
+const fixComment = createAction(FIX_COMMENT,(fixcomment)=> ({ fixcomment }));
 
 
 const initialState = {
@@ -26,7 +26,6 @@ const initialState = {
   commentList:[],
   Likehates : {},
   deletecomment: {},
-  fixedComments:{}
 };
 
     const addCommentDB = (debateId,reply,prosCons) => {
@@ -57,12 +56,12 @@ const initialState = {
       };
 
       const getCommentDB = (debateId) => {
-        const cookies = new Cookies(); 
+        const cookies = new Cookies();
         const token = cookies.get("token");
         return function (dispatch, getState, { history }) {
           const state = getState();
             axios
-            .get(`https://api.wepeech.com:8443/main/${debateId}/reply`,{headers: { "Authorization": token }})
+            .get(`https://api.wepeech.com:8443/main/${debateId}/reply`, {headers: { "Authorization": token }})
             .then(
               (res) =>{
                     const commentList=res.data;
@@ -79,7 +78,7 @@ const initialState = {
         return function (dispatch, getState, { history }) {
           const state = getState();
             axios
-            .get(`https://api.wepeech.com:8443/user/profile/myreply`,{headers: { "Authorization": token },})
+            .get(`https://api.wepeech.com:8443/user/profile/myreply`,{headers: { "Authorization": token }})
             .then(
               (res) =>{
                 const myReplyCnt=res.data.length;
@@ -92,7 +91,7 @@ const initialState = {
         };
       };  
 
-      const fixComment = (newComment,id,status) => {
+      const fixComments = (newComment,id,status) => {
         const cookies = new Cookies(); 
         const token = cookies.get("token");
         return function (dispatch, getState, { history }) {
@@ -101,9 +100,8 @@ const initialState = {
             .put(`https://api.wepeech.com:8443/main/reply/${id}`,{reply:newComment,status:status},{headers: { "Authorization": token },})
             .then(
               (res) =>{
-                const fixedcomments = res.data;
-                console.log("dasd",fixedcomments)
-                dispatch(fixComment(fixedcomments));
+                const fixedComment = res.data;
+                dispatch(fixComment({fixedComment,id}));
               }
             )
             .catch((error) => {
@@ -168,7 +166,15 @@ const initialState = {
             }), 
             [FIX_COMMENT]: (state, action) =>
             produce(state, (draft) => {
-            draft.fixedComments= action.payload.fixedcomments;
+              const List = state.commentList;
+
+              // .fixedCommnet , .id
+              const fixed = action.payload;
+              const fixedId = fixed.id
+              console.log("aaaaaaaaaaaaaaaaaaaaaaa",List.replyId);
+              // const fixedComment = find(comment => comment.Id === Id);
+              // console.log("bbbbbbb",fixedComment)
+              // post.comments.push({});
             }), 
             [DELETE_COMMENT]: (state, action) =>
             produce(state, (draft) => {
@@ -184,7 +190,7 @@ const initialState = {
         getMyCommentDB,
         postLikeHates,
         deleteComment,
-        fixComment,
+        fixComments,
       };
     
       export { ActionCreators };
