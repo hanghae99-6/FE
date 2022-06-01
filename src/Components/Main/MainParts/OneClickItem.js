@@ -33,7 +33,6 @@ const OneClickItem = (props) => {
         <ItemWrapper>
             <ItemBox>
                 <LeftWrap>
-                <TestDiv>yayaho</TestDiv>
                     <Image shape="rectangle" size="12px" width="30px" src={OneClickImg}/>
                     <TitleText> {title}</TitleText>
                 </LeftWrap>
@@ -133,9 +132,6 @@ const OneClickItem = (props) => {
 }
 
 export default OneClickItem;
-
-const TestDiv = styled.div`
-`
 
 const ItemWrapper = styled.div`
     display: flex;
