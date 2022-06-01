@@ -8,7 +8,6 @@ import Cookies from "universal-cookie";
 
 const MainSection = () => {
     const history = useHistory();
-
     const goCreateRoom=()=>{
         const cookies = new Cookies(); 
         const token = cookies.get("token");
@@ -26,7 +25,7 @@ const MainSection = () => {
                 <TextSection>
                     <TitleText>막막했던 스피치 연습,<br/>이제 위피치로 함께 하세요!</TitleText>
                     <SubText>토론자를 초대하면 실시간 1:1 토론을 할 수 있습니다</SubText>
-                    <MainButton onClick={goCreateRoom} >토론방 만들기</MainButton>
+                    <MainButton onClick={goCreateRoom} >1:1 토론방 만들기</MainButton>
                 </TextSection>
                 <ImageSection>
                     <img src={MainImage} style={{marginTop:"55px"}}/>
@@ -73,17 +72,18 @@ color:#505050;
 font-weight:400;
 font-size:20px;
 font-family:Roboto;
+margin-top:10px;
 `
 
 const MainButton=styled.button`
 color:white;
-width:219px;
+width:209px;
 height:48px;
 background-color:#FF5912;
 border-radius:60px;
 font-size:20px;
 font-weight:700;
-margin-top:30px;
+margin-top:50px;
 cursor:pointer;
 font-family:Roboto;
 `

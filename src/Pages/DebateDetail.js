@@ -98,10 +98,10 @@ function DebateDetail(props) {
                 <Text bold="400" size="14px" margin="5px 0 0 0" color="#505050">
                     {createdAt}
                 </Text>
-                <Grid margin="7px 0 0 0" width="1px" height="20px" border="1px solid lightgray"/>
-                <Text bold="400" size="14px" margin="5px 0 0 0" color="#505050">조회 수 {visitCnt}</Text>
-                <Grid margin="7px 0 0 0" width="1px" height="20px" border="1px solid lightgray"/>
-                <Text bold="400" size="14px" margin="5px 0 0 0" color="#505050">댓글 수 {totalReply}</Text>
+                <span style={{color:"grey", fontSize:"14px", marginTop:"5px"}}>|</span>
+                <Text bold="400" size="14px" margin="5px -10px 0 0" color="#505050">조회 수 {visitCnt}</Text>
+                <span style={{color:"grey", fontSize:"14px", marginTop:"5px", marginLeft:"10px"}}>|</span>
+                <Text bold="400" size="14px" margin="5px -15px 0 0" color="#505050">댓글 수 {totalReply}</Text>
             </DebateInfo>
             <DebateContent>
                 {content}
@@ -118,7 +118,7 @@ function DebateDetail(props) {
                 <GroundBox>
                     <OppBox>
                         <ProsSideBlock>찬성</ProsSideBlock>
-                        <Text width="350px" margin="2.3px 0 0 0" >{enterUserList[0]?.opinion?enterUserList[0]?.opinion:null}</Text>
+                        <OpinionText>{enterUserList[0]?.opinion?enterUserList[0]?.opinion:null}</OpinionText>
                     </OppBox>
                         <Text>찬성측 근거 {enterUserList[0]?.evidences?.length?enterUserList[0].evidences.length:"0"}</Text>
                         <EvidenceBox>
@@ -145,7 +145,7 @@ function DebateDetail(props) {
                 <GroundBox>
                     <OppBox>
                         <ConsSideBlock>반대</ConsSideBlock>
-                        <Text width="350px" margin="2.3px 0 0 0" >{enterUserList[1]?.opinion?enterUserList[1]?.opinion:null}</Text>
+                        <OpinionText >{enterUserList[1]?.opinion?enterUserList[1]?.opinion:null}</OpinionText>
                     </OppBox>
                         <Text>반대측 근거 {enterUserList[1]?.evidences?.length?enterUserList[1].evidences.length:"0"}</Text>
                         <EvidenceBox>
@@ -221,7 +221,11 @@ function DebateDetail(props) {
                 }
             </BottomBtnSec>
         <CommentSection>
-            <CommentTitle>댓글 {commentLength}</CommentTitle>
+            <Grid display="flex">
+                <CommentTitle>댓글</CommentTitle>
+                <CommentTitle>{commentLength}</CommentTitle>
+            </Grid>
+          
             <Grid display="flex" alignItems="center">
                 <DropDown5 setProsCons={setProsCons}>{prosCons}</DropDown5>
                 <CommentInput value={reply} maxLength="125" placeholder="자신의 의견을 적어주세요(최대125자)"  onKeyPress={onKeyPress} onChange={(e)=>(setReply(e.target.value))}/>
@@ -235,7 +239,15 @@ function DebateDetail(props) {
     </>
   )
 }
-
+const OpinionText=styled.div`
+font-family:'Roboto';
+font-style:normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: -0.03em;
+color: #191919;
+`
 const Wrapper=styled.div`
     width:1360px;
     margin:0 auto;
@@ -257,7 +269,7 @@ const OneEvidence=styled.div`
 width:100%;
 display:flex;
 align-items:top;
-margin-bottom:10px;
+margin-bottom:15px;
 font-family: 'Roboto';
 font-style: normal;
 font-weight: 400;
@@ -265,6 +277,7 @@ font-size: 14px;
 line-height: 22px;
 letter-spacing: -0.03em;
 color: #191919;
+// background:red;
 `
 const DebateTitle=styled.div`
     background-color:#F5F6F8;
@@ -274,7 +287,7 @@ const DebateTitle=styled.div`
     font-size:20px;
     color: #191919;
     margin:0 auto;
-    padding: 0 30px;
+    padding: 10px 30px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -336,6 +349,7 @@ const CommentTitle=styled.p`
     font-weight:600;
     font-size:20px;
     color:#191919;
+    margin-right:-45px;
 `
 const CommentInput=styled.input`
     width:100%;
@@ -377,9 +391,9 @@ const BottomBtnSec = styled.div`
 const ProsBtn =styled.div`
     box-sizing:border-box;
     width:120px;
-    height:40px;
+    height:48px;
     border:1px solid #CED2D9;   
-    border-radius:10px;
+    border-radius:30px;
     color:#CED2D9;
     font-size:14px;
     font-weight:400;
@@ -392,9 +406,9 @@ const ProsBtn =styled.div`
 const ProsProsBtn =styled.div`
     box-sizing:border-box;
     width:120px;
-    height:40px;
+    height:48px;
     border:1px solid #FF5912;   
-    border-radius:10px;
+    border-radius:30px;
     color:white;
     font-size:14px;
     font-weight:400;
@@ -408,9 +422,9 @@ const ProsProsBtn =styled.div`
 const ConsBtn =styled.div`
     box-sizing:border-box;
     width:120px;
-    height:40px;
+    height:48px;
     border:1px solid #CED2D9;   
-    border-radius:10px;
+    border-radius:30px;
     color:#CED2D9;
     font-size:14px;
     font-weight:400;
@@ -423,9 +437,9 @@ const ConsBtn =styled.div`
 const ConsConsBtn =styled.div`
     box-sizing:border-box;
     width:120px;
-    height:40px;
+    height:48px;
     border:1px solid #8A4FFF;   
-    border-radius:10px;
+    border-radius:30px;
     color:white;
     font-size:14px;
     font-weight:400;

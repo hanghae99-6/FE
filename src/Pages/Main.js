@@ -82,7 +82,7 @@ const Banner2 = styled.div`
   height: 181px;
   background-color:#FDFAEB;
   width: 100%;
-  margin: 100px auto 0;
+  margin: 120px auto 0;
   display: flex;
   /* align-items: center; */
   justify-content: center;

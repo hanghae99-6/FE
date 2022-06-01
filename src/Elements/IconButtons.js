@@ -23,6 +23,8 @@ import { RiPencilFill } from "react-icons/ri";
 import { IoIosAlert } from "react-icons/io";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { RiTimerFill } from "react-icons/ri";
+import { IoChatbubble }  from "react-icons/io";
+import { RiChat3Fill } from "react-icons/ri"
 
 const IconButtons = (props) => {
   const {
@@ -125,7 +127,7 @@ const IconButtons = (props) => {
     return (
       <React.Fragment>
         <Icon {...styles}>
-          <ImBubble size={size} onClick={_onClick}></ImBubble>
+          <RiChat3Fill size={size} onClick={_onClick}></RiChat3Fill>
         </Icon>
       </React.Fragment>
     );

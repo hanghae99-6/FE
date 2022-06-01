@@ -9,9 +9,8 @@ import mainPpImg from "../../Assets/mainPpImg.png";
 const OneClick = () => {
     const oneClickInfo = useSelector((state) => state.main.OneClickInfo);
     return(
-        <Grid width= "1260px" margin="50px auto 0">
+        <Grid width= "1260px" margin="120px auto 0">
             <InfoWrap>
-                {/* <Image shape="rectangle" width="60.22" src={mainPpImg}/> */}
                 <Title>원클릭 찬반토론</Title>
                 <SubText>찬성 및 반대 의견을 실시간으로 빠르게 확인하고 투표할 수 있어요</SubText>
             </InfoWrap>
@@ -48,11 +47,11 @@ const SubText =styled.div`
 font-family: 'Roboto';
 font-style: normal;
 font-weight: 400;
-font-size: 14px;
+font-size: 18px;
 line-height: 24px;
 letter-spacing: -0.03em;
 color:#505050;
-margin-bottom:60px;
+margin-bottom:40px;
 text-align:center;
 `
 

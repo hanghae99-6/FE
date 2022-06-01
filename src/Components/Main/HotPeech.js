@@ -19,7 +19,7 @@ const HotPeech = () => {
     return(
         <HotPeechWrapper>
             {/* <Image shape="rectangle" width="60.22" src={mainPpImg}/> */}
-            <Title>이번주 PEECH</Title>
+            <Title>HOT PEECH</Title>
             <SubText>어떤 토론들이 있었는지 살펴보고 나의 의견을 공유해보세요</SubText>
             <CategoryBtn></CategoryBtn>
             <Slider/>
@@ -30,14 +30,14 @@ const HotPeechWrapper=styled.div`
 width:1260px;
 margin: 0px auto;
 text-align:center;
-margin-top:50px;
+margin-top:100px;
 `
 const Title =styled.div`
 color:#191919;
 font-size:30px;
 font-weight:700;
 font-style:normal;
-margin-bottom:10px;
+margin-bottom:5px;
 font-family:Roboto;
 letter-spacing: -0.03em;
 `
@@ -46,7 +46,7 @@ const SubText =styled.div`
 font-family: 'Roboto';
 font-style: normal;
 font-weight: 400;
-font-size: 14px;
+font-size: 18px;
 line-height: 24px;
 letter-spacing: -0.03em;
 color:#505050;

@@ -33,7 +33,7 @@ const PeachCard =(props)=>{
                         <Grid>
                             <IconButtons chat color="#CCCDCE" size="24"/>
                         </Grid>
-                        <Grid height="24px" margin="5px 0px 0px 10px">
+                        <Grid height="24px" margin="8px 0px 0px 10px">
                             <TotalVotes>{totalReply}</TotalVotes>
                         </Grid>
                     </Grid>
@@ -115,7 +115,7 @@ font-size: 16px;
 line-height: 16px;
 letter-spacing: -0.03em;
 margin-top:3px;
-margin-left:3px;
+margin-left:5px;
 `
 const DenialText=styled.p`
 font-family: 'Roboto';
@@ -126,7 +126,7 @@ font-size: 16px;
 line-height: 16px;
 letter-spacing: -0.03em;
 margin-top:1px;
-margin-left:3px;
+margin-left:5px;
 `
 const CardBox=styled.div`
 display: flex;
@@ -137,8 +137,8 @@ width:390px;
 max-width:404px;
 height:278px;
 border:2.3px solid #E8E9EC;
-border-radius:40px;
-padding:28px 25px;
+border-radius:30px;
+padding:24px 20px;
 box-sizing:border-box;
 margin:0px 10px;
 cursor:pointer;
@@ -159,7 +159,7 @@ align-items: center;
 const Category =styled.div`
 /* width: 72px; */
 height:auto;
-padding:5px 10px;
+padding:5px 16px;
 border-radius:17px;
 background: white;
 color:#505050;
@@ -187,9 +187,10 @@ font-weight: 700;
 font-size: 16px;
 line-height: 24px;
 margin: 0 auto;
+margin-left:15px;
 width: 90%;
 height: 50px;
-text-align:center;
+text-align:left;
 color:#505050;
 word-break: break-all;
 overflow: hidden;

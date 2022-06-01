@@ -72,7 +72,7 @@ const TodayNews = () => {
                         <NaverImg src={index0}/>
                         </a>
                     </NewsSection>
-                    <Grid height="185px" margin="10px 0" is_flex="true" flexDirection="row">
+                    <Grid height="185px" margin="15px 0" is_flex="true" flexDirection="row">
                         <KeySection>
                             <CateText>HOT KEYWORD</CateText>
                             <TagWrap>
@@ -85,10 +85,10 @@ const TodayNews = () => {
                         <TrendSection>
                             <Grid padding="10px 0px" width="100%">
                                 <CateText>2022 TREND TOPIC</CateText>
-                                <TitleText>메타버스</TitleText>
-                                <ContentText>
+                                {/* <TitleText>메타버스</TitleText> */}
+                                <TrendText>
                                      가상, 초월을 의미하는 '메타'(meta)와 세계, 우주를 의미하는 '유니버스'(universe)를 합성한 신조어다.
-                                </ContentText>
+                                </TrendText>
                             </Grid>
                         </TrendSection>
                     </Grid>
@@ -209,7 +209,7 @@ const KeySection=styled.div`
 `
 const MagazineWrap = styled.img`
     width:100%;
-    height:388px;
+    height:378px;
     position:absolute;
     top:315px;
     left: 0px;
@@ -218,7 +218,7 @@ const MagazineWrap = styled.img`
 ` 
 const CheilSecction=styled.div`
     width:100%;
-    height:700px;
+    height:690px;
     border-radius:30px;
     border:1px solid #E8E9EC;
     padding:40px 60px;
@@ -231,7 +231,7 @@ const CheilSecction=styled.div`
 
 const DebateSection =styled.div`
 height:29%;
-margin:10px 0 0 0;
+margin:20px 0 0 0;
 align-items:center;
 border-radius:30px;
 border:1px solid #E8E9EC;
@@ -253,12 +253,13 @@ const CateText=styled.p`
     margin-bottom: 10px;
     font-size:16px;
     color:#FF5912;
+    font-family:"Rotobo";
 `
 const SubText =styled.div`
 font-family: 'Roboto';
 font-style: normal;
 font-weight: 400;
-font-size: 14px;
+font-size: 18px;
 line-height: 24px;
 letter-spacing: -0.03em;
     color:#505050;
@@ -283,13 +284,29 @@ const ContentText=styled.div`
     -webkit-line-clamp:7;
     -webkit-box-orient: vertical;
     white-space: wrap;
-  
+    margin-top:13px;
+`
+
+const TrendText=styled.div`
+    height:150px;
+    font-weight:400;
+    font-size:14px;
+    color:#767676;
+    max-width:100%;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    display: -webkit-box !important;
+    -webkit-line-clamp:7;
+    -webkit-box-orient: vertical;
+    white-space: wrap;
+    margin-top:17px;
 `
 const InfoWrap = styled.div`
     display:flex;
     flex-direction:column;
     /* justify-content: center; */
     align-items: center;
+    margin-bottom:-7px;
 `
 const PicWrap = styled.div`
     width: 300px;

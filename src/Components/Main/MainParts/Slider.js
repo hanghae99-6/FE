@@ -29,11 +29,12 @@ const Slider=()=>{
 
 const Wrapper=styled.div`
 width:1260px;
-margin:10px auto;
+margin:0px auto;
 display: flex;
 // background:yellow;
 justify-content: space-between;
 flex-wrap: wrap;
+margin-top:-30px;
 
 `
 

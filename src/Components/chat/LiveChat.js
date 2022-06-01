@@ -255,6 +255,8 @@ const ChatDisplay = styled.div`
   background:#F5F6F8;
   border-radius: 16px;
   margin-top:40px;
+  overflow:scroll;
+
 
 `;
 const ChatHeader = styled.div`
@@ -299,7 +301,7 @@ const ChatContents = styled.div`
   width: 100%;
   height: 100%;
   font-size: 15px;
-  overflow: auto;
+  overflow-y: scroll;
   padding: 20px 5px;
 `;
 const ChatWrap = styled.div`
@@ -360,7 +362,7 @@ const ChatInput = styled.input`
   background: #FFFFFF;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.01);
   border-radius: 24px;
-  padding:20px;
+  padding:20px 50px 20px 20px;
   border:none;
   outline: none;
 `;
