@@ -2,34 +2,62 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import { useInterval } from "../redux/modules/useInterval";
+import jwt_decode from "jwt-decode";
+import styled from "styled-components";
+import {Grid} from "../Elements/index";
 
 
 // import useUpdateEffect from "../store/hooks/useUpdateEffect";
 
-function SSE() {
+function SSE(props) {
+  const isRoomKing=props.isRoomKing;
   const location=useLocation();
   const roomId=location.pathname.split("/debate/")[1];
   const [listening, setListening] = useState(false);
   const [data, setData] = useState([]);
   const [value, setValue] = useState(null);
-
+  const [isStarted,setIsStarted]=useState(null);
+  const [debateEndTime,setDebateEndTime]=useState(null);
   const [meventSource, msetEventSource] = useState(undefined);
+  const end = new Date(debateEndTime);
+  var NOW_DATE = new Date(); 
+  const UTC = NOW_DATE.getTime() + (NOW_DATE.getTimezoneOffset() * 60 * 1000); 
+  const KR_TIME_DIFF = 9 * 60 * 60 * 1000;
+  const init = new Date(UTC+KR_TIME_DIFF);
+  var diff = Math.abs(end.getTime() - init.getTime());
+  const [time, setTime] = useState((diff) /60); // 남은 시간
+    useInterval(() => setTime((end - init) / 1000), time);
+  const minutes = Math.floor(time / 60)// 분
+  const seconds = Math.floor(time % 60); // 초
 
   let eventSource = undefined;
 
   useEffect(() => {
     if (!listening) {
-      eventSource = new EventSource(`https://api.wepeech.com:8443/subscribe/${roomId}`,); //구독
+      const cookies = new Cookies(); 
+      const token = cookies.get("token");
+      const userInfo= jwt_decode(document.cookie);
+      const email= userInfo.EMAIL ;
+      eventSource = new EventSource(`https://api.wepeech.com:8443/subscribe/${roomId}`); //구독
       msetEventSource(eventSource);
       console.log("eventSource", eventSource);
 
       eventSource.onopen = event => {
-          console.log("연결완료")
+          console.log("연결완료");
       };
       eventSource.onmessage = event => {
-        console.log("result", event.data);
-        setData(old => [...old, event.data]);
-        setValue(event.data);
+         console.log("onmessage");
+        console.log(event.data);
+        
+        const getRealtimeData=JSON.parse(event.data);
+       
+          setDebateEndTime(getRealtimeData.debateEndTime)
+          setIsStarted(getRealtimeData.isStarted);
+       
+        
+        // setData(old => [...old, event.data]);
+        // setValue(event.data);
       };
 
         eventSource.onerror = event => {
@@ -65,25 +93,121 @@ function SSE() {
       {headers: { "Authorization": token }})
       .then((res) => {
         console.log(res);
+        setDebateEndTime(res.data.debateEndTime);
+        setIsStarted(res.data.isStarted)
       })
       .catch((err) => console.log(err));
   };
 
   return (
-    <div style={{marginTop:"100px"}}>
-      <button onClick={checkData}>구독하기</button>
-      <button onClick={startDebate}>토론방 시작하기</button>
-      <header className="App-header">
-        <div style={{ backgroundColor: "white" }}>
-          Received Data
-          {data.map((d, index) => (
-            <span key={index}>{d}</span>
-          ))}
-        </div>
-      </header>
-      <div>value: {value}</div>
-    </div>
+<>
+{!isStarted&&isRoomKing&&<StartBtn onClick={startDebate}>토론 시작하기</StartBtn>}
+          <Grid display="flex">
+             {isStarted? <StartedState>토론중</StartedState>:<UnStartedState>대기중</UnStartedState>}
+            <TimerBox>
+            <Minutes>{isStarted?{minutes}:0}:</Minutes><Seconds>{isStarted?{seconds}:0}</Seconds>
+              </TimerBox>
+          </Grid>      
+          
+        
+      
+     
+</>
   );
 }
+
+
+const StartedState=styled.div`
+text-align:center;
+width: 61px;
+height: 30px;
+background: #FF5912;
+border-radius: 6px;font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+letter-spacing: -0.03em;
+color: #FFFFFF;
+line-height:30px;
+margin-right:10px;
+`
+
+const UnStartedState=styled.div`
+text-align:center;
+width: 61px;
+height: 30px;
+background: #F5F6F8;
+border-radius: 6px;font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+letter-spacing: -0.03em;
+color: black;
+line-height:30px;
+margin-right:10px;
+`
+const StartBtn=styled.div`
+padding: 6px 20px;
+gap: 10px;
+width: 119px;
+height: 37px;
+border: 1px solid #C4C4C4;
+border-radius: 24px;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 24px;
+letter-spacing: -0.03em;
+color: #191919;
+position:absolute;
+background:white;
+top:61px;
+right:450px;
+cursur:pointer;
+`
+
+
+const TimerBox =styled.div`
+width: 87px;
+height: 30px;
+background: #F5F6F8;
+border-radius: 6px;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:5px 10px;
+box-sizing:border-box;
+`
+const Minutes = styled.div`
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+letter-spacing: -0.03em;
+color: #191919;
+width: 40px;
+display: flex;
+justify-content: flex-end;
+`;
+
+const Seconds = styled.div`
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+letter-spacing: -0.03em;
+color: #191919;
+width: 40px;
+display: flex; 
+  justify-content: flex-start;
+`;
+
+
+
 
 export default SSE;
