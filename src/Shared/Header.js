@@ -33,6 +33,7 @@ const Header = () => {
     }
     const goMain=() => {
         history.push("/")
+        window.location.reload();
     }
     const goLiveNow=()=>{
         console.log("고우라이브나우")
@@ -148,12 +149,7 @@ const MainLogo=styled.img`
 width:160px;
 cursor:pointer;
 `
-// const Logo =styled.div`
-// color:#FF5912;
-// font-weight:700;
-// font-size:26px;
-// cursor: pointer;
-// `
+
 const UserNavWrapper =styled.div`
 cursor: pointer;
 position: relative;

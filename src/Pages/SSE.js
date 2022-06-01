@@ -28,8 +28,8 @@ function SSE(props) {
   var diff = Math.abs(end.getTime() - init.getTime());
   const [time, setTime] = useState((diff) /60); // 남은 시간
     useInterval(() => setTime((end - init) / 1000), time);
-  const minutes = Math.floor(time / 60)// 분
-  const seconds = Math.floor(time % 60); // 초
+  const minutes = Math.floor(time / 60)>=0?Math.floor(time/60):0// 분
+  const seconds = Math.floor(time % 60)>=0?Math.floor(time%60):0; // 초
 
   let eventSource = undefined;
 
@@ -54,10 +54,6 @@ function SSE(props) {
        
           setDebateEndTime(getRealtimeData.debateEndTime)
           setIsStarted(getRealtimeData.isStarted);
-       
-        
-        // setData(old => [...old, event.data]);
-        // setValue(event.data);
       };
 
         eventSource.onerror = event => {
@@ -105,7 +101,7 @@ function SSE(props) {
           <Grid display="flex">
              {isStarted? <StartedState>토론중</StartedState>:<UnStartedState>대기중</UnStartedState>}
             <TimerBox>
-            <Minutes>{isStarted?{minutes}:0}:</Minutes><Seconds>{isStarted?{seconds}:0}</Seconds>
+            <Minutes>{isStarted?`${minutes}`:0}:</Minutes><Seconds>{isStarted?`${seconds}`:0}</Seconds>
               </TimerBox>
           </Grid>      
           
@@ -148,7 +144,7 @@ color: black;
 line-height:30px;
 margin-right:10px;
 `
-const StartBtn=styled.div`
+const StartBtn=styled.button`
 padding: 6px 20px;
 gap: 10px;
 width: 119px;
@@ -167,6 +163,11 @@ background:white;
 top:61px;
 right:450px;
 cursur:pointer;
+&:hover{
+  background:#FF5912;
+  color:white;
+  border:none;
+}
 `
 
 

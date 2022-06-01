@@ -8,7 +8,6 @@ import Cookies from "universal-cookie";
 
 const MainSection = () => {
     const history = useHistory();
-
     const goCreateRoom=()=>{
         const cookies = new Cookies(); 
         const token = cookies.get("token");
