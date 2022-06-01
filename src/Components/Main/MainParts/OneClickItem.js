@@ -47,7 +47,7 @@ const OneClickItem = (props) => {
                      <Grid margin="0px 20px 0px 0px">
                      <ProsBtn onClick={()=>{ dispatch(mainActions.putOneClick(id, 1));}}>
                         <Grid display="flex" align-items="center" margin="12px 0px 0px 0px">
-                            <IconButtons margin="0 0" happyFill color="#FF5912"/>
+                            <IconButtons margin="0 0" happyFill color="#767676"/>
                             <BtnText>찬성</BtnText>
                         </Grid> 
                         <Grid margin="12px 0px 0px 0px">
@@ -59,7 +59,7 @@ const OneClickItem = (props) => {
                  <ConsBtn onClick={()=>{
                              dispatch(mainActions.putOneClick(id, 2));}}>
                      <Grid display="flex" align-items="center" margin="12px 0px 0px 0px">
-                         <IconButtons margin="0 0" unhappyFill color="#8A4FFF"/>
+                         <IconButtons margin="0 0" unhappyFill color="#999999"/>
                          <BtnText>반대</BtnText>
                      </Grid> 
                      <Grid  margin="12px 0px 0px 0px">
@@ -73,7 +73,7 @@ const OneClickItem = (props) => {
                             <Grid  margin="0px 20px 0px 0px">
                         <ProsProsBtn disabled={true}>
                             <Grid display="flex" align-items="center" margin="12px 0px 0px 0px">
-                                <IconButtons margin="0 0" happyFill color="white"/>
+                                <IconButtons margin="0 0" happyFill color="whit"/>
                                 <BtnText>찬성</BtnText>
                             </Grid> 
                             <Grid  margin="12px 0px 0px 0px">
@@ -153,6 +153,7 @@ font-weight: 700;
 font-size: 16px;
 line-height: 24px;
 margin:12px;
+margin-left:20px;
 `
 const ItemBox =styled.div`
     margin:0 auto;

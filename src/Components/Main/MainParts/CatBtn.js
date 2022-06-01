@@ -66,7 +66,7 @@ const CategoryText=styled.div`
 font-weight:400;
 font-size:14px;
 font-family:Roboto;
-margin-top:10px;
+margin-top:17px;
 font-family:Roboto;
 `
 const CategoryBox=styled.div`
