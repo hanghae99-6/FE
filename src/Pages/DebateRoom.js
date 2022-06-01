@@ -254,7 +254,7 @@ useEffect(()=>{
       </Grid>
       <Grid display="flex" alignItems="center" justifyContent="space-between" width="920px" margin="10px 0px 0px 0px">
         <TitleText>{topic}</TitleText>
-        <StartBtn onClick={leaveSession}>토론방나가기</StartBtn>
+        <StartBtn onClick={leaveSession}>토론방 나가기</StartBtn>
       </Grid>
 
      
@@ -317,10 +317,7 @@ color: #505050;
 width:770px;
 margin-top:20px;
 `
-const VideoContainer=styled.div`
-display:flex;
-border:1px solid red;
-`
+
 const StartBtn=styled.button`
 max-width:120px;
 min-width: 119px;
@@ -339,6 +336,12 @@ width: 119px;
 height: 36px;
 border: 1px solid #C4C4C4;
 border-radius: 24px;
+background:white;
+&:hover{
+  background:#FF5912;
+  color:white;
+  border:none;
+}
 `
 
 const EnterBtn=styled.button`
