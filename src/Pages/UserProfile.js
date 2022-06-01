@@ -68,7 +68,7 @@ function UserProfile() {
                     {!nickname?
                      <Grid display="flex" alignItems="center" justifyContent="center">
                          <NicknameSection>{userNickname}</NicknameSection>
-                         <Grid minWidth="22px" maxWidth="22px">
+                         <Grid minWidth="22px" maxWidth="22px" margin="10px 0px 0px 6px">
                             <Round>
                                 <Grid margin="-7px 0px 0px 0px">
                                     <IconButtons Pencil size={14} color="#767676" _onClick={nickToggle}/>
@@ -109,7 +109,7 @@ function UserProfile() {
         <MyDebates>
            {panel=="debate"&&
            <>
-           {DebateCnt>0?
+           {DebateCnt<0?
             <>
             <div style={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
                 <Title>{userNickname}님,<br/> 토론 내용을 되돌아보고 정리해보세요! </Title>
@@ -191,6 +191,7 @@ font-size:16px;
 color:black;
 font-weight:500;
 text-align:center;
+margin-top:10px;
 `
 const Round=styled.div`
 width:22px;
@@ -318,6 +319,7 @@ margin:0 auto;
 font-size:12px;
 color:#999999;
 font-weight:500;
+margin-top:10px;
 `
 const GoDebate =styled.button`
 width:217px;

@@ -77,7 +77,20 @@ function CommentItem(props) {
                             <FixBtn onClick={()=>{setPencil(false)}}>취소</FixBtn>
                         </FixWrap>
                         :
-                        <Comment>{reply}</Comment>
+                        <Grid display="flex" justifyContent="space-between" position="relative" >
+                            <Comment>{reply}</Comment>
+                            {isMe&&
+                                 <Grid display="flex" alignItems="center" justifyContent="space-between" width="66px" position="absolute" right="-80px"  >
+                                        <IconBorder>
+                                                <IconButtons size="16px" Pencil _onClick={()=>{setPencil(true)}} color="#C5C5C5"/>
+                                        </IconBorder>
+                                        <IconBorder>
+                                                <IconButtons size="16px" trash _onClick={()=>{deleteComment(id)}} color="#C5C5C5"/>
+                                        </IconBorder>
+                                    </Grid>
+                            }
+                        </Grid>
+                        
                     }
                     <Grid>
                         < DateText>
@@ -117,12 +130,7 @@ function CommentItem(props) {
                                 </HateButton>
                             </ButtonSection>
                             )}
-                            {isMe?
-                                <>
-                                    <IconButtons margin="0 0 0 12px" size="14px" Pencil _onClick={()=>{setPencil(true)}} color="#C5C5C5"/>
-                                    <IconButtons margin="0 0 0 5px" size="14px" trash _onClick={()=>{deleteComment(id)}} color="#C5C5C5"/>
-                                </>
-                            :""}
+                           
                         </ DateText>
                     </Grid>        
                 </CommentText>
@@ -130,6 +138,17 @@ function CommentItem(props) {
         </Wrapper>
     )
 }
+
+const IconBorder=styled.div`
+width:28px;
+height:28px;
+border:1px solid lightgrey;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+
+`
 
 const Wrapper=styled.div`
 width:100%;
@@ -173,7 +192,9 @@ align-items:center;
 margin-left:10px;
 `
 const Comment =styled.div`
-max-width:100%;
+max-width:860px;
+min-width:500px;
+// background:red;
 overflow: hidden;
 text-overflow: ellipsis;
 display: -webkit-box;
