@@ -32,7 +32,7 @@ const DebateRoom = () =>{
   const [isSession,setIsSession]=useState(false)
   const [debateState,setDebateState] =useState(false);
   const roomData=useSelector((state)=>state?.room?.roomdata?state.room.roomdata:null)
-  console.log(roomData.roomKing);
+  const isRoomKing=roomData.roomKing;
   const nickName=roomData?.nickName;
   const [start,setStart]=useState(false);
   const topic=roomData?.topic;
@@ -249,7 +249,7 @@ useEffect(()=>{
       <LiveChat/>
       </div>
       <Grid display="flex">
-        <SSE/>
+        <SSE isRoomKing={isRoomKing}/>
         {/* <Timer/> */}
       </Grid>
 

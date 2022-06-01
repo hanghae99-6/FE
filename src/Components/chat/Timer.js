@@ -15,34 +15,35 @@
 // // let stompClient;
 
 // const Timer = (props) => {
-//   const [loaded, setLoaded] = useState(false);
-//   const [messages, setMessages] = useState([]);
-//   const [enterMsg, setEnterMsg] = useState(null);
-//   const [content, setContent] = useState("");
-//   const [endtime,setEndTime] =useState(null)
-//   const end = new Date(endtime);
-//   const [isStarted,setIsStarted]=useState(false);
-//   var NOW_DATE = new Date(); 
-//   const UTC = NOW_DATE.getTime() + (NOW_DATE.getTimezoneOffset() * 60 * 1000); 
-//   const KR_TIME_DIFF = 9 * 60 * 60 * 1000;
-//   const init = new Date(UTC+KR_TIME_DIFF);
-//   var diff = Math.abs(end.getTime() - init.getTime());
-//   const [time, setTime] = useState((diff) /60); // 남은 시간
-//     useInterval(() => setTime((end - init) / 1000), time);
-//   const minutes = Math.floor(time / 60); // 분
-//   const seconds = Math.floor(time % 60); // 초
-//   const roomData=useSelector((state)=>state?.room?.roomdata?state.room.roomdata:null)
-//   const roomId=location.pathname.split("/debate/")[1];
-//   const cookies = new Cookies(); 
-//   const token = cookies.get("token");
-//   const userInfo= jwt_decode(document.cookie);
-//   const nickname = userInfo.NICK_NAME;
-//   const userId = nickname;
-//   const latestChatWrapRef = useRef();
-//     const devTarget = "https://api.wepeech.com:8443/wss-stomp";
-//     let sock = new SockJS(devTarget);
-//     let ws = Stomp.over(sock);
-//     ws.debug= true;
+  // const [loaded, setLoaded] = useState(false);
+  // const [messages, setMessages] = useState([]);
+  // const [enterMsg, setEnterMsg] = useState(null);
+  // const [content, setContent] = useState("");
+  // const [endtime,setEndTime] =useState(null)
+  // const [isStarted,setIsStarted]=useState(false);
+
+  // const end = new Date(endtime);
+  // var NOW_DATE = new Date(); 
+  // const UTC = NOW_DATE.getTime() + (NOW_DATE.getTimezoneOffset() * 60 * 1000); 
+  // const KR_TIME_DIFF = 9 * 60 * 60 * 1000;
+  // const init = new Date(UTC+KR_TIME_DIFF);
+  // var diff = Math.abs(end.getTime() - init.getTime());
+  // const [time, setTime] = useState((diff) /60); // 남은 시간
+  //   useInterval(() => setTime((end - init) / 1000), time);
+  // const minutes = Math.floor(time / 60); // 분
+  // const seconds = Math.floor(time % 60); // 초
+  // const roomData=useSelector((state)=>state?.room?.roomdata?state.room.roomdata:null)
+  // const roomId=location.pathname.split("/debate/")[1];
+  // const cookies = new Cookies(); 
+  // const token = cookies.get("token");
+  // const userInfo= jwt_decode(document.cookie);
+  // const nickname = userInfo.NICK_NAME;
+  // const userId = nickname;
+  // const latestChatWrapRef = useRef();
+  //   const devTarget = "https://api.wepeech.com:8443/wss-stomp";
+  //   let sock = new SockJS(devTarget);
+  //   let ws = Stomp.over(sock);
+  //   ws.debug= true;
 
 //   let reconnect = 0;
 

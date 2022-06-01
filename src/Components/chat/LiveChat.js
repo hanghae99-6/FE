@@ -14,7 +14,7 @@ import { Icon } from "@mui/material";
 // let stompClient;
 
 const ChatingPage = (props) => {
-  const [endtime,setEndTime] =useState(null)
+  const [endtime,setEndTime] =useState(0)
   const end = new Date(endtime);
   const [isStarted,setIsStarted]=useState(false);
   var NOW_DATE = new Date(); 
@@ -22,7 +22,7 @@ const ChatingPage = (props) => {
   const KR_TIME_DIFF = 9 * 60 * 60 * 1000;
   const init = new Date(UTC+KR_TIME_DIFF);
   var diff = Math.abs(end.getTime() - init.getTime());
-  const [time, setTime] = useState((diff) /60); // 남은 시간
+  const [time, setTime] = useState((diff) /60>=0?(diff)/60:0); // 남은 시간
     // useInterval(() => setTime((end - init) / 1000), time);
   const minutes = Math.floor(time / 60); // 분
   const seconds = Math.floor(time % 60); // 초
@@ -160,15 +160,7 @@ const ChatingPage = (props) => {
   if (!userId) return <>로그인이 필요합니다.</>;
 
 return (
-  <>
-  {/* {roomData.roomKing==true&&!isStarted&& <StartBtn onClick={startDebate}>토론방시작하기</StartBtn>}
-  {isStarted? <StartedState>토론중</StartedState>:<UnStartedState>대기중</UnStartedState>}
-  <TimerBox>
-  <IconButtons clock color="grey" size="15"/>
-  <Minutes>{Number(minutes)>=0?minutes:0}:</Minutes>
-  <Seconds>{Number(seconds)>=0?seconds:0}</Seconds>
-  </TimerBox> */}
-  
+  <>  
   <ChatDisplay>
       <ChatHeader>
         <ChatText>실시간채팅</ChatText>
@@ -205,71 +197,6 @@ return (
     
   );
 };
-const StartedState=styled.div`
-text-align:center;
-width: 61px;
-height: 30px;
-background: #FF5912;
-border-radius: 6px;font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 18px;
-letter-spacing: -0.03em;
-color: #FFFFFF;
-line-height:30px;
-margin-right:10px;
-`
-
-const UnStartedState=styled.div`
-text-align:center;
-width: 61px;
-height: 30px;
-background: #F5F6F8;
-border-radius: 6px;font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 18px;
-letter-spacing: -0.03em;
-color: black;
-line-height:30px;
-margin-right:10px;
-`
-
-const StartBtn=styled.div`
-
-max-width:120px;
-min-width: 119px;
-height: 40px;
-background: #FF5912;
-border-radius: 24px;
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 24px;
-letter-spacing: -0.03em;
-color: #FFFFFF;
-border:none;
-cursor:pointer;
-margin:10px;
-line-height:40px;
-text-align:center;
-position:absolute;
-top:50px;
-right:440px;
-`
-const TimerBox =styled.div`
-width: 87px;
-height: 30px;
-background: #F5F6F8;
-border-radius: 6px;
-display:flex;
-align-items:center;
-padding:5px 10px;
-box-sizing:border-box;
-`
 
 
 const ImageBox=styled.img`
@@ -330,7 +257,7 @@ const ChatDisplay = styled.div`
   height: 624px;
   background:#F5F6F8;
   border-radius: 16px;
-  margin-top:10px;
+  margin-top:40px;
 
 `;
 const ChatHeader = styled.div`
