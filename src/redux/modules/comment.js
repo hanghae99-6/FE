@@ -120,6 +120,9 @@ const initialState = {
             .delete(`https://api.wepeech.com:8443/main/reply/${replyId}`,{headers: { "Authorization": token }})
             .then(
               (res) =>{
+                const deletedList = res.data;
+                dispatch(delComment(deletedList))
+
                 window.alert("삭제 되었습니다");
                   // console.log(res);
               }
@@ -172,8 +175,7 @@ const initialState = {
             }),
             [DELETE_COMMENT]: (state, action) =>
             produce(state, (draft) => {
-              // window.alert("댓글이 삭제되었습니다.")
-              console.log("댓글이 삭제되었습니다.")
+            draft.commentList= action.payload.deletecomment;
             }), 
         },
         initialState

@@ -236,9 +236,16 @@ display: flex;
 flex-direction: row;
 
 `
-const FixInput= styled.input`
+const FixInput= styled.textarea`
+width: 850px;
+padding: 10px 20px;
+white-space: pre-line;
+border : 1px solid lightgray;
+border-radius: 15px;
+outline: none;
+resize: none;
 :focus {
-    border: solid 2px lightblue;
+    border: solid 1.1px black;
   }
 `
 const FixBtn= styled.button`

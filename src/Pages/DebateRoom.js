@@ -252,11 +252,11 @@ useEffect(()=>{
         <SSE isRoomKing={isRoomKing}/>
         {/* <Timer/> */}
       </Grid>
-
       <Grid display="flex" alignItems="center" justifyContent="space-between" width="920px" margin="10px 0px 0px 0px">
         <TitleText>{topic}</TitleText>
         <StartBtn onClick={leaveSession}>토론방나가기</StartBtn>
       </Grid>
+
      
       
       <div id="main-video" className="col-md-6">

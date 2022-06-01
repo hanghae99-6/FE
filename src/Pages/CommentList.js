@@ -38,7 +38,7 @@ const CommentList = (props) => {
       return(
         <div style={{margin:"0 auto", display:"flex", flexDirection:"column", alignItems:"center"}}>
         <Wrapper>
-          <Post3 post3 ={currentPosts} loading={loading} />
+          <Post3 post3 ={currentPosts} loading={loading}/>
         </Wrapper>
         <Pagination
             postsPerPage={postsPerPage}

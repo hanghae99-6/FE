@@ -16,7 +16,7 @@ const OneClickItem = (props) => {
     const total = pros+cons;
     const [myState,setMyState]=useState(false);
     const [side, setSide] = useState(prosOrCons);
-    const sideInfo = useSelector((state) => state.main.OneClickInfo);  
+    const sideInfo = useSelector((state) => state.main.OneClickInfo);
 
     useEffect(()=>{
         if(prosOrCons==1){
