@@ -15,18 +15,22 @@ const CommentList = (props) => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(6);
-  const commentList=useSelector((state)=>state.comment.commentList);
+  const commentList=useSelector((state)=>state?.comment?.commentList);
+  const comments=useSelector((state)=>state.comment);
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = pageNumber => setCurrentPage(pageNumber);
-  useEffect(()=>{
-    setPosts(commentList);
-  },[commentList])
-
+ 
+ 
   useEffect(() => {
     dispatch(commentActions.getCommentDB(debateId));
   }, []);
+
+  useEffect(()=>{
+    setPosts(commentList);
+  },[commentList])
+ 
 
     if(commentList.length==0){
       return(<></>)

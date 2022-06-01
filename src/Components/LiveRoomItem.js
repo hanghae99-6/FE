@@ -49,14 +49,12 @@ const LiveRoomItem =(props)=>{
                         <Image shape="rectangle" width="14px" height="16px" src={livenowman}/>
                         <TotalVotes>{props.enterUserCnt}/10</TotalVotes>
                     </Grid>
-                </Grid>      
+                </Grid>       
             </CardBox>
         </Wrapper>
     )
-
 }
  
-
 
 const Wrapper = styled.div`
 height: 275px;

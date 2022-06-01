@@ -122,6 +122,7 @@ const initialState = {
               (res) =>{
                 const deletedList = res.data;
                 dispatch(delComment(deletedList))
+
                 window.alert("삭제 되었습니다");
                   // console.log(res);
               }

@@ -15,6 +15,7 @@ import UserProfile from "../Pages/UserProfile";
 import DebateDetail from "../Pages/DebateDetail";
 import LiveChat from "../Components/chat/LiveChat";
 import Livenow from "../Components/Livenow";
+import SSE from "../Pages/SSE";
 import jwt_decode from "jwt-decode";
 
 // import Test from "../Pages/Test";

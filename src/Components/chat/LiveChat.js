@@ -14,20 +14,28 @@ import { Icon } from "@mui/material";
 // let stompClient;
 
 const ChatingPage = (props) => {
+  const [endtime,setEndTime] =useState(0)
+  const end = new Date(endtime);
+  const [isStarted,setIsStarted]=useState(false);
+  var NOW_DATE = new Date(); 
+  const UTC = NOW_DATE.getTime() + (NOW_DATE.getTimezoneOffset() * 60 * 1000); 
+  const KR_TIME_DIFF = 9 * 60 * 60 * 1000;
+  const init = new Date(UTC+KR_TIME_DIFF);
+  var diff = Math.abs(end.getTime() - init.getTime());
+  const [time, setTime] = useState((diff) /60>=0?(diff)/60:0); // 남은 시간
+    // useInterval(() => setTime((end - init) / 1000), time);
+  const minutes = Math.floor(time / 60); // 분
+  const seconds = Math.floor(time % 60); // 초
   const [loaded, setLoaded] = useState(false);
   const [messages, setMessages] = useState([]);
   const [enterMsg, setEnterMsg] = useState(null);
   const [content, setContent] = useState("");
-  const [endtime,setEndTime] =useState(null)
-  const end = new Date(endtime);
-  const [isStarted,setIsStarted]=useState(false);
   const roomData=useSelector((state)=>state?.room?.roomdata?state.room.roomdata:null)
   const roomId=location.pathname.split("/debate/")[1];
   const cookies = new Cookies(); 
   const token = cookies.get("token");
   const userInfo= jwt_decode(document.cookie);
   const nickname = userInfo.NICK_NAME;
-  console.log(nickname);
   const userId = nickname;
   const latestChatWrapRef = useRef();
     const devTarget = "https://api.wepeech.com:8443/wss-stomp";
@@ -42,13 +50,17 @@ const ChatingPage = (props) => {
     (frame) => {ws.subscribe("/sub/chat/room/" + roomId,
     (message) => {
           const res = JSON.parse(message.body);
-        
-            const roomId = res.roomId;
-              getMessageList(roomId);
-              setLoaded(true);
-              setEnterMsg(res);
-              resMessage(res);
-          
+        // if(res.type=="START"){
+        //   console.log(res)
+        //   getDebateInfo(roomId);
+        // }else{
+        //   const roomId =res.roomId;
+          // getDebateInfo(roomId);
+          getMessageList(roomId);
+          setLoaded(true);
+          setEnterMsg(res);
+          resMessage(res);
+        // }         
             console.log("소켓연결 성공");
           },
         { "Authorization": token }
@@ -71,25 +83,22 @@ const ChatingPage = (props) => {
     );
   };
   
-  // const startTimer =(end,init)=>{
-  //   useInterval(() => time((end - init) / 1000), time);
-  // }
 
-  // 메세지 보내기(stringfy해서 보낸 후 쓴 메세지 초기화)
   const sendMessage = () => {
     ws.send("/pub/chat/message",{ "Authorization": token }, JSON.stringify({ type: "TALK", roomId: roomId, sender: userId, message: content, createdAt: "" }));
     setContent("");
   };
-  const startDebate = () => {
-    console.log("토론 시작")
-    ws.send("/pub/chat/message",{ "Authorization": token }, JSON.stringify({ type: "TIMER", roomId: roomId, sender: userId, message: content, createdAt: "" }));
-    setContent("");
-    setIsStarted(true);
-  };
+
   // 메세지 받기
   const resMessage = (message) => {
     setMessages([...messages, message]);
   };
+
+  // const startDebate = () => {
+  //   console.log("토론 시작")
+  //   ws.send("/pub/timer",{ "Authorization": token }, JSON.stringify({ type: "TIMER", roomId: roomId, sender: userId, message: content, createdAt: "" }));
+  //   setContent("");
+  // };
 
   // 저장된 메시지 출력
   const getMessageList = (roomId) => {
@@ -101,6 +110,8 @@ const ChatingPage = (props) => {
       })
       .catch((err) => console.log(err));
   };
+
+
 
   const handleChange = (e) => {
     setContent(e.target.value);
@@ -147,19 +158,11 @@ const ChatingPage = (props) => {
   if (!userId) return <>로그인이 필요합니다.</>;
 
 return (
-  <>
-  {/* {roomData.roomKing==true&& <button onClick={startDebate}>토론방시작하기</button>}
-  {isStarted&&
-  <Timer>
-  <IconButtons clock color="grey" size="15"/>
-  <Minutes>{minutes}:</Minutes>
-  <Seconds>{seconds}</Seconds>
-  </Timer>
- } */}
+  <>  
   <ChatDisplay>
       <ChatHeader>
         <ChatText>실시간채팅</ChatText>
-        <UserTotal>32명</UserTotal>
+        {/* <UserTotal>32명</UserTotal> */}
       </ChatHeader>
       <ChatContents>
         {messages.map((item, index) => {
@@ -191,6 +194,8 @@ return (
     
   );
 };
+
+
 const ImageBox=styled.img`
 width:20px;
 height:20px;
