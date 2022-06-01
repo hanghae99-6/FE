@@ -3,8 +3,11 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import styled from "styled-components";
 import {Grid, Text, Button, Image, IconButtons} from "../../../Elements/index";
+
 import Agree from "../../../Assets/Agree.png";
 import Denial from "../../../Assets/Denial.png";
+import GrayAgree from "../../../Assets/GrayAgree.png";
+import GrayDenial from "../../../Assets/GrayDenial.png"
 import peechtotal from "../../../Assets/peechtotal.png"
 import { IconButton } from '@mui/material';
 
@@ -41,35 +44,35 @@ const PeachCard =(props)=>{
                 <ProgressSection>
                         <Grid width="100%" position="absolute" top="-18px" is_flex="true" justifyContent="spaceBetween">
                             <AgreeWrap>
-                                <Image shape="rectangle" src={Agree} width="36px" height="36px" cursor="pointer"/>
+                                <Image shape="rectangle" src={totalVotes==0? GrayAgree:Agree} width="36px" height="36px" cursor="pointer"/>
                             </AgreeWrap>
                             <Grid padding="0">
                                 <ProgressBg>
                                     <ProgressPros style={{
                                         width: `${prosLength}%`,
                                         zIndex: (props.totalPros > props.totalCons)? 9:8,
-                                        background: "#FFAC89",
+                                        background:(totalVotes==0)? "#E8E9EC":"#FFAC89",
                                     }}/> 
                                     <ProgressCons style={{
                                         width: `${consLength}%`,
                                         zIndex: (props.totalPros > props.totalCons)? 9:8,
-                                        background:"#E8DCFF",
+                                        background:(totalVotes==0)? "#E8E9EC":"#E8DCFF"
                                     }}/>
                                 </ProgressBg>
                             </Grid>
                             <DenailWrap>
-                                <Image shape="rectangle" src={Denial} width="36px" height="36px" cursor="pointer"/>                                
+                                <Image shape="rectangle" src={totalVotes==0? GrayDenial:Denial} width="36px" height="36px" cursor="pointer"/>                                
                             </DenailWrap>
                         </Grid>
                 </ProgressSection>
                 <ProsConsTotal>
                     <Grid display="flex" alignItems="center" justifyContent="center" width="90px" height="30px" margin="10px 0px 0px 0px">
                         <ContentText>찬성</ContentText>
-                        <AgreeText>{props.totalPros ? props.totalPros:0}</AgreeText>
+                        <AgreeText style={{color: totalVotes==0? "#767676":"#FF5912"}}>{props.totalPros ? props.totalPros:0}</AgreeText>
                     </Grid>
                     <Grid display="flex" alignItems="center" justifyContent="center" width="90px" height="30px" margin="10px 0px 0px 0px">
-                        <ContentText>반대</ContentText>  
-                        <DenialText>{props.totalCons? props.totalCons:0}</DenialText>
+                        <ContentText>반대</ContentText>
+                        <DenialText style={{color: totalVotes==0? "#767676":"#8A4FFF"}}>{props.totalCons? props.totalCons:0}</DenialText>
                     </Grid>
                 </ProsConsTotal>            
             </CardBox>
@@ -79,6 +82,8 @@ const PeachCard =(props)=>{
 }
  
 
+const TestDiv = styled.div`
+`
 
 const Wrapper = styled.div`
 width:auto;
@@ -109,7 +114,6 @@ height: 16px;
 font-size: 16px;
 line-height: 16px;
 letter-spacing: -0.03em;
-color: #FF5912;
 margin-top:3px;
 margin-left:3px;
 `
@@ -121,7 +125,6 @@ height: 16px;
 font-size: 16px;
 line-height: 16px;
 letter-spacing: -0.03em;
-color: #8A4FFF;
 margin-top:1px;
 margin-left:3px;
 `

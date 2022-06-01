@@ -14,10 +14,6 @@ const initialState = {
     };
 
       const GetDetailDB = (debateId) => {
-        // const cookies = new Cookies(); 
-        // const token = cookies.get("token");
-        // const userInfo= jwt_decode(document.cookie)?jwt_decode(document.cookie):null; 
-        // const userEmail = userInfo.EMAIL;
         return function (dispatch, getState, { history }) {
           const state = getState();
             axios
@@ -33,9 +29,6 @@ const initialState = {
             });
         };
       };
-
-
-
 
     export default handleActions(
         {

@@ -24,10 +24,10 @@ function CommentItem(props) {
     const like = 1;
     const hate = 2;
     const cookies = new Cookies(); 
-    const token = cookies.get("token");
+    const token = (document.cookie)? cookies.get("token"):null;
     
-    const openToken = jwt_decode(token);
-    const myEmail = openToken.EMAIL;
+    const openToken = token? jwt_decode(token):"";
+    const myEmail = openToken?.EMAIL;
     const isMe = props.user.email == myEmail? true : false ;
 
     const postLikeHates = (status) => {
@@ -80,7 +80,7 @@ function CommentItem(props) {
                         <Comment>{reply}</Comment>
                     }
                     <Grid>
-                        < DateText>
+                        <DateText>
                             {createdAt}
                              {thumbs==null?
                             <ButtonSection>
@@ -237,7 +237,7 @@ flex-direction: row;
 
 `
 const FixInput= styled.textarea`
-width: 850px;
+width: 800px;
 padding: 10px 20px;
 white-space: pre-line;
 border : 1px solid lightgray;
@@ -251,7 +251,13 @@ resize: none;
 const FixBtn= styled.button`
 margin-left:5px;
 width: 40px;
+height: 30px;
+margin-top: 35px;
 background-color:white;
+outline: none;
+:hover{
+    border-bottom: solid 1px lightgray;
+}
 `
 
 

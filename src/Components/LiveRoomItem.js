@@ -47,7 +47,8 @@ const LiveRoomItem =(props)=>{
                     </Grid>
                     <Grid display="flex" flexDirection="row" justifyContent="flex-end" alignItems="center" height="auto" >
                         <Image shape="rectangle" width="14px" height="16px" src={livenowman}/>
-                        <TotalVotes>{props.enterUserCnt}/10</TotalVotes>
+                        {/* <TotalVotes>{props.enterUserCnt}/10</TotalVotes> */}
+                        <TotalVotes>2/10</TotalVotes>
                     </Grid>
                 </Grid>       
             </CardBox>
