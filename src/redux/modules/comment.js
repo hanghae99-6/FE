@@ -56,12 +56,10 @@ const initialState = {
       };
 
       const getCommentDB = (debateId) => {
-        const cookies = new Cookies();
-        const token = cookies.get("token");
         return function (dispatch, getState, { history }) {
           const state = getState();
             axios
-            .get(`https://api.wepeech.com:8443/main/${debateId}/reply`, {headers: { "Authorization": token }})
+            .get(`https://api.wepeech.com:8443/main/${debateId}/reply`,)
             .then(
               (res) =>{
                     const commentList=res.data;

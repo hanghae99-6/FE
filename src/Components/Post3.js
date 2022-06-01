@@ -5,9 +5,6 @@ import { useSelector,useDispatch } from "react-redux";
 import { ActionCreators as CommentAction} from '../redux/modules/comment';
 
 const Post3 = ({ post3, loading }) => {
-console.log(post3);
-const dispatch =useDispatch();
-
 
   if (loading) {
     return <SpinnerCircular color ="#FF5912" size="80"/>;
