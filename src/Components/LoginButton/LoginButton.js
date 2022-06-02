@@ -28,8 +28,8 @@ const LoginButton = (props) => {
     //카카오톡 로그인
     const KAKAO_CLIENT_ID = `${process.env.REACT_APP_KAKAO_CLIENT_ID}`;
     console.log(KAKAO_CLIENT_ID);
-    // const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_CLIENT_ID}&redirect_uri=http://localhost:3000/user/kakao/callback&response_type=code`;
-    const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_CLIENT_ID}&redirect_uri=https://www.wepeech.com/user/kakao/callback&response_type=code`;
+    const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_CLIENT_ID}&redirect_uri=http://localhost:3000/user/kakao/callback&response_type=code`;
+    // const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_CLIENT_ID}&redirect_uri=https://www.wepeech.com/user/kakao/callback&response_type=code`;
 
     
     //네이버 로그인

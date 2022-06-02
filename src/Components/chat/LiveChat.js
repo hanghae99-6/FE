@@ -94,6 +94,14 @@ const ChatingPage = (props) => {
     setMessages([...messages, message]);
   };
 
+  useEffect(() => {
+    if (messages.length > 0){
+      // latestChatWrapRef.current.
+      latestChatWrapRef.current.scrollIntoView({ block: "end" });
+    } 
+    console.log("메세지임", messages)
+  }, [messages]);
+
   // const startDebate = () => {
   //   console.log("토론 시작")
   //   ws.send("/pub/timer",{ "Authorization": token }, JSON.stringify({ type: "TIMER", roomId: roomId, sender: userId, message: content, createdAt: "" }));
@@ -141,18 +149,12 @@ const ChatingPage = (props) => {
   }, [enterMsg]);
 
  
-  useEffect(() => {
-    if (messages.length > 0) latestChatWrapRef.current.scrollIntoView({ block: "end" });
-  }, [messages]);
+  // useEffect(() => {
+  //   if (messages.length > 0) latestChatWrapRef.current.scrollIntoView({ block: "end" });
+  // }, [messages]);
 
 
-  useEffect(() => {
-    if (messages.length > 0){
-      // latestChatWrapRef.current.
-      latestChatWrapRef.current.scrollIntoView({ block: "end" });
-    } 
-    console.log("메세지임", messages)
-  }, [messages]);
+
 
 
   if (!userId) return <>로그인이 필요합니다.</>;

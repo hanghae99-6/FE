@@ -23,7 +23,6 @@ const LiveRoomItem =(props)=>{
                 <CardHeader>
                     <Grid is_flex="true" justifyContent="flex-start" height="30px">
                         <Category>{props.category}</Category>
-                        
                         {props.status== "진행중" ? 
                         <OnAir>{props.status}</OnAir>
                         :
@@ -35,7 +34,7 @@ const LiveRoomItem =(props)=>{
                         </Grid>
                     </Grid>
                 </CardHeader>
-                <Grid width="90%" height="50px" padding="10px 0 0 0" margin="0 auto 55px">
+                <Grid width="100%" height="50px" padding="10px 0 0 0" margin="0 auto 55px">
                     <ProgressTitle>{props.topic}</ProgressTitle>
                 </Grid>
                 <Grid is_flex="true" alignItems="center">
@@ -47,8 +46,7 @@ const LiveRoomItem =(props)=>{
                     </Grid>
                     <Grid display="flex" flexDirection="row" justifyContent="flex-end" alignItems="center" height="auto" >
                         <Image shape="rectangle" width="14px" height="16px" src={livenowman}/>
-                        {/* <TotalVotes>{props.enterUserCnt}/10</TotalVotes> */}
-                        <TotalVotes>2/10</TotalVotes>
+                        <TotalVotes>{(props.enterUserCnt<0)? 0:props.enterUserCnt}</TotalVotes>
                     </Grid>
                 </Grid>       
             </CardBox>
@@ -67,7 +65,7 @@ align-items:center;
 width:398px;
 height:258px;
 border:2.3px solid #E8E9EC;
-border-radius:40px;
+border-radius:30px;
 padding: 32px 32px 20px;
 margin:0px 10px;
 cursor:pointer;
@@ -92,7 +90,7 @@ font-size: 14px;
 color:#505050;
 height:14px;
 line-height:14px;
-margin: 0;
+margin: 0 0 0 10px;
 `
 const AgreeText=styled.p`
 font-family: 'Roboto';
@@ -130,7 +128,7 @@ const Category =styled.div`
 /* width: 72px; */
 margin-right: 10px;
 height:auto;
-padding:5px 10px;
+padding:5px 15px;
 border-radius:17px;
 background: white;
 color:#505050;
@@ -141,7 +139,7 @@ const OnAir =styled.div`
 /* width: 72px; */
 margin-right: 10px;
 height:auto;
-padding:5px 10px;
+padding:5px 15px;
 border-radius:17px;
 background: white;
 color:#FF5912;
@@ -152,7 +150,7 @@ const OffAir =styled.div`
 /* width: 72px; */
 margin-right: 10px;
 height:auto;
-padding:5px 10px;
+padding:5px 15px;
 border-radius:17px;
 background: white;
 color:#505050;
@@ -181,10 +179,10 @@ font-style: normal;
 font-weight: 700;
 font-size: 16px;
 line-height: 24px;
-margin: 10px auto 0;
+margin: 10px 13px 0;
 width: 90%;
 height: 50px;
-text-align:center;
+/* text-align:center; */
 color:#505050;
 word-break: break-all;
 overflow: hidden;

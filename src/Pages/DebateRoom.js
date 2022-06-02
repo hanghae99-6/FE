@@ -230,11 +230,10 @@ useEffect(()=>{
   const startDebate =()=>{
     dispatch(RoomActions.starteDebateDB(roomId));
   }
-
+  
   const goMain =()=>{
     history.push("/");
   }
- 
 
   return(
 
