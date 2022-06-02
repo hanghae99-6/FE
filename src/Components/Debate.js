@@ -37,19 +37,20 @@ function Debate(props) {
                 {prosOrCons==1?<ProsTag>찬성</ProsTag>:<ConsTag>반대</ConsTag>}
             </Grid>
 
-            <Grid  width="45%" >
+            <Grid  width="46%" >
                 <TopicText>{topic}</TopicText>
             </Grid>
-            <Grid display="flex"  width="15%" alignItems="center" justifyContent="center">
-                <Text>찬성  {totalPros?totalPros:0} | 반대  {totalCons?totalCons:0}</Text>
+            <Grid display="flex"  width="11%" alignItems="center" justifyContent="space-between" margin="0px 0px 0px -25px">
+                <ProsConsText>찬성&nbsp;&nbsp;{totalPros?totalPros:0}</ProsConsText> 
+                <span style={{color:"#CED1D9" ,marginLeft:"3px"}}>|</span>
+                <ProsConsText>반대&nbsp;&nbsp;{totalCons?totalCons:0}</ProsConsText> 
             </Grid>
-
-            <Grid  width="7.5%" display="flex" justifyContent="center" alignItems="center">
+            <Grid  width="7.5%" display="flex" justifyContent="center" alignItems="center" margin="0px 0px 0px 40px">
                 <IconButtons chat color="#CCCDCE" size="20"/>
                 <Text>{totalReply}</Text>
             </Grid>
 
-            <Grid width="15%" display="flex" alignItems="center" justifyContent="center">
+            <Grid width="15%" display="flex" alignItems="center" justifyContent="center"  margin="0px 0px 0px -5px">
                 <Text>{Date}</Text>
             </Grid>
         </DebateItemWrapper>
@@ -62,7 +63,12 @@ flex-direction: row;
 align-items: center;
 width: 96%;
 `
+const ProsConsText =styled.div`
+color:#191919;
+font-weight:400;
+font-size:14px;
 
+`
 const DebateItemWrapper=styled.div`
 margin:0 auto;
 min-width:100%;

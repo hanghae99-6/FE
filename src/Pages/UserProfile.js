@@ -109,7 +109,7 @@ function UserProfile() {
         <MyDebates>
            {panel=="debate"&&
            <>
-           {DebateCnt<0?
+           {DebateCnt>0?
             <>
             <div style={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
                 <Title>{userNickname}님,<br/> 토론 내용을 되돌아보고 정리해보세요! </Title>
@@ -119,15 +119,27 @@ function UserProfile() {
                     </Grid>
                 </Grid>
             </div>
-                <div style={{display:"flex", marginTop:"60px"}}>
-                    <ListTitle>내가 참여한 토론 {DebateCnt}</ListTitle>
+                <div style={{display:"flex", marginTop:"60px", alignItems:"center", justifyContent:"center", marginLeft:"12px"}}>
+                    <Grid width="130px">
+                        <ListTitle>내가 참여한 토론</ListTitle>
+                    </Grid>
+                    <Grid margin="0px 0px 0px 0px" >
+                        <ListTitle>{DebateCnt}</ListTitle>
+                    </Grid>
                 </div>
-                <div style={{marginTop:"20px"}}>
+                <div style={{marginTop:"0px"}}>
                    <DebateList/>
                 </div>
            </>:
             <> 
-            <ListTitle>내가 참여한 토론 {DebateCnt}</ListTitle>
+            <div style={{display:"flex",  alignItems:"center", justifyContent:"center", marginLeft:"12px", bg:"red"}}>
+                    <Grid width="120px">
+                        <ListTitle>내가 참여한 토론</ListTitle>
+                    </Grid>
+                    <Grid margin="0px 0px 0px 0px" >
+                        <ListTitle>{DebateCnt}</ListTitle>
+                    </Grid>
+                </div>
             <NoNav> 
                 <NotYet>아직 참여한 토론이 없어요</NotYet>
                 <NotYetSub>논리적으로 말하는 연습을 통해 스피치 실력을 키워보는 건 어떨까요?</NotYetSub>
@@ -146,15 +158,29 @@ function UserProfile() {
               <Title>위피치에서 활발하게 활동하고<br/>대중의 공감을 받아보세요! </Title>
           </div>
               <div style={{marginTop:"60px"}}>
-                  <ListTitle>댓글로 참여한 방{ReplyCnt}</ListTitle>
+              <div style={{display:"flex", alignItems:"center", justifyContent:"center", marginLeft:"12px"}}>
+                    <Grid width="90px">
+                        <ListTitle>내가 쓴 댓글</ListTitle>
+                    </Grid>
+                    <Grid margin="0px 0px 0px 0px" >
+                        <ListTitle>{ReplyCnt}</ListTitle>
+                    </Grid>
+                </div>
                     <ReplyList/>
               </div>
            </>
               :
               <>
-              <ListTitle>내가 쓴 댓글 {DebateCnt}</ListTitle>
+               <div style={{display:"flex", alignItems:"center", justifyContent:"center", marginLeft:"12px"}}>
+                    <Grid width="90px">
+                        <ListTitle>내가 쓴 댓글</ListTitle>
+                    </Grid>
+                    <Grid margin="0px 0px 0px 0px" >
+                        <ListTitle>{ReplyCnt}</ListTitle>
+                    </Grid>
+                </div>
             <NoNav> 
-                <NotYet>아직 작성한 토론이 없어요</NotYet>
+                <NotYet>아직 작성한 댓글이 없어요</NotYet>
                 <NotYetSub>HOT PEECH에서 나의 의견을 남겨보시고 사고력을 키워보세요!</NotYetSub>
                 {/* <img src={GoDebateImg2}/> */}
             </NoNav>
@@ -319,7 +345,7 @@ margin:0 auto;
 font-size:12px;
 color:#999999;
 font-weight:500;
-margin-top:10px;
+margin-top:4px;
 `
 const GoDebate =styled.button`
 width:217px;
@@ -394,6 +420,7 @@ font-size:14px;
 font-weight:400;
 color:#505050;
 margin-bottom:10px;
+margin-left:12px;
 `
 
 export default UserProfile;
