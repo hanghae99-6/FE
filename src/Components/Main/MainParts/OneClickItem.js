@@ -86,7 +86,7 @@ const OneClickItem = (props) => {
                                     dispatch(mainActions.putOneClick(id, 2));
                                 }}>
                             <Grid display="flex" align-items="center" margin="12px 0px 0px 0px">
-                                <IconButtons margin="0 0" unhappyFill color="#767676"
+                                <IconButtons margin="0 0" unhappyFill color="#999999"
                                  />
                                 <BtnText style={{color:"#767676"}}>반대</BtnText>
                             </Grid> 
