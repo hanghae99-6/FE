@@ -60,9 +60,7 @@ const ChatingPage = (props) => {
           setLoaded(true);
           setEnterMsg(res);
           resMessage(res);
-        // }
-           
-          
+        // }         
             console.log("소켓연결 성공");
           },
         { "Authorization": token }
@@ -181,7 +179,6 @@ return (
             </ChatWrap>
           );
         })}
-       
       </ChatContents>
       <ChatInputMenu>
         <ChatInput type="text" placeholder="채팅을 입력해주세요" value={content} onChange={handleChange} onKeyUp={handleKeyUp} />

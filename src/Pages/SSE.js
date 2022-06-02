@@ -38,7 +38,6 @@ function SSE(props) {
       const cookies = new Cookies(); 
       const token = cookies.get("token");
       const userInfo= jwt_decode(document.cookie);
-      const email= userInfo.EMAIL ;
       eventSource = new EventSource(`https://api.wepeech.com:8443/subscribe/${roomId}`); //구독
       msetEventSource(eventSource);
       console.log("eventSource", eventSource);
@@ -52,10 +51,9 @@ function SSE(props) {
         
         const getRealtimeData=JSON.parse(event.data);
        
-          setDebateEndTime(getRealtimeData.debateEndTime)
+          setDebateEndTime(getRealtimeData.debateEndTime);
           setIsStarted(getRealtimeData.isStarted);
       };
-
         eventSource.onerror = event => {
         console.log(event.target.readyState);
         if (event.target.readyState === EventSource.CLOSED) {
@@ -63,24 +61,19 @@ function SSE(props) {
         }
         eventSource.close();
       };
-
       setListening(true);
     }
-
     return () => {
       eventSource.close();
       console.log("eventsource closed");
     };
   }, []);
-
   useEffect(() => {
     console.log("data: ", data);
   }, [data]);
-
   const checkData = () => {
     console.log(data);
   };
-
   const startDebate = () => {
     const cookies = new Cookies(); 
     const token = cookies.get("token");
@@ -94,7 +87,6 @@ function SSE(props) {
       })
       .catch((err) => console.log(err));
   };
-
   return (
 <>
 {!isStarted&&isRoomKing&&<StartBtn onClick={startDebate}>토론 시작하기</StartBtn>}
@@ -107,11 +99,7 @@ function SSE(props) {
                 
                 <Minutes>{isStarted?`${minutes}`:0}:</Minutes><Seconds>{isStarted?`${seconds}`:0}</Seconds>
               </TimerBox>
-          </Grid>      
-          
-        
-      
-     
+          </Grid>
 </>
   );
 }

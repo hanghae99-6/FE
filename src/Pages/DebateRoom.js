@@ -265,7 +265,8 @@ useEffect(()=>{
         <StartBtn onClick={leaveSession}>토론방 나가기</StartBtn>
       </Grid>
 
-     <div id="main-video" className="col-md-6">
+
+      <div id="main-video" className="col-md-6">
         <video autoPlay playsInline style={{display:"none"}}>
         </video>
       </div>

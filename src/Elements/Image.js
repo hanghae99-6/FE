@@ -6,7 +6,7 @@ import BaseImage from "../Assets/basicprofile(gray).png"
 
 const Image = (props) => {
 
-  const { shape, src, size, paddingLeft, width, height, position, radius, onMouseOver, onMouseOut, _onClick} = props;
+  const { shape, src, size, paddingLeft, width, height, position, radius, margin, onMouseOver, onMouseOut, _onClick, border} = props;
 
   const styles = {
     src: src,
@@ -22,6 +22,8 @@ const Image = (props) => {
     onClick:_onClick,
     width: width,
     height: height,
+    border: border,
+    margin: margin,
   }
 
   //프로필 이미지
@@ -80,6 +82,8 @@ const ImageCircle = styled.img`
   height: var(--size);
   border-radius: var(--size);
   color:${(props) => props.color};
+  border:${(props) => props.border};
+  margin:${(props) => props.margin};
 `;
 
 export default Image;
