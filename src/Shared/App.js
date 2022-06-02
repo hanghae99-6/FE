@@ -9,7 +9,6 @@ import UserCheck from "../Pages/UserCheck";
 import Login from "../Pages/Login";
 import KakaoLogin from "../Pages/KakaoLogin";
 import Header from "../Shared/Header";
-import Header2 from "../Shared/header2"
 import SaveDebate from "../Pages/SaveDebate";
 import UserProfile from "../Pages/UserProfile";
 import DebateDetail from "../Pages/DebateDetail";

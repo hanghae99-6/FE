@@ -44,12 +44,15 @@ const Banner2 = styled.div`
   justify-content: center;
 `
 const Title = styled.p`
-  font-family: "roboto";
+  letter-spacing: -0.03em;
+  font-family: "Roboto";
   font-size: 30px;
-  font-weight: 700px;
+  font-weight: 700;
   text-align: center;
+  margin-bottom: 10px;
   `
 const SubTitle = styled.p`
+  letter-spacing: -0.03em;
   font-family: 'Roboto';
   font-weight: 400;
   font-size: 18px;

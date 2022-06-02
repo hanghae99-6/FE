@@ -47,11 +47,11 @@ const OneClickItem = (props) => {
                      <Grid margin="0px 20px 0px 0px">
                      <ProsBtn onClick={()=>{ dispatch(mainActions.putOneClick(id, 1));}}>
                         <Grid display="flex" align-items="center" margin="12px 0px 0px 0px">
-                            <IconButtons margin="0 0" happyFill color="#767676"/>
-                            <BtnText>찬성</BtnText>
-                        </Grid> 
+                            <IconButtons margin="0 0" happyFill color="#999999"/>
+                            <BtnText style={{color:"#767676"}}>찬성</BtnText>
+                        </Grid>
                         <Grid margin="12px 0px 0px 0px">
-                            <BtnNum>{pros}</BtnNum>
+                            <BtnNum style={{color:"#767676"}}>{pros}</BtnNum>
                         </Grid>
                     </ProsBtn>
              </Grid>
@@ -60,10 +60,10 @@ const OneClickItem = (props) => {
                              dispatch(mainActions.putOneClick(id, 2));}}>
                      <Grid display="flex" align-items="center" margin="12px 0px 0px 0px">
                          <IconButtons margin="0 0" unhappyFill color="#999999"/>
-                         <BtnText>반대</BtnText>
+                         <BtnText style={{color:"#767676"}}>반대</BtnText>
                      </Grid> 
                      <Grid  margin="12px 0px 0px 0px">
-                         <BtnNum>{cons}</BtnNum>
+                         <BtnNum style={{color:"#767676"}}>{cons}</BtnNum>
                      </Grid>
                  </ConsBtn>
                  </Grid>
@@ -73,7 +73,7 @@ const OneClickItem = (props) => {
                             <Grid  margin="0px 20px 0px 0px">
                         <ProsProsBtn disabled={true}>
                             <Grid display="flex" align-items="center" margin="12px 0px 0px 0px">
-                                <IconButtons margin="0 0" happyFill color="whit"/>
+                                <IconButtons margin="0 0" happyFill color="white"/>
                                 <BtnText>찬성</BtnText>
                             </Grid> 
                             <Grid  margin="12px 0px 0px 0px">
@@ -86,12 +86,12 @@ const OneClickItem = (props) => {
                                     dispatch(mainActions.putOneClick(id, 2));
                                 }}>
                             <Grid display="flex" align-items="center" margin="12px 0px 0px 0px">
-                                <IconButtons margin="0 0" unhappyFill color="#8A4FFF"
+                                <IconButtons margin="0 0" unhappyFill color="#767676"
                                  />
-                                <BtnText>반대</BtnText>
+                                <BtnText style={{color:"#767676"}}>반대</BtnText>
                             </Grid> 
                             <Grid  margin="12px 0px 0px 0px">
-                                <BtnNum>{cons}</BtnNum>
+                                <BtnNum style={{color:"#767676"}}>{cons}</BtnNum>
                             </Grid>
                         </ConsBtn>
                         </Grid>
@@ -102,12 +102,12 @@ const OneClickItem = (props) => {
                                     dispatch(mainActions.putOneClick(id, 1));
                                 }}>
                             <Grid display="flex" align-items="center" margin="12px 0px 0px 0px">
-                                <IconButtons margin="0 0" happyFill color="#FF5912" 
+                                <IconButtons margin="0 0" happyFill color="#999999" 
                                 />
-                                <BtnText>찬성</BtnText>
+                                <BtnText style={{color:"#767676"}}>찬성</BtnText>
                             </Grid> 
                             <Grid  margin="12px 0px 0px 0px">
-                                <BtnNum>{pros}</BtnNum>
+                                <BtnNum style={{color:"#767676"}}>{pros}</BtnNum>
                             </Grid>
                         </ProsBtn>
                     </Grid>
@@ -178,7 +178,7 @@ const ProsBtn =styled.div`
     box-sizing:border-box;
     width:138px;
     height:40px;
-    border:1px solid #FF5912;   
+    border:1px solid #767676;   
     border-radius:10px;
     color:#FF5912;
     font-size:14px;
@@ -211,7 +211,7 @@ const ConsBtn =styled.div`
     box-sizing:border-box;
     width:138px;
     height:40px;
-    border:1px solid #8A4FFF;   
+    border:1px solid #767676;
     border-radius:10px;
     color:#8A4FFF;
     font-size:14px;

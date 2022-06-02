@@ -6,6 +6,7 @@ import {Grid, Text, Image} from "../../../Elements/index";
 import { ActionCreators as newsActions} from "../../../redux/modules/news";
 import { AiFillCodeSandboxCircle } from 'react-icons/ai';
 import index0 from "../../../Assets/news/index0.png"
+import index01 from "../../../Assets/news/index1.png"
 import index1 from "../../../Assets/news/111.png"
 import index2 from "../../../Assets/news/222.jpeg"
 import index3 from "../../../Assets/news/index+3.png"
@@ -69,7 +70,7 @@ const TodayNews = () => {
                             <TitleText>{NaverTitle}</TitleText>
                             <ContentText>{NaverContent}</ContentText>
                         </Container>
-                        <NaverImg src={index0}/>
+                        <NaverImg src={index01}/>
                         </a>
                     </NewsSection>
                     <Grid height="185px" margin="15px 0" is_flex="true" flexDirection="row">
@@ -177,8 +178,8 @@ const NaverImg = styled.img`
     position:absolute;
     bottom:25px;
     right:25px;             
-    width: 335px;
-    height: 252px;
+    width: 266px;
+    height: 212px;
     z-index:-1;
 `
 const TrendSection=styled.div`

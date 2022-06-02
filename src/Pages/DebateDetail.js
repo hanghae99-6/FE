@@ -3,12 +3,14 @@ import styled from "styled-components";
 import { useSelector, useDispatch} from "react-redux";
 import { useHistory } from 'react-router-dom';
 import {Grid, Text, Button, Image, IconButtons} from "../Elements/index";
+import dayjs from "dayjs"
 import { DropDown5 } from '../Components/DropDown';
 import CommentList from '../Pages/CommentList';
 import {ActionCreators as detailAction} from "../redux/modules/detail";
 import {ActionCreators as commentAction} from "../redux/modules/comment";
 import {ActionCreators as voteAction} from "../redux/modules/proscons";
 import KakaoBaseImg from "../Assets/kakaobase.png";
+
 
 function DebateDetail(props) {
     let [prosCons,setProsCons]=useState('');
@@ -28,7 +30,9 @@ function DebateDetail(props) {
     const category = debateDetail.categoryEnum;
     const topic = debateDetail.topic;
     const content = debateDetail.content;
-    const createdAt = debateDetail.createdAt;
+    
+    const createdAt = dayjs(debateDetail.createdAt).format("YYYY년 MM월 DD일");
+
     const visitCnt= debateDetail.visitCnt;
     const prosName = debateDetail.prosName;
     const consName = debateDetail.consName;
@@ -109,55 +113,54 @@ function DebateDetail(props) {
         </Grid>
         <Grid width="1134px" margin="0 auto" is_flex="true">
             <Container>
-                <Grid is_flex="true" justifyContent="start" alignItems="center" height="30px" padding="0 0 0 12px">
-                    <Image shape="rectangle" radius="50%" width="28px" height="28px"
-                    src={enterUserList[0]?.userImage=="null" ? KakaoBaseImg : enterUserList[0].userImage}
-                    />
-                    <Text color="#000000" bold="600" margin="0 0 0 10px">{enterUserList[0]?.userNickName? enterUserList[0].userNickName:enterUserList[0]?.userEmail}</Text>
-                </Grid>
                 <GroundBox>
                     <OppBox>
                         <ProsSideBlock>찬성</ProsSideBlock>
                         <OpinionText>{enterUserList[0]?.opinion?enterUserList[0]?.opinion:null}</OpinionText>
                     </OppBox>
-                        <Text>찬성측 근거 {enterUserList[0]?.evidences?.length?enterUserList[0].evidences.length:"0"}</Text>
-                        <EvidenceBox>
-                            {enterUserList[0]?.evidences?.map((item,index) => {
-                                return (
-                                    <OneEvidence>
-                                        <OppNum>{index+1}</OppNum>
-                                        <>
-                                        <div {...item} key={index}>{item.evidence}</div>
-                                        </>
-                                    </OneEvidence>
-                                )
-                            })}
-                        </EvidenceBox>
+                    <EvidenceBox>
+                        {enterUserList[0]?.evidences?.map((item,index) => {
+                            return (
+                                <OneEvidence>
+                                    <OppNum>{index+1}</OppNum>
+                                    <>
+                                    <div {...item} key={index}>{item.evidence}</div>
+                                    </>
+                                </OneEvidence>
+                            )
+                        })}
+                    </EvidenceBox>
+                    <Grid is_flex="true" justifyContent="flex-end" alignItems="center" height="28px" padding="0">
+                        <Image shape="rectangle" radius="50%" width="28px" height="28px"
+                        src={enterUserList[0]?.userImage=="null" ? KakaoBaseImg : enterUserList[0].userImage}
+                        />
+                        <Text color="#000000" size="14px" bold="400" margin="0 0 0 8px">{enterUserList[0]?.userNickName? enterUserList[0].userNickName:enterUserList[0]?.userEmail} 님의 주장</Text>
+                    </Grid>
                 </GroundBox>
             </Container>
             <Container>
-                <Grid is_flex="true" justifyContent="start" alignItems="center" height="30px" padding="0 0 0 12px">
-                    <Image shape="rectangle" radius="50%" width="28px" height="28px"
-                    src={enterUserList[1]?.userImage=="null" ? KakaoBaseImg : enterUserList[1].userImage}
-                    />
-                    <Text color="#000000" bold="600" margin="0 0 0 10px">{enterUserList[1]?.userNickName?enterUserList[1].userNickName:enterUserList[1]?.userEmail}</Text>
-                </Grid>
+                
                 <GroundBox>
                     <OppBox>
                         <ConsSideBlock>반대</ConsSideBlock>
                         <OpinionText >{enterUserList[1]?.opinion?enterUserList[1]?.opinion:null}</OpinionText>
                     </OppBox>
-                        <Text>반대측 근거 {enterUserList[1]?.evidences?.length?enterUserList[1].evidences.length:"0"}</Text>
-                        <EvidenceBox>
-                            {enterUserList[1]?.evidences?.map((item,index) => {
-                                return (
-                                    <OneEvidence>
-                                        <OppNum>{index+1}</OppNum>
-                                        <div {...item} key={index}>{item.evidence}</div>
-                                    </OneEvidence>
-                                )
-                            })}
-                        </EvidenceBox>
+                    <EvidenceBox>
+                        {enterUserList[1]?.evidences?.map((item,index) => {
+                            return (
+                                <OneEvidence>
+                                    <OppNum>{index+1}</OppNum>
+                                    <div {...item} key={index}>{item.evidence}</div>
+                                </OneEvidence>
+                            )
+                        })}
+                    </EvidenceBox>
+                    <Grid is_flex="true" justifyContent="flex-end" alignItems="center" height="28px" padding="0">
+                        <Image shape="rectangle" radius="50%" width="28px" height="28px"
+                        src={enterUserList[1]?.userImage=="null" ? KakaoBaseImg : enterUserList[1].userImage}
+                        />
+                        <Text color="#000000" size="14px" bold="400" margin="0 0 0 8px">{enterUserList[1]?.userNickName?enterUserList[1].userNickName:enterUserList[1]?.userEmail} 님의 주장</Text>
+                    </Grid>
                 </GroundBox>
             </Container>
         </Grid>
@@ -263,7 +266,7 @@ const DebateInfo=styled.div`
     font-size:18px;
     color:#191919;
     padding-left:27px;
-    margin-top:4px;
+    margin:16px 0 43px 0;
 `
 const OneEvidence=styled.div`
 width:100%;
@@ -295,6 +298,7 @@ const DebateTitle=styled.div`
     -webkit-line-clamp: 2;
 `
 const ProsSideBlock = styled.div`
+    min-width: 65px;
     width:65px;
     height:40px;
     line-height:40px;
@@ -309,6 +313,7 @@ const ProsSideBlock = styled.div`
     color:#FF5912;
 `
 const ConsSideBlock = styled.div`
+    min-width: 65px;    
     width:65px;
     height:40px;
     line-height:40px;
@@ -324,7 +329,7 @@ const ConsSideBlock = styled.div`
 `
 const DebateContent=styled.div`
     width: 1080px;
-    margin: 50px auto 0;
+    margin: 0 auto;
     font-weight:400;
     font-size: 14px;
     color:#191919;
@@ -456,13 +461,12 @@ const OppBox = styled.div`
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    margin-bottom:39px;
+    margin-bottom:16px;
     /* border: 1px solid black; */
 `
 const GroundBox = styled.div`
-    padding: 22px 26px;
-    height: 375px;
-    margin: 5px auto 0;
+    padding: 22px 32px;
+    height: 364px;
     display: flex;
     flex-direction: column;
     border-radius: 24px;
@@ -488,8 +492,9 @@ const EvidenceBox = styled.div`
     background-color: #F8F8FA;
     display: flex;
     flex-direction: column;
-    height: 220px;
+    height: 200px;
     padding: 20px 24px;
+    margin-bottom: 32px;
     overflow:scroll;
 `
 
