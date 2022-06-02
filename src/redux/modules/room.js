@@ -50,7 +50,7 @@ const initialState = {
   const starteDebateDB = (roomId) => {
     const cookies = new Cookies(); 
     const token = cookies.get("token");
-    console.log(token);
+    // console.log(token);
     return function (dispatch, getState, { history }) {
       const state = getState();
         roomApi
@@ -172,7 +172,7 @@ const initialState = {
 
 
   const leaveRoomDB = (roomId,RoomToken) =>{
-    console.log(roomId,RoomToken);
+    // console.log(roomId,RoomToken);
     const cookies = new Cookies(); 
     const token = cookies.get("token");
     return function (dispatch, getState, { history }) {

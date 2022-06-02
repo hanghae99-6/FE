@@ -61,7 +61,7 @@ const ChatingPage = (props) => {
           setEnterMsg(res);
           resMessage(res);
         // }         
-            console.log("소켓연결 성공");
+            // console.log("소켓연결 성공");
           },
         { "Authorization": token }
       );
@@ -99,7 +99,7 @@ const ChatingPage = (props) => {
       // latestChatWrapRef.current.
       latestChatWrapRef.current.scrollIntoView({ block: "end" });
     } 
-    console.log("메세지임", messages)
+    // console.log("메세지임", messages)
   }, [messages]);
 
   // const startDebate = () => {
@@ -257,9 +257,7 @@ const ChatDisplay = styled.div`
   background:#F5F6F8;
   border-radius: 16px;
   margin-top:40px;
-  overflow:scroll;
-
-
+  /* overflow:scroll; */
 `;
 const ChatHeader = styled.div`
   width:100%;

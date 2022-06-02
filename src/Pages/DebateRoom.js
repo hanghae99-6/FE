@@ -42,9 +42,9 @@ const DebateRoom = () =>{
   const isUser=roomData?.user;
   const role=roomData?.role;
   const roomId=location.pathname.split("/debate/")[1];
-  console.log(roomId);
+  // console.log(roomId);
   const Roomtoken=roomData?.token;
-  console.log(nickName,prosCons,isUser,role,roomId,Roomtoken);
+  // console.log(nickName,prosCons,isUser,role,roomId,Roomtoken);
   let [mySession,setMySession]=useState("")
   let [token,setToken]=useState("")
 
@@ -52,11 +52,11 @@ const DebateRoom = () =>{
   //   event.preventDefault();
   //   leaveSession();
   // });
-  console.log(start);
+  // console.log(start);
 
   const _backConfirm = async () => {
     if(start){
-      console.log("이거 실행")
+      // console.log("이거 실행")
       leaveSession();
       let event =  history.replace(`/saveDebate/${roomId}`)
       if(event){
@@ -90,7 +90,7 @@ useEffect(()=>{
       const OV = new OpenVidu();  
       const session = OV.initSession();
       setMySession(session);
-      console.log("session? ", session)
+      // console.log("session? ", session)
       session.on('streamCreated', (event) => {
         var subscriber = session.subscribe(event.stream, 'video-container');
         subscriber.on('videoElementCreated', (event) => {

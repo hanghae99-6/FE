@@ -28,6 +28,10 @@ const CreateDebate = (props) => {
             window.alert("등록되지 않은 회원입니다")
         }else if(prosName===consName){
             window.alert("찬성측 이메일과 반대측 이메일이 같습니다")    
+        }else if(speechMinute==""){
+            window.alert("토론시간을 설정해주세요")  
+        }else if(topic==""||categoryName==""||content==""||prosName==""||consName==""){
+            window.alert("토론방 세팅을 완료해주세요")
         }
         else{
             dispatch(RoomActions.createRoomDB(topic,categoryName,prosName,consName,content,speechMinute));

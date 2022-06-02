@@ -19,7 +19,7 @@ function DebateDetail(props) {
     const [myState,setMyState]=useState(false);
     const debateDetail =
         useSelector((state)=>state?.detail?.detailInfo?.debate?state.detail.detailInfo.debate:"");
-        console.log(debateDetail,"asdf");
+        // console.log(debateDetail,"asdf");
     const enterUserList =
         useSelector((state)=>state?.detail?.detailInfo?.enterUserList?state.detail.detailInfo.enterUserList:"");
     const userSide =
@@ -132,7 +132,7 @@ function DebateDetail(props) {
                     </EvidenceBox>
                     <Grid is_flex="true" justifyContent="flex-end" alignItems="center" height="28px" padding="0">
                         <Image shape="rectangle" radius="50%" width="28px" height="28px"
-                        src={enterUserList[0]?.userImage=="null" ? KakaoBaseImg : enterUserList[0].userImage}
+                        src={enterUserList[0]?.userImage==null ? KakaoBaseImg : enterUserList[0].userImage}
                         />
                         <Text color="#000000" size="14px" bold="400" margin="0 0 0 8px">{enterUserList[0]?.userNickName? enterUserList[0].userNickName:enterUserList[0]?.userEmail} 님의 주장</Text>
                     </Grid>
@@ -157,7 +157,7 @@ function DebateDetail(props) {
                     </EvidenceBox>
                     <Grid is_flex="true" justifyContent="flex-end" alignItems="center" height="28px" padding="0">
                         <Image shape="rectangle" radius="50%" width="28px" height="28px"
-                        src={enterUserList[1]?.userImage=="null" ? KakaoBaseImg : enterUserList[1].userImage}
+                        src={enterUserList[1]?.userImage==null ? KakaoBaseImg : enterUserList[1].userImage}
                         />
                         <Text color="#000000" size="14px" bold="400" margin="0 0 0 8px">{enterUserList[1]?.userNickName?enterUserList[1].userNickName:enterUserList[1]?.userEmail} 님의 주장</Text>
                     </Grid>

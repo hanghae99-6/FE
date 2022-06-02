@@ -22,7 +22,7 @@ const postProsCons = (id,side) => {
       .then((res) => {
         const prosConsInfo=res.data.side.typeNum;
             dispatch(setProsCons(prosConsInfo))
-        window.alert("소중한 한표 감사합니다.")
+        // window.alert("소중한 한표 감사합니다.")
       })
       .catch((err) => {
         console.log(err.response);

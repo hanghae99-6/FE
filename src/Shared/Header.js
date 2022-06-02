@@ -36,7 +36,7 @@ const Header = () => {
         window.location.reload();
     }
     const goLiveNow=()=>{
-        console.log("고우라이브나우")
+        // console.log("고우라이브나우")
         history.push("/livenow")
     }
     if(document.cookie){

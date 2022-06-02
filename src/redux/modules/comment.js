@@ -99,7 +99,7 @@ const initialState = {
             .then(
               (res) =>{
                 const fixedComment = res.data;
-                console.log("aaaaaaaaaaaaaa",fixedComment);
+                // console.log("aaaaaaaaaaaaaa",fixedComment);
                 dispatch(fixComment(fixedComment));
               }
             )

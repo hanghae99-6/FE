@@ -37,8 +37,8 @@ const initialState = {
         const token = cookies.get("token");
         const userInfo= jwt_decode(document.cookie)?jwt_decode(document.cookie):null; 
         const userEmail = userInfo.EMAIL;
-        console.log(userInfo);
-        console.log(opinion,evidences,roomId)
+        // console.log(userInfo);
+        // console.log(opinion,evidences,roomId)
         return function (dispatch, getState, { history }) {
           const state = getState();
             roomApi
@@ -139,9 +139,9 @@ const initialState = {
         [DELETE_EVIDENCE]:(state, action)=>
             produce(state, (draft) => {
             const deleteIndex=action.payload.evidenceIndex;
-            console.log(deleteIndex);
+            // console.log(deleteIndex);
             draft.evidence.splice(deleteIndex,1);
-            console.log(draft.evidence);
+            // console.log(draft.evidence);
             }),
         [LOAD_POST]: (state, action) =>
             produce(state, (draft) => {

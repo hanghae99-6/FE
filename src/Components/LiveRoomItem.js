@@ -6,7 +6,6 @@ import { Grid, Image} from "../Elements/index";
 import livenowman from "../Assets/livenowman.png"
 
 const LiveRoomItem =(props)=>{
-    console.log("livenow props", props);
     const history =useHistory();
     const roomId=props?.roomId;
     const prosNickName=props?.prosNickName;

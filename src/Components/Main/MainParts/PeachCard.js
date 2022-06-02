@@ -12,7 +12,7 @@ import peechtotal from "../../../Assets/peechtotal.png"
 import { IconButton } from '@mui/material';
 
 const PeachCard =(props)=>{
-    console.log(props);
+    // console.log(props);
     const history = useHistory();
     const dispatch = useDispatch();
     const debateId = props.debateId;

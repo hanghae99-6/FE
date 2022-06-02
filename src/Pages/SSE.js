@@ -40,14 +40,14 @@ function SSE(props) {
       const userInfo= jwt_decode(document.cookie);
       eventSource = new EventSource(`https://api.wepeech.com:8443/subscribe/${roomId}`); //구독
       msetEventSource(eventSource);
-      console.log("eventSource", eventSource);
+      // console.log("eventSource", eventSource);
 
       eventSource.onopen = event => {
           console.log("연결완료");
       };
       eventSource.onmessage = event => {
-         console.log("onmessage");
-        console.log(event.data);
+        //  console.log("onmessage");
+        // console.log(event.data);
         
         const getRealtimeData=JSON.parse(event.data);
        
@@ -55,7 +55,7 @@ function SSE(props) {
           setIsStarted(getRealtimeData.isStarted);
       };
         eventSource.onerror = event => {
-        console.log(event.target.readyState);
+        // console.log(event.target.readyState);
         if (event.target.readyState === EventSource.CLOSED) {
           console.log("eventsource closed (" + event.target.readyState + ")");
         }
@@ -81,7 +81,7 @@ function SSE(props) {
       .get(`https://api.wepeech.com:8443/timer/${roomId}`,
       {headers: { "Authorization": token }})
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setDebateEndTime(res.data.debateEndTime);
         setIsStarted(res.data.isStarted)
       })

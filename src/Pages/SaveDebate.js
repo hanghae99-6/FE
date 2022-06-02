@@ -22,7 +22,7 @@ function SaveDebate(props) {
     const [evidence,setEvidence]=useState('')//근거    
     // const prosCons
     const roomId=location.pathname.split("/saveDebate/")[1];
-    console.log(roomId);
+    // console.log(roomId);
     const savePost=()=>{
         dispatch(PostActions.savePostDB(opinion,evidences,roomId))
     }
