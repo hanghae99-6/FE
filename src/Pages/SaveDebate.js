@@ -10,8 +10,7 @@ import {useHistory} from "react-router-dom";
 import Main from "./Main";
 import { IconButtons } from "../Elements/index";
 import { ActionCreators as RoomActions} from "../redux/modules/room";
-
-
+import { style } from '@mui/system';
 
 function SaveDebate(props) {
     const RoomData = useSelector((state)=>state?.room?.roomdata)
@@ -53,11 +52,17 @@ function SaveDebate(props) {
     <>
         <ModalBg/>
             <Wrapper>
-                <div style={{display:"flex", alignItems:"center"}}>
-                    <IconButton cancle color="#d3d3d3" size="20" _onClick={alertPage}/>
-                    <div style={{marginLeft:"50%", transform:"translateX(-65%)"}}>
+                <div style={{display:"flex", alignItems:"center",  width:"100%", marginLeft:"230px"}}>
+                    
+                    
+                   <Grid margin="0px 0px 0px 0px">
                         <TitleText>토론 종료</TitleText>
-                    </div>
+                   </Grid>
+                   <Grid margin="0px -20px 0px 0px">
+                        <IconButton cancle color="#d3d3d3" size="20" _onClick={alertPage}/>
+                    </Grid>
+                        
+                 
                 </div>
                     <SectionText>나의주장</SectionText>
                 <div style={{marginTop:"10px"}}>
@@ -66,15 +71,20 @@ function SaveDebate(props) {
                 <div style={{marginTop:"30px", display:"flex", flexDirection:"column"}}>
                     <SectionText>근거(최대 5개)</SectionText>
                     <div style={{margin:"10px 0px",position:"relative", display:"flex", alignItems:"center", justifyContent:"space-between"}}>
-                        <FullInput value={evidence} onChange={(e) => {setEvidence(e.target.value)}} onKeyPress={onKeyPress}/>
+                        <FullInput maxLength={100} value={evidence} onChange={(e) => {setEvidence(e.target.value)}} onKeyPress={onKeyPress}/>
                         <Addbutton disabled={!evidence||evidences?.length>=5} onClick={addEvidence}  >+ 추가</Addbutton>
                     </div>
-                    <SectionText>최대 100자까지 입력할 수 있습니다</SectionText>
+                    <ExText>최대 100자까지 입력할 수 있습니다</ExText>
                       {evidences?.map((evidence,index)=>{
                   return (<Evidence key={index}>
-                      <div style={{display:"flex",alignItems:"center", justifyContent:"space-between"}}>
-                        {evidence}
-                        <IconButtons size="18" color="gery" trash _onClick={()=>dispatch(PostActions.deleteEvidence(index))}>삭제</IconButtons>
+                      <div style={{display:"flex",alignItems:"center", justifyContent:"space-between", minHeight:"32px", padding:"0px 10px"}}>
+                          <EvidenceText>
+                            {evidence}
+                          </EvidenceText>
+                       
+                       
+                            <IconButtons margin="0px 0px 0px 0px" size="18" color="#999999" trash _onClick={()=>dispatch(PostActions.deleteEvidence(index))}></IconButtons>
+                        
                       </div>
                       </Evidence>)
                   })}
@@ -84,7 +94,17 @@ function SaveDebate(props) {
       </>
   )
 }
-
+const EvidenceText=styled.div`
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 22px;
+letter-spacing: -0.03m;
+color: #767676;
+// background:yellow;
+margin-right:7px;
+`
 const Wrapper=styled.div`
     margin:0 auto;
     width:620px;
@@ -115,13 +135,22 @@ const ModalBg = styled.div`
 
 const FullInput = styled.input`
     width:100%;
-    padding:10px;
+    padding:10px 20px;
     background: #F5F6F8;
     border:none;
     border-radius:10px;
     box-sizing:border-box;
     &:focus{
         outline:none;
+    }
+    &::placeholder{
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 22px;
+        letter-spacing: -0.03em;
+        color: #767676;
     }
 `
 
@@ -140,7 +169,19 @@ const SectionText=styled.div`
 font-size:12px;
 font-weight:400;
 color: #505050;
+margin-top:-10px;
 `
+
+const ExText=styled.div`
+font-size:12px;
+font-weight:400;
+color: #505050;
+margin-top:-10px;
+margin-left:20px;
+`
+
+
+
 const Addbutton =styled.button`
 width:80px;
 height:40px;
@@ -184,18 +225,31 @@ height:49px;
 background:  #E8E9EC;
 border-radius:12px;
 color:#767676;
-margin-top:10px;
+margin-top:30px;
 margin-left:335px;
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: -0.02em;
+color: #767676;
 `
 const SaveBtnFocused =styled.button`
 cursor:pointer;
 width:183px;
 height:49px;
 border-radius:12px;
-margin-top:10px;
+margin-top:30px;
 margin-left:335px;
 background:#FF5912;     
 color:white;
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: -0.02em;
     
 `
 

@@ -5,7 +5,7 @@ import Cookies from "universal-cookie";
 import { useInterval } from "../redux/modules/useInterval";
 import jwt_decode from "jwt-decode";
 import styled from "styled-components";
-import {Grid} from "../Elements/index";
+import {Grid,IconButtons} from "../Elements/index";
 
 
 // import useUpdateEffect from "../store/hooks/useUpdateEffect";
@@ -101,7 +101,11 @@ function SSE(props) {
           <Grid display="flex">
              {isStarted? <StartedState>토론중</StartedState>:<UnStartedState>대기중</UnStartedState>}
             <TimerBox>
-            <Minutes>{isStarted?`${minutes}`:0}:</Minutes><Seconds>{isStarted?`${seconds}`:0}</Seconds>
+              <Grid margin="0px 0px 10px 0px"  width="16px">
+                <IconButtons clock size="16" color="grey"/>
+              </Grid>
+                
+                <Minutes>{isStarted?`${minutes}`:0}:</Minutes><Seconds>{isStarted?`${seconds}`:0}</Seconds>
               </TimerBox>
           </Grid>      
           
@@ -146,7 +150,6 @@ margin-right:10px;
 `
 const StartBtn=styled.button`
 padding: 6px 20px;
-gap: 10px;
 width: 119px;
 height: 37px;
 border: 1px solid #C4C4C4;
@@ -160,9 +163,10 @@ letter-spacing: -0.03em;
 color: #191919;
 position:absolute;
 background:white;
-top:61px;
+top:40px;
 right:450px;
 cursur:pointer;
+z-index:3;
 &:hover{
   background:#FF5912;
   color:white;

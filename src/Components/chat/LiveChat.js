@@ -163,7 +163,7 @@ return (
   <>  
   <ChatDisplay>
       <ChatHeader>
-        <ChatText>실시간채팅</ChatText>
+        <ChatText>실시간 채팅</ChatText>
         {/* <UserTotal>32명</UserTotal> */}
       </ChatHeader>
       <ChatContents>
@@ -268,12 +268,13 @@ const ChatHeader = styled.div`
   line-height:50px;
   padding: 13px 24px 0px 24px;
   box-sizing:border-box;
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 1px solid #E8E9EC;
   display:flex;
   align-items:center;
   justify-content: space-between;
 `;
 const ChatText = styled.p`
+margin-top:3px;
 font-family: 'Roboto';
 font-style: normal;
 font-weight: 400;
@@ -299,6 +300,7 @@ font-size: 12px;
 line-height: 18px;
 letter-spacing: -0.03em;
 color: #767676;
+padding:3px 10px;
 `
 const ChatContents = styled.div`
   width: 100%;
@@ -311,7 +313,6 @@ const ChatWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: ${(props) => props.align};
-  margin: 10px 0;
   padding: 0 10px;
 `;
 const ChatUser = styled.div`
@@ -341,9 +342,9 @@ const MsgWrap = styled.div`
 const ChatMsg = styled.div`
   width: 100%;
   color: black;
-  text-align: center;
+  text-align: left;
   box-sizing:border-box;
-  margin: 5px 20px 5px 0;
+  margin: 5px 0px 5px 0px;
 `;
 const ChatInputMenu = styled.div`
   display: flex;

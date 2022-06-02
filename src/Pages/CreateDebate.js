@@ -55,10 +55,14 @@ const CreateDebate = (props) => {
         <ModalBg/>
             <Wrapper>
                 <div style={{display:"flex", alignItems:"center"}}>
-                    <IconButton cancle color="#d3d3d3" size="20" _onClick={goMain}/>
-                    <div style={{marginLeft:"50%", transform:"translateX(-65%)"}}>
-                        <TitleText>토론방 생성하기</TitleText>
-                    </div>
+                    <Grid margin="0px 0px 0px 250px">
+                        <TitleText>토론방 만들기</TitleText>
+                    </Grid>
+                    <Grid margin="0px 0px 0px 240px">
+                        <IconButton cancle color="#d3d3d3" size="20" _onClick={goMain}/>
+                    </Grid>
+
+                    
                 </div>
                     <SectionText>토론주제</SectionText>
                     <DropDown setCategoryName={setCategoryName}>{categoryName}</DropDown>
@@ -66,11 +70,11 @@ const CreateDebate = (props) => {
                     <FullInput maxLength ={100} value={topic} onChange={(e) => {setTopic(e.target.value)}} placeholder="평서문으로 토론주제를 입력해주세요"/>
                     <ExText>예)살인죄의 공소시효는 폐지되어야 한다(최대 100자)</ExText>
                 </div>
-                <Grid display="flex" height="100px">
+                <Grid display="flex" height="100px" margin="30px 0px 0px 0px">
                     <Grid margin="0px 10px 0px 0px">
                         <SectionText>찬성측 토론자 이메일</SectionText>
                         <EmailInput value={prosName} onChange={(e) => {setPros(e.target.value)}} placeholder="찬성측 이메일을 입력해주세요"/>
-                        <div style={{position:"absolute",top:"235px", left:"325px"}}>
+                        <div style={{position:"absolute",top:"270px", left:"325px"}}>
                         {prosUserCheck?<IconButton checked color="#00AB66"/>:<IconButton alert color="#E2252B"/>}
                         </div>
                         {prosUserCheck?<UserCheckdText>등록된 유저입니다</UserCheckdText>:<UserUnCheckdText>등록되지 않은 유저입니다</UserUnCheckdText>}
@@ -78,16 +82,17 @@ const CreateDebate = (props) => {
                    <Grid margin="0px 0px 0px 0px">
                    <SectionText>반대측 토론자 이메일</SectionText>       
                         <EmailInput value={consName} onChange={(e) => {setCons(e.target.value)}} placeholder="반대측 이메일을 입력해주세요"/>
-                        <div style={{position:"absolute",top:"235px", left:"645px"}}>
+                        <div style={{position:"absolute",top:"270px", left:"645px"}}>
                         {consUserCheck?<IconButton checked color="#00AB66"/>:<IconButton alert color="#E2252B"/>}
                         </div>
                         {consUserCheck?<UserCheckdText>등록된 유저입니다</UserCheckdText>:<UserUnCheckdText>등록되지 않은 유저입니다</UserUnCheckdText>}
                    </Grid>
                 </Grid>
-
-      
+                <Grid margin="30px 0px 0px 0px" height="60px">
                     <SectionText>토론시간</SectionText>
                     <DropDown2 setSpeechMinute={setSpeechMinute}>{speechMinute}</DropDown2>
+                </Grid>
+                    
                 <div style={{marginTop:"30px"}}>
                     <SectionText>토론 내용(선택)</SectionText>
                     <TextAreaInput type="textarea" maxLength={700} value={content} rows={5} onChange={(e) => {setContent(e.target.value)}} placeholder="토론 참여 전 알고 있어야 하는 사항에 대해 입력해주세요(배경 지식, 관련 사례, 용어 등)"/>
@@ -96,7 +101,7 @@ const CreateDebate = (props) => {
                 
                 <hr/>
             <div style={{display:"flex", alignItems:"center", justifyContent:"space-between"}}>
-                <TitleText onClick={clear}>초기화</TitleText>
+                <ClearText onClick={clear}>초기화</ClearText>
                 <CreateRoomBtn onClick={goDebate}>토론방 생성</CreateRoomBtn>
             </div>
     </Wrapper>
@@ -110,7 +115,7 @@ background:white;
 border:1px solid #d3d3d3;
 color:#404040;
 width:730px;
-height:710px;
+height:770px;
 padding:24px 50px;
 box-sizing:border-box;
 border-radius:20px;
@@ -127,7 +132,7 @@ font-weight:400;
 color: #00AB66;
 margin:0;
 padding:0;
-margin:5px 0px;
+margin:5px 20px;
 `
 
 const UserUnCheckdText =styled.div`
@@ -136,7 +141,7 @@ font-weight:400;
 color: #E2252B;
 margin:0;
 padding:0;
-margin:5px 0px;
+margin:5px 20px;
 `
 
 
@@ -161,7 +166,7 @@ border-radius:10px;
 
 const FullInput = styled.input`
     width:100%;
-    padding:10px;
+    padding:10px 20px;
     background: #F5F6F8;
     border:none;
     border-radius:10px;
@@ -169,13 +174,22 @@ const FullInput = styled.input`
     &:focus{
         outline:none;
     }
+    &::placeholder{
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 22px;
+        letter-spacing: -0.03em;
+        color: #767676;
+    }
 `
     
 
 
 const EmailInput=styled.input`
 width:100%;
-padding:10px;
+padding:10px 20px;
 background: #F5F6F8;
 border:none;
 border-radius:10px;
@@ -183,10 +197,19 @@ box-sizing:border-box;
     &:focus{
         outline:none;
     }
+    &::placeholder{
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 22px;
+        letter-spacing: -0.03em;
+        color: #767676;
+    }
 `
 const TextAreaInput=styled.textarea`
 width:100%;
-padding:10px;
+padding:10px 20px;
 background: #F5F6F8;
 border:none;
 border-radius:10px;
@@ -195,6 +218,15 @@ overflow-y:scroll;
 resize:none;
     &:focus{
         outline:none;
+    }
+    &::placeholder{
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 22px;
+        letter-spacing: -0.03em;
+        color: #767676;
     }
 `
 const CreateRoomBtn=styled.div`
@@ -216,8 +248,9 @@ font-size:12px;
 font-weight:400;
 color: #949494;
 margin:5px 0px;
+margin-left:20px;
 `
-const TitleText=styled.p`
+const TitleText=styled.div`
 font-size:16px;
 font-weight:700;
 color: #191919;
@@ -225,6 +258,19 @@ margin:0;
 padding:0;
 margin:5px 0px;
 cursor:pointer;
+width:120px;
+text-align:center;
+`
+
+const ClearText=styled.div`
+font-size:16px;
+font-weight:700;
+color: #191919;
+margin:0;
+padding:0;
+margin:5px 0px;
+cursor:pointer;
+width:120px;
 `
 const SectionText=styled.div`
 font-size:12px;
