@@ -39,19 +39,19 @@ const DebateList = () => {
   <div style={{margin:"0 auto", display:"flex", flexDirection:"column", alignItems:"center"}}>
   <Wrapper>
        <Header>
-        <Grid width="10%"  display="flex" alignItems="top" justifyContent="center">
+        <Grid width="7%"  display="flex" alignItems="top" justifyContent="center" >
         <HeaderText>카테고리</HeaderText>
        </Grid>
-       <Grid width="7.5%" display="flex" alignItems="top" justifyContent="center">
-        <HeaderText>찬성</HeaderText>
-       </Grid>
-       <Grid width="45%"  display="flex" alignItems="top" justifyContent="center">
+       {/* <Grid width="10.5%" display="flex" alignItems="top" justifyContent="center" bg="orange">
+        <HeaderText>찬/반</HeaderText>
+       </Grid> */}
+       <Grid width="50%"  display="flex" alignItems="top" justifyContent="center" >
         <HeaderText>토론제목</HeaderText>
        </Grid>
-       <Grid  width="15%"  display="flex" alignItems="top" justifyContent="center">
+       <Grid  width="20.5%"  display="flex" alignItems="top" justifyContent="center">
         <HeaderText>투표</HeaderText>
        </Grid>
-      <Grid width="7.5%"  display="flex" alignItems="top" justifyContent="center">
+      <Grid width="7.5%"  display="flex" alignItems="top" justifyContent="center" >
         <HeaderText>댓글</HeaderText>
       </Grid>
       <Grid width="15%"  display="flex" alignItems="top" justifyContent="center">
@@ -60,18 +60,21 @@ const DebateList = () => {
      </Header>
       <Posts posts={currentPosts} loading={loading} />
     </Wrapper>
+    
     <Pagination
     postsPerPage={postsPerPage}
     totalPosts={posts.length}
     paginate={paginate}
   />
+    
+ 
   </div>
   );
 };
 
 const Wrapper=styled.div`
 width:1051px;
-border-radius:30px;
+border-radius:24px;
 border:2px solid #F5F6F8 ;
 box-sizing:border-box;
 
@@ -80,7 +83,7 @@ const Header=styled.div`
 width:1049px;
 background:#F5F6F8;
 height:50px;
-border-radius:28px 28px 0px 0px;
+border-radius:22px 22px 0px 0px;
 display:flex;
 padding:0px 20px;
 box-sizing:border-box;

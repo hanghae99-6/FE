@@ -34,12 +34,24 @@ opv-session {
 
 #dropdown-menu-align-right{
   width:160px;
+  height:40px;
+  border-radius:10px;
   background: #F5F6F8;
   color:#767676;
   font-size:14px;
   border:none;
   width:fixed;
   height:fixed;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+
+/* Grey/Light Grey 01 */
+
+color: #767676;
 }
 #dropdown-menu-5{
   width:80px;
@@ -85,6 +97,29 @@ opv-session {
   background:#FF5912;
 }
 
+#dropdownitem11:focus{
+  background:#FF5912;
+}
+
+#dropdownitem12:focus{
+  background:#FF5912;
+}
+
+#dropdownitem13:focus{
+  background:#FF5912;
+}
+
+#dropdownitem14:focus{
+  background:#FF5912;
+}
+
+#dropdownitem15:focus{
+  background:#FF5912;
+}
+
+#dropdownitem16:focus{
+  background:#FF5912;
+}
 #dropdown-menu-7:focus{
   outline:none;
   box-shadow:none;
@@ -164,6 +199,7 @@ button {
 
 .pagination{
  cursor:pointer;
+ margin-top:10px;
 }
 .pagination li{
   display:inline-block;

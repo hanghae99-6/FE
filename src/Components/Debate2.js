@@ -24,23 +24,23 @@ function Debate2(props) {
       <>
         <DebateItemWrapper onClick={goDetail}>
             <Header>
-                <Grid display="flex">
+                <Grid display="flex" margin="0px 0px 0px -7px" >
                     <Category>{props.categoryEnum.name}</Category>
                     {(prosOrCons=="찬성")? <ProsTag>{prosOrCons}</ProsTag>:<ConsTag>{prosOrCons}</ConsTag>}
                 </Grid>
                 <Grid display="flex"  width="100px" alignItems="center" >
-                    <Text>{createdAt}</Text>  
+                    <DateText>{createdAt}</DateText>  
                 </Grid>
             </Header>
             <Grid>
-                <Grid>
+                <Grid margin="10px 0px 0px 0px">
                     <TitleText>{props.topic}</TitleText>
                 </Grid>
-                <Grid display="flex" alignItems="center" margin="0px 0px 0px 0px" justifyContent="space-between">
+                <Grid display="flex" alignItems="center" margin="10px 0px 0px 0px" justifyContent="space-between">
                     <ContentText>{props.reply}</ContentText>
                     <LikeText>
                         <IconButtons good color="#767676" size="16"/>
-                        {likesCnt}개의 공감
+                        &nbsp;{likesCnt}개의 공감  
                     </LikeText>
                 </Grid>     
             </Grid>
@@ -49,9 +49,18 @@ function Debate2(props) {
   )
 }
 
+const DateText=styled.div`
+color:#505050;
+font-family:Roboto;
+font-size:14px;
+`
+
+
+
 const DebateItemWrapper=styled.div`
+
 width:100%;
-padding:0px 0px 15px 0px;
+padding:0px 0px 15px 15px;
 cursor:pointer;
 border-bottom: 1px solid #E8E9EC;
 box-sizing:border-box;

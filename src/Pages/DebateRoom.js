@@ -1,5 +1,6 @@
+
 import React, { useState, useEffect } from "react";
-import { Grid } from "../Elements/index";
+import { Grid,IconButtons} from "../Elements/index";
 import { useLocation,useHistory } from "react-router-dom";
 import "./DebateRoom.css";
 import axios from "axios";
@@ -47,18 +48,22 @@ const DebateRoom = () =>{
   let [mySession,setMySession]=useState("")
   let [token,setToken]=useState("")
 
-  window.addEventListener('beforeunload', (event) => {
-    event.preventDefault();
-    leaveSession();
-  });
-
+  // window.addEventListener('beforeunload', (event) => {
+  //   event.preventDefault();
+  //   leaveSession();
+  // });
+  console.log(start);
 
   const _backConfirm = async () => {
-    leaveSession();
-    let event =  history.replace(`/saveDebate/${roomId}`)
-    if(event){
-        window.history.pushState(null, "", window.location.href);
+    if(start){
+      console.log("이거 실행")
+      leaveSession();
+      let event =  history.replace(`/saveDebate/${roomId}`)
+      if(event){
+          window.history.pushState(null, "", window.location.href);
+      }
     }
+   
 }
 const _confirm = (e) => {
     var confirmationMessage = "\o/";
@@ -70,9 +75,10 @@ useEffect(()=>{
   window.history.pushState(null, "", window.location.href);
   window.onpopstate = _backConfirm;
 },[])
-//   const onbeforeunload = (event)=> {
-//   this.leaveSession();
-// }
+
+  const onbeforeunload = (event)=> {
+  this.leaveSession();
+}
 
   if(isUser==undefined){
     history.push(`/userCheck/${roomId}`)
@@ -103,11 +109,11 @@ useEffect(()=>{
             var publisher = OV.initPublisher('video-container', {
               audioSource: undefined, // The source of audio. If undefined default microphone
               videoSource: undefined, // The source of video. If undefined default webcam
-              publishAudio: true,  	// Whether you want to start publishing with your audio unmuted or not
-              publishVideo: true,  	// Whether you want to start publishing with your video enabled or not
+              publishAudio: true,     // Whether you want to start publishing with your audio unmuted or not
+              publishVideo: true,     // Whether you want to start publishing with your video enabled or not
               resolution: '447x624',  // The resolution of your video
-              frameRate: 30,			// The frame rate of your video
-              insertMode: 'APPEND',	// How the video is inserted in the target element 'video-container'
+              frameRate: 30,         // The frame rate of your video
+              insertMode: 'APPEND',   // How the video is inserted in the target element 'video-container'
               mirror: false,
             });
             publisher.on('videoElementCreated', (event) => {
@@ -142,8 +148,8 @@ useEffect(()=>{
       nodeId = 'main-videodata';
     } else {
       clientData = JSON.parse(connection.data.split('%/%')[0]).clientData;
-		  serverData = JSON.parse(connection.data.split('%/%')[1]).serverData;
-		  nodeId = connection.connectionId;
+        serverData = JSON.parse(connection.data.split('%/%')[1]).serverData;
+        nodeId = connection.connectionId;
     }
     var dataNode = document.createElement('div');
     dataNode.className = "data-node";
@@ -224,7 +230,10 @@ useEffect(()=>{
   const startDebate =()=>{
     dispatch(RoomActions.starteDebateDB(roomId));
   }
-
+  
+  const goMain =()=>{
+    history.push("/");
+  }
 
   return(
 
@@ -234,7 +243,9 @@ useEffect(()=>{
     <ModalBg/>
     <DetailModal>
       {nickname}님, 토론방에 입장하시겠습니까?
-     
+      <Grid position="absolute" top="18px" right="-360px">
+        <IconButtons cancle size="14px" color="grey" _onClick={goMain}/>
+      </Grid>
       <EnterBtn onClick={joinSession}>토론방 입장하기</EnterBtn>
     </DetailModal>
     </>
@@ -242,30 +253,35 @@ useEffect(()=>{
     }
     {start&&isUser&&
     <Wrapper>
-      <div style={{position:"absolute", right:"100px", top:"80px"}}>
+      <div style={{position:"absolute", right:"100px", top:"62px"}}>
       <LiveChat/>
       </div>
       <Grid display="flex">
         <SSE isRoomKing={isRoomKing}/>
-        {/* <Timer/> */}
       </Grid>
       <Grid display="flex" alignItems="center" justifyContent="space-between" width="920px" margin="10px 0px 0px 0px">
         <TitleText>{topic}</TitleText>
         <StartBtn onClick={leaveSession}>토론방 나가기</StartBtn>
       </Grid>
 
-     
-      
+
       <div id="main-video" className="col-md-6">
         <video autoPlay playsInline style={{display:"none"}}>
         </video>
       </div>
+  
+      
  
-        <GreyBox>토론자가 아직 입장하지 않았습니다</GreyBox>
-          <GreyBox2>토론자가 아직 입장하지 않았습니다</GreyBox2>
+        <GreyBox>토론자가 아직 <br/> 입장하지 않았습니다</GreyBox>
+          <GreyBox2>토론자가 아직 <br/> 입장하지 않았습니다</GreyBox2>
           <div id="video-container" className="col-md-6">
           </div>
+          <Grid margin="50px 0px 0px 0px">
+              <DebateNotice/>
+          </Grid>
+          
         <DebateBottom>
+            
             <SectionText>토론내용</SectionText>
             <ContentText>{content}</ContentText>
         </DebateBottom>
@@ -282,26 +298,24 @@ width:1360px;
 margin:0 auto;
 margin-top:100px;
 position:relative;
-// border:1px solid red;
 `
 const TitleText=styled.div`
 font-family: 'Roboto';
 font-style: normal;
 font-weight: 700;
-font-size: 22px;
+font-size: 20px;
 line-height: 30px;
 letter-spacing: -0.03em;
 color: #191919;
 max-width:800px;
 overflow:hidden;
-overflow: hidden;
 text-overflow: ellipsis;
 display: -webkit-box;
 -webkit-line-clamp: 2; /* 라인수 */
 -webkit-box-orient: vertical;
 word-wrap:break-word; 
 line-height: 1.2em;
-height: 3.6em;
+height: 3.0em;
 `
 const ContentText=styled.div`
 font-family: 'Roboto';
@@ -318,7 +332,6 @@ margin-top:20px;
 const StartBtn=styled.button`
 max-width:120px;
 min-width: 119px;
-height: 40px;
 border-radius: 24px;
 font-family: 'Roboto';
 font-style: normal;
@@ -334,6 +347,10 @@ height: 36px;
 border: 1px solid #C4C4C4;
 border-radius: 24px;
 background:white;
+position:absolute;
+top:30px;
+right:440px;
+z-index:1;
 &:hover{
   background:#FF5912;
   color:white;
@@ -390,8 +407,8 @@ const DetailModal = styled.div`
   background: white;
   height:200px;
   border-radius:20px;
-  position: fixed;
-  top: 50%;
+  position: relative;
+  top: 500px;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -407,32 +424,47 @@ const GreyBox =styled.div`
 min-width: 447px;
 min-height: 624px;
 background: #F5F6F8;
-border-radius: 30px;
+border-radius: 24px;
 display:flex;
 align-items:center;
 justify-content:center;
 position:absolute;
 z-index:-1;
+font-family: 'Noto Sans KR';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+text-align: center;
+letter-spacing: -0.03em;
+color: #000000
 `
 
 const GreyBox2 =styled.div`
 min-width: 447px;
 min-height: 624px;
 background: #F5F6F8;
-border-radius: 30px;
+border-radius: 24px;
 display:flex;
 align-items:center;
 justify-content:center;
 margin-left:470px;
 float:left;
 z-index:-1;
+font-family: 'Noto Sans KR';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+text-align: center;
+letter-spacing: -0.03em;
+color: #000000
 `
 const DebateBottom=styled.div`
 display:flex;
 align-items:top;
-// background:red;
 width:100%;
-margin-top:50px;
+margin-top:120px;
 position:absolute;
 top:780px;
 `
