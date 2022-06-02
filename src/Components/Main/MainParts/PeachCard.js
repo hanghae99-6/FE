@@ -46,7 +46,7 @@ const PeachCard =(props)=>{
                             <AgreeWrap>
                                 <Image shape="rectangle" src={totalVotes==0? GrayAgree:Agree} width="36px" height="36px" cursor="pointer"/>
                             </AgreeWrap>
-                            <Grid padding="0">
+                            <Grid padding="4px 0 0 0">
                                 <ProgressBg>
                                     <ProgressPros style={{
                                         width: `${prosLength}%`,
