@@ -31,6 +31,8 @@ function DebateDetail(props) {
     const topic = debateDetail.topic;
     const content = debateDetail.content;
     
+    console.log
+
     const createdAt = dayjs(debateDetail.createdAt).format("YYYY년 MM월 DD일");
 
     const visitCnt= debateDetail.visitCnt;
@@ -116,10 +118,10 @@ function DebateDetail(props) {
                 <GroundBox>
                     <OppBox>
                         <ProsSideBlock>찬성</ProsSideBlock>
-                        <OpinionText>{enterUserList[0]?.opinion?enterUserList[0]?.opinion:null}</OpinionText>
+                        <OpinionText>{enterUserList[1]?.opinion?enterUserList[1]?.opinion:null}</OpinionText>
                     </OppBox>
                     <EvidenceBox>
-                        {enterUserList[0]?.evidences?.map((item,index) => {
+                        {enterUserList[1]?.evidences?.map((item,index) => {
                             return (
                                 <OneEvidence>
                                     <OppNum>{index+1}</OppNum>
@@ -132,9 +134,9 @@ function DebateDetail(props) {
                     </EvidenceBox>
                     <Grid is_flex="true" justifyContent="flex-end" alignItems="center" height="28px" padding="0">
                         <Image shape="rectangle" radius="50%" width="28px" height="28px"
-                        src={enterUserList[0]?.userImage==null ? KakaoBaseImg : enterUserList[0].userImage}
+                        src={enterUserList[1]?.userImage==null ? KakaoBaseImg : enterUserList[1].userImage}
                         />
-                        <Text color="#000000" size="14px" bold="400" margin="0 0 0 8px">{enterUserList[0]?.userNickName? enterUserList[0].userNickName:enterUserList[0]?.userEmail} 님의 주장</Text>
+                        <Text color="#000000" size="14px" bold="400" margin="0 0 0 8px">{enterUserList[1]?.userNickName? enterUserList[1].userNickName:enterUserList[1]?.userEmail} 님의 주장</Text>
                     </Grid>
                 </GroundBox>
             </Container>
@@ -143,10 +145,10 @@ function DebateDetail(props) {
                 <GroundBox>
                     <OppBox>
                         <ConsSideBlock>반대</ConsSideBlock>
-                        <OpinionText >{enterUserList[1]?.opinion?enterUserList[1]?.opinion:null}</OpinionText>
+                        <OpinionText >{enterUserList[0]?.opinion?enterUserList[0]?.opinion:null}</OpinionText>
                     </OppBox>
                     <EvidenceBox>
-                        {enterUserList[1]?.evidences?.map((item,index) => {
+                        {enterUserList[0]?.evidences?.map((item,index) => {
                             return (
                                 <OneEvidence>
                                     <OppNum>{index+1}</OppNum>
@@ -157,9 +159,9 @@ function DebateDetail(props) {
                     </EvidenceBox>
                     <Grid is_flex="true" justifyContent="flex-end" alignItems="center" height="28px" padding="0">
                         <Image shape="rectangle" radius="50%" width="28px" height="28px"
-                        src={enterUserList[1]?.userImage==null ? KakaoBaseImg : enterUserList[1].userImage}
+                        src={enterUserList[0]?.userImage==null ? KakaoBaseImg : enterUserList[0].userImage}
                         />
-                        <Text color="#000000" size="14px" bold="400" margin="0 0 0 8px">{enterUserList[1]?.userNickName?enterUserList[1].userNickName:enterUserList[1]?.userEmail} 님의 주장</Text>
+                        <Text color="#000000" size="14px" bold="400" margin="0 0 0 8px">{enterUserList[0]?.userNickName?enterUserList[0].userNickName:enterUserList[0]?.userEmail} 님의 주장</Text>
                     </Grid>
                 </GroundBox>
             </Container>
@@ -495,7 +497,11 @@ const EvidenceBox = styled.div`
     height: 200px;
     padding: 20px 24px;
     margin-bottom: 32px;
-    overflow:scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    ::-webkit-scrollbar {
+    display: none;
+}
 `
 
 export default DebateDetail;

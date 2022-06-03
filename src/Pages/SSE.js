@@ -196,11 +196,8 @@ line-height: 18px;
 letter-spacing: -0.03em;
 color: #191919;
 width: 40px;
-display: flex; 
-  justify-content: flex-start;
+display: flex;
+justify-content: flex-start;
 `;
-
-
-
 
 export default SSE;

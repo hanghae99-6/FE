@@ -94,7 +94,7 @@ const TopicText=styled.div`
 font-weight:600;
 font-size:16px;
 color:#191919;
-width:100%;
+width:90%;
 text-align:left;
 overflow:hidden;
 text-overflow: ellipsis;

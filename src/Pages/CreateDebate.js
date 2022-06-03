@@ -45,6 +45,7 @@ const CreateDebate = (props) => {
         setPros("");
         setCons("");
         setContent("");
+        setSpeechMinute("");
     }
     const goMain=()=>{
         history.push("/");    

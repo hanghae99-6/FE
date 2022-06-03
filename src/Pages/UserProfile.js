@@ -81,7 +81,7 @@ function UserProfile() {
                     <NickChangeSection>
                         <NickInput maxLength={6} placeholder={userNickname}  onChange={(e) => {setNickChange(e.target.value)}}/>
                         <ChangeNickBtn onClick={nickChange}>수정</ChangeNickBtn>
-                        <CancleBtn onClick={nickChange}>취소</CancleBtn>
+                        <CancleBtn onClick={nickToggle}>취소</CancleBtn>
                         {/* <IconButtons cancle color="black" size={14} _onClick={nickToggle}></IconButtons> */}
                     </NickChangeSection>
                     </>

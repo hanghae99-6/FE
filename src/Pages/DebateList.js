@@ -58,7 +58,7 @@ const DebateList = () => {
        <HeaderText>생성 날짜</HeaderText>
       </Grid>
      </Header>
-      <Posts posts={currentPosts} loading={loading} />
+      <Posts posts={currentPosts} loading={loading}/>
     </Wrapper>
     
     <Pagination

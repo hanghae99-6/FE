@@ -30,11 +30,11 @@ const Main = () => {
     <Wrapper>
       <MainSection/>
       {/* <CategoryBtn/> */}
-      <Banner>
+      {/* <Banner>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSf1CkE0xfazapP6S-0G6O2Pbd-R8FvSkRhsabwF3hnnoANLpQ/viewform?vc=0&c=0&w=1&flr=0">
           <Image src={banner1} />
         </a>
-      </Banner>
+      </Banner> */}
       <HotPeech/>
       <OneClick/>
       <Banner2>
@@ -52,7 +52,7 @@ const Wrapper=styled.div`
 overflow:hidden;
 min-width: 1045px;
 width:100%;
-margin:0 auto 80px;
+margin:0 auto;
 overflow: hidden;
 `
 const Banner=styled.div`

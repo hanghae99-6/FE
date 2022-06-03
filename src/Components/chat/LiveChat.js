@@ -305,6 +305,11 @@ const ChatContents = styled.div`
   font-size: 15px;
   overflow-y: scroll;
   padding: 20px 5px;
+  -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    ::-webkit-scrollbar {
+    display: none;
+    }
 `;
 const ChatWrap = styled.div`
   display: flex;

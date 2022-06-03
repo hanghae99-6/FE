@@ -39,7 +39,7 @@ function DropDown2(props) {
       onSelect={handleSelect}
         >
           <Dropdown.Item id="dropdownitem11" eventKey="10">10분</Dropdown.Item>
-          <Dropdown.Item id="dropdownitem12" ventKey="20">20분</Dropdown.Item>
+          <Dropdown.Item id="dropdownitem12" eventKey="20">20분</Dropdown.Item>
           <Dropdown.Item id="dropdownitem13" eventKey="30">30분</Dropdown.Item>
           <Dropdown.Item id="dropdownitem14" eventKey="40">40분</Dropdown.Item>
           <Dropdown.Item id="dropdownitem15" eventKey="50">50분</Dropdown.Item>
