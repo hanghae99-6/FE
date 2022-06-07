@@ -29,9 +29,9 @@
 <br>
 <br>
   
- |<h3>Architecture</h3>|
- |---|
- | <img width="100%" src="https://user-images.githubusercontent.com/93530462/172407245-b3ea5ac3-88db-4684-b20b-5461a511e5b4.png"/> |
+ |Architecture|versions|
+ |---|---  |
+ |<img src="https://user-images.githubusercontent.com/93530462/172407245-b3ea5ac3-88db-4684-b20b-5461a511e5b4.png"/>| <div> <p>React 18.1.0</p><p>-redux 8.0.1</p><p> -router-dom 5.3.1</p><p>-stomp 5.1.0</p><p>-styled-components 5.3.5</p><p>axios 0.27.2</p><p>sockjs-client 1.6.0</p><p>immer 9.0.12</p></div>|
   
 <br>
 <br>
