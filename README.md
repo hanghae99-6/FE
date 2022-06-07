@@ -94,21 +94,24 @@
   
  <h2 align="center">Trouble Shooting</h2>
   <details>
-    <summary>Trouble Shooting 1</summary>
+    <summary>webRtc 보안</summary>
       <div markdown="1">
-        안녕
+        <br>
+       webRtc의 simplepeer 라이브러리에서 카메라와 마이크에 접근 할 수 있는 getUsermedia() 코드를 입력후 테스트 해보았으나, 사용자의 데이터스트림에 접근하지 못하는 현상을 발 견. webRtc가 실시간 데이터 송수신 기술이다 보니 로컬환경에서는 보안상의 문제로 연결을 할 수 없는 것이 문제 였고, https로 배포된 환경이 필요. 처음에는 S3버킷으로 배포를 시도 하였으나 별도의 인증서 발급과 등록이 없으면 배포에 시간이 걸리는 점을 알게 되어, 별도의 서버 필요없이 https로 바로 배포되는 Firebase를 채택하여 매끄럽게 진행이 가능해 졌습니다
       </div>
    </details>
   <details>
-    <summary>토글 접기/펼치기</summary>
+    <summary>마이크 하울링</summary>
       <div markdown="1">
-        안녕
-      </div>
+        <br>
+       ecoCancellation으로 제어를 시도했으나 원활한 소통 불가. <br> 더 나은 음질을 위해 이미 검증된 오픈소스나 라이브러리로 기능 개발을 추진하는 과정에서 쿠렌토가 가장 기본적인 미디어 서버만 제공하고 turn 서버와 같은 공인 ip주소를 돌려주는 역할을 하기 위해서는 추가로 연결하는 작업이 필요하여 러닝커브가 높다고 판단. 결과적으로 쿠렌토와 turn서버를 함께 제공하는 openvidu 오픈소스를 채택하여 빠르게 핵심 기능 개발.
+    </div>
    </details>
   <details>
-    <summary>토글 접기/펼치기</summary>
+    <summary>유저의 역할에 따른 조건부 렌더링</summary>
       <div markdown="1">
-        안녕
+        <br>
+        openVidu가 기본적으로 제공하는 기능은, 토론자와 패널의 역할에 따라 다른 권한을 부여하는 기획을 구현기에는 부족. subscriber와 publisher을 분리하여 미디어 송출 여부를 결정하고 모두가 채팅에 참여할 수 있게 openVidu의 기본틀을 커스터마이징하는 과정이 필요. 하지만 sub/pub을 분리하는 것은 같은 서버에의 webRtc 통신에서는 불가능. 따라서 영상은 기존의 openVidu 서버를 사용하고, 채팅을 비롯한 부가적인 기능은 webSocket과 Stomp를 이용해 Spring 서버에 직접 연결하여 개별적인 컨트롤 성공.
       </div>
    </details>
   
