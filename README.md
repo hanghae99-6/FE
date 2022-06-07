@@ -1,7 +1,5 @@
 <h1 align="center"><img src="https://user-images.githubusercontent.com/101165990/172306916-1b84c847-df2e-4801-b574-a68235437eab.png" width="35px" height="35px"/> Wepeech:친구와 함께하는 1:1 토론서비스</h1>
 
-<h4 align="center">항해 99 6기 Wepeech 팀입니다.</h4>
-
 <div align=center> <img src = "https://user-images.githubusercontent.com/93530462/172346130-4733321a-f8bd-4891-97be-7152be79a21b.png"/> </div>
 
 
@@ -21,7 +19,7 @@
 ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
- ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)  <br>
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)  <br>
 ![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
 ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
 ![Socket.io](https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101)
