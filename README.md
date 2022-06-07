@@ -9,12 +9,29 @@
 <br>
 
 <div align="center">
-<h3 align="center"><프로젝트 기간></h3>
-<h4 align="center">2022년 4월 22일 ~ 2022년 6월 3일 (6주)</h4>
-<p  align="center">2022년 4월 22일 ~ 2022년 6월 3일 (6주)</p>
-<p align="center">2022년 4월 22일 ~ 2022년 6월 3일 (6주)</p>
+<h3 align="center">< 프로젝트 기간 : 2022년 4월 22일 ~ 2022년 6월 3일 (6주) ></h3>
+<p align="center">아이템, 디자인 기획 (1주차)</p>
+<p align="center">- 영상 토론 페이지를 위한 페이지 구성, 기술적 난이도와 디자인 고려</p>
+<p align="center">MVP기능에 필요한 기술 도입(2주차)</p>
+<p align="center">- 영상채팅에 필요한 webrtc 도입 및 socket을 이용한 실시간 채팅 구현</p>
+<p align="center">기술 도입 완료하였으나 기술적 한계(3주차)</p>
+<p align="center">- webRtc의 simplepeer를 통한 영상통화 구현하였으나 고질적인 음질 문제로<br>
+                    openVidu 라이브러리 도입</p>
+<p align="center">라이브러리 도입으로 mvp기능 구현 성공(4주차)</p>
+<p align="center">- 토론을 위한 디테일과 유저의 사용성을 고려한 기능과 페이지 추가</p>
+<p align="center">openVidu 기본 제공 기능의 한계(5주차)</p>
+<p align="center"></p>
 <p align="center">2022년 4월 22일 ~ 2022년 6월 3일 (6주)</p>
 </div>
+  
+<br>
+<br>
+<br>
+<br>
+  
+ |<h3>Architecture</h3>|
+ |---|
+ | <img width="100%" src="https://user-images.githubusercontent.com/93530462/172407245-b3ea5ac3-88db-4684-b20b-5461a511e5b4.png"/> |
   
 <br>
 <br>
@@ -82,11 +99,13 @@
         안녕
       </div>
    </details>
+  <details>
     <summary>토글 접기/펼치기</summary>
       <div markdown="1">
         안녕
       </div>
    </details>
+  <details>
     <summary>토글 접기/펼치기</summary>
       <div markdown="1">
         안녕
