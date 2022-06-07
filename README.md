@@ -1,4 +1,4 @@
-<h1 align="center"><img src="https://user-images.githubusercontent.com/101165990/172306916-1b84c847-df2e-4801-b574-a68235437eab.png" width="35px" height="35px"/> Wepeech:친구와 함께하는 1:1 토론서비스</h1>
+<h1 align="center" height="30px"><img src="https://user-images.githubusercontent.com/101165990/172306916-1b84c847-df2e-4801-b574-a68235437eab.png" width="30px" height="30px"/> Wepeech:친구와 함께하는 1:1 토론서비스</h1>
 
 <div align=center> <img src = "https://user-images.githubusercontent.com/93530462/172346130-4733321a-f8bd-4891-97be-7152be79a21b.png"/> </div>
 
@@ -17,30 +17,32 @@
 <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
 <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
 <br>
+<img src="https://img.shields.io/badge/SockJs-02B78F?style=for-the-badge&logo=SockJs&logoColor=white">
+<img src="https://img.shields.io/badge/Stomp-4A86CF?style=for-the-badge&logo=Stomp&logoColor=white">
+<img src="https://img.shields.io/badge/WebRtc-E2001A?style=for-the-badge&logo=WebRtc&logoColor=white">
+<br>
 <img src="https://img.shields.io/badge/Styled Components-F893D1?style=for-the-badge&logo=styledComponents&logoColor=white">
 <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
 <img src="https://img.shields.io/badge/Axios-764ABC?style=for-the-badge&logo=Axios&logoColor=white">
 <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=Firebase&logoColor=white">
 <br>
-<img src="https://img.shields.io/badge/WebRTC-333333?style=for-the-badge&logo=WebRTC&logoColor=white">
-<img src="https://img.shields.io/badge/Route53-E68B49?style=for-the-badge&logo=Route53s&logoColor=white">
-<img src="https://img.shields.io/badge/Amplify-FBBD62?style=for-the-badge&logo=Amplify&logoColor=white">
-<img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=Amplify&logoColor=white">
+<img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=Bootstrap&logoColor=white">
+<img src="https://img.shields.io/badge/Immer-00E7C3?style=for-the-badge&logo=Immer&logoColor=white">
+<img src="https://img.shields.io/badge/Npm-CB3837?style=for-the-badge&logo=Npm&logoColor=white">
+<img src="https://img.shields.io/badge/Yarn-2C8EBB?style=for-the-badge&logo=Yarn&logoColor=white">
+<img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white">
+<img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white">
 
-  
-<br>
 </div>
+
 <br>
   
- <h4 align="center">Tools</h4>
-<div align="center">
-</div>
   
-  <h4 align="center">wepeech의 얼굴</h4>
+ <h4 align="center">wepeech의 얼굴</h4>
   
-| Name | GitHub | Role | 자기소개 |
-| --- | --- | --- | --- |
-|  권해원🔰  | https://github.com/godnjs1582 | 화상채팅,메인(핫피치/원클릭),유저프로필, 댓글, 채팅 기능 일부, 타이머 기능, LiveOn | User-friendly한 인터페이스 구축에 관심이 많는 개발자 권해원입니다. |
+|   Name  | GitHub | Role | 자기소개 |
+| ---  | --- | --- | --- |
+|  🔰권해원   | https://github.com/godnjs1582 | 화상채팅,메인(핫피치/원클릭),유저프로필, 댓글, 채팅 기능 일부, 타이머 기능, LiveOn | User-friendly한 인터페이스 구축에 관심이 많는 개발자 권해원입니다. |
 | 최진용 | https://github.com/douchebag1108 | 로그인, 메인, 댓글(일부), 실시간 채팅, | 근본있는 코드와 흐름이 궁금한 최진용 입니다. |
   
   
