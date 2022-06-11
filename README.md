@@ -68,6 +68,7 @@
 <br>
 <br>
 <h3 align="left">💻version</h3>
+[![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://shields.io/)
 [![Version](https://badge.fury.io/gh/tterb%2FHyde.svg)](https://badge.fury.io/gh/tterb%2FHyde)
 [![GitHub Release](https://img.shields.io/github/release/tterb/PlayMusic.svg?style=flat)]()  
 <div align="center">
