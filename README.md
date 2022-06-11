@@ -11,7 +11,8 @@
 <br>
 <div align="left">
 <h3 align="left">📅프로젝트 기간 : 2022년 4월 22일 ~ 2022년 6월 3일 (6주)</h3>
-  <h4 align="left">1주차:프로젝트 아이템 선정, 와이어프레임 및 API 명세서 작성<span><a href="https://www.notion.so/6-1b78959a59204708bb4a3b440986abfa">위피치 기획 노션 바로가기</a></span></h4>
+  <h4 align="left">1주차:프로젝트 아이템 선정, 와이어프레임 및 API 명세서 작성
+    <span><a href="https://www.notion.so/6-1b78959a59204708bb4a3b440986abfa">(🔗위피치 기획 노션 바로가기)</a></span></h4>
 <p align="left">-simple-peer를 통한 p2p 방식으로 화상채팅 연결 및 socket을 통해 실시간 채팅 구현 결정 </p>
 <h4 align="left">2주차: MVP 기능 확정 및 MVP 기능 구현 단계</h4>
 <p align="left">-마이크 음질 문제+러닝커브를 고려하여 openVidu라이브러리를 화상채팅을 위한 기술스택으로 채택 </p>
