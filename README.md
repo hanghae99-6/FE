@@ -39,7 +39,7 @@
 <br>
 
   
-<h3 align="left">📱기술스택</h3>
+<h3 align="left">📱FE 기술스택</h3>
 <div width="100" align="center">
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black">
 <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white"> 
@@ -67,7 +67,7 @@
 
 <br>
 <br>
-<h3 align="left">💻version</h3>
+<h3 align="left">💻FE Stack version</h3>
 <div align="center">
   
   |name|ver|
