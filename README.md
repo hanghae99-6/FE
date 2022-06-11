@@ -12,18 +12,17 @@
 <br>
 <br>
 <div align="left">
-<h4 align="left">📅프로젝트 기간 : 2022년 4월 22일 ~ 2022년 6월 3일 (6주)</h3>
-<p align="left">1주차:프로젝트 아이템 선정, 와이어프레임 및 API 명세서 작성  </p>
-<p align="left">- 영상 토론 페이지를 위한 페이지 구성, 기술적 난이도와 디자인 고려</p>
-<p align="left">2주차: MVP 기능 확정 및 MVP 기능 구현 단계</p>
-<p align="left">- 영상채팅에 필요한 webrtc 도입 및 socket을 이용한 실시간 채팅 구현</p>
-<p align="left">기술 도입 완료하였으나 기술적 한계(3주차)</p>
-<p align="left">- webRtc의 simplepeer를 통한 영상통화 구현하였으나 고질적인 음질 문제로<br>
-                    openVidu 라이브러리 도입</p>
-<p align="left">라이브러리 도입으로 mvp기능 구현 성공(4주차)</p>
-<p align="left">- 토론을 위한 디테일과 유저의 사용성을 고려한 기능과 페이지 추가</p>
-<p align="left">openVidu 기본 제공 기능의 한계(5주차)</p>
-<p align="left"></p>
+<h3 align="left">📅프로젝트 기간 : 2022년 4월 22일 ~ 2022년 6월 3일 (6주)</h3>
+<h4 align="left">1주차:프로젝트 아이템 선정, 와이어프레임 및 API 명세서 작성</h4>
+<h4 align="left">simple-peer를 통한 p2p 방식으로 화상채팅 연결 및 socket을 통해 실시간 채팅 구현 결정 </h4>
+<h4 align="left">2주차: MVP 기능 확정 및 MVP 기능 구현 단계</p>
+<h4 align="left">마이크 음질 문제+러닝커브를 고려하여 openVidu라이브러리를 화상채팅을 위한 기술스택으로 채택 </h4>
+<h4 align="left">3주차:MVP 기능구현 완료 및 중간평가 시연 및 피드백</h4>
+<h4 align="left">캠을 켜고 토론을 하는 토론자와 토론을 관전하며 채팅을 하는 관전자의 역할 구분이 되지 않는 상황<h4>
+<h4 align="left">4주차:백엔드에서 openVidu를 인터셉트해 역할을 구분해 프론트에 전달, 프론트에서 데이터를 받아 캠 연결 상황 제어</h4>
+<h4 align="left">실시간 채팅은 socket으로 연결해서 토론방 내 화상채팅과 실시간 채팅이 공존하도록 함 </h4>
+<h4 align="left">5주차: 유저 피드백 사항을 바탕으로 기능 추가 및 개선</h4>
+<h4 align="left">1)라이브 나우 페이지 신설 2)페이지네이션 기능 도입 3) 원클릭 찬반투표 신설</h4>
 <p align="left">2022년 4월 22일 ~ 2022년 6월 3일 (6주)</p>
 </div>
   
