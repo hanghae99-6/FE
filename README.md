@@ -14,17 +14,17 @@
   <h4 align="left">1주차:프로젝트 아이템 선정, 와이어프레임 및 API 명세서 작성
     <span><a href="https://www.notion.so/6-1b78959a59204708bb4a3b440986abfa">(🔗위피치 기획 노션 바로가기)</a></span></h4>
 <p align="left">-simple-peer를 통한 p2p 방식으로 화상채팅 연결 및 socket을 통해 실시간 채팅 구현 결정 </p>
-<h4 align="left">2주차: MVP 기능 확정 및 MVP 기능 구현 단계</h4>
-<p align="left">-마이크 음질 문제+러닝커브를 고려하여 openVidu라이브러리를 화상채팅을 위한 기술스택으로 채택 </p>
-<h4 align="left">3주차:MVP 기능구현 완료 및 중간평가 시연 및 피드백</h4>
-<p align="left">-캠을 켜고 토론을 하는 토론자와 토론을 관전하며 채팅을 하는 관전자의 역할 구분이 되지 않는 상황<p>
+<h4 align="left">2주차:MVP 기능 확정 및 MVP 기능 구현 단계</h4>
+<p align="left">-마이크 음질 문제+러닝커브를 고려하여 openVidu 라이브러리를 화상 채팅을 위한 기술스택으로 채택 </p>
+<h4 align="left">3주차:MVP 기능구현 완료, 중간평가 시연 및 피드백</h4>
+<p align="left">-캠을 켜고 토론을 하는 토론자와 토론을 관전하며 채팅을 하는 관전자의 역할 구분이 되지 않는 이슈<p>
 <h4 align="left">4주차:백엔드에서 openVidu를 인터셉트해 역할을 구분해 프론트에 전달, 프론트에서 데이터를 받아 캠 연결 상황 제어</h4>
-<p align="left">-실시간 채팅은 socket으로 연결해서 토론방 내 화상채팅과 실시간 채팅이 공존하도록 함 </p>
-<h4 align="left">5주차:유저 피드백 사항을 바탕으로 기능 추가 및 개선</h4>
-<p align="left">-1)라이브 나우 페이지 신설 2)페이지네이션 기능 도입 3) 원클릭 찬반투표 신설</p>
+<p align="left">-기존의 openVidu에서 제공하던 채팅 기능을 분리해 socket으로 연결 후 토론방 내 화상 채팅과 실시간 채팅이 공존하도록 함 </p>
+<h4 align="left">5주차:유저 피드백 진행 및 피드백 내용을 바탕으로 기능 추가 및 개선</h4>
+<p align="left">-1)라이브 나우 페이지 신설 2)페이지네이션 기능 도입 3)원클릭 찬반투표 신설</p>
   <h4 align="left">6주차: 타이머 기능 추가, 버그 픽스 및 최종 발표회 시연
     <span><a href="https://www.youtube.com/watch?v=5qY561bkSC0&list=LLfeaWtXls2z-RNH8pkEwBuw">(🔗위피치 시연영상 바로가기)</a></span></h4>
-<p align="left">-SSE를 통해 토론방내 타이머 기능 도입 및 최종 배포 후 버그 픽스</p>
+<p align="left">-SSE를 통해 토론방 내 타이머 기능 도입 및 최종 배포 후 버그 픽스</p>
 </div>
   
 <br>
