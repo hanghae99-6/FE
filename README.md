@@ -20,9 +20,10 @@
 <p align="left">-캠을 켜고 토론을 하는 토론자와 토론을 관전하며 채팅을 하는 관전자의 역할 구분이 되지 않는 상황<p>
 <h4 align="left">4주차:백엔드에서 openVidu를 인터셉트해 역할을 구분해 프론트에 전달, 프론트에서 데이터를 받아 캠 연결 상황 제어</h4>
 <p align="left">-실시간 채팅은 socket으로 연결해서 토론방 내 화상채팅과 실시간 채팅이 공존하도록 함 </p>
-<h4 align="left">5주차: 유저 피드백 사항을 바탕으로 기능 추가 및 개선</h4>
+<h4 align="left">5주차:유저 피드백 사항을 바탕으로 기능 추가 및 개선</h4>
 <p align="left">-1)라이브 나우 페이지 신설 2)페이지네이션 기능 도입 3) 원클릭 찬반투표 신설</p>
-<h4 align="left">6주차: 타이머 기능 추가, 버그 픽스 및 최종 발표회 시연</h4>
+  <h4 align="left">6주차: 타이머 기능 추가, 버그 픽스 및 최종 발표회 시연
+    <span><a link="https://www.youtube.com/watch?v=5qY561bkSC0&list=LLfeaWtXls2z-RNH8pkEwBuw">(🔗위피치 시연영상 바로가기)</a></span></h4>
 <p align="left">-SSE를 통해 토론방내 타이머 기능 도입 및 최종 배포 후 버그 픽스</p>
 </div>
   
