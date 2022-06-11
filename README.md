@@ -1,6 +1,6 @@
 <h1 align="center">
       <img src="https://user-images.githubusercontent.com/101165990/172306916-1b84c847-df2e-4801-b574-a68235437eab.png" style="width:30px; height:30px"/>
-      <h2>Wepeech 친구와 함께하는 1:1 토론서비스</h2>
+      <h2 align="center">Wepeech 친구와 함께하는 1:1 토론서비스</h2>
 </h1>
 
 <br>
