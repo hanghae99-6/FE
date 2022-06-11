@@ -1,12 +1,8 @@
 <h2 align="left"> 🛎️Wepeech 친구와 함께하는 1:1 토론서비스</h2>
 <div align=center> <img src = "https://user-images.githubusercontent.com/93530462/172346130-4733321a-f8bd-4891-97be-7152be79a21b.png"/> </div>
-
 <a href="https://wepeech.com/">
   <img width="200" alt="modal1" src="https://user-images.githubusercontent.com/57132148/172310521-cca6bb2a-a351-44c3-bc38-bc0156d4111c.png" align="center"/>
 </a>
-
-
-
 <br>
 <br>
 <div align="left">
@@ -24,19 +20,14 @@
 <h4 align="left">6주차: 타이머 기능 추가, 버그 픽스 및 최종 발표회 시연</h4>
 <p align="left">-SSE를 통해 토론방내 타이머 기능 도입 및 최종 배포 후 버그 픽스</p>
 </div>
-  
 <br>
 <br>
 <h3 align="left">⚒️프로젝트 아키텍처</h3>
-  
  |Architecture|versions|
  |---|---  |
  |<img src="https://user-images.githubusercontent.com/93530462/172407245-b3ea5ac3-88db-4684-b20b-5461a511e5b4.png"/>| <div> <p>React 18.1.0</p><p>-redux 8.0.1</p><p> -router-dom 5.3.1</p><p>-stomp 5.1.0</p><p>-styled-components 5.3.5</p><p>axios 0.27.2</p><p>sockjs-client 1.6.0</p><p>immer 9.0.12</p></div>|
-  
 <br>
-<br>
-
-  
+<br> 
 <h3 align="left">📱기술스택</h3>
 <div width="100" align="center">
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black">
@@ -60,9 +51,7 @@
 <img src="https://img.shields.io/badge/Yarn-2C8EBB?style=for-the-badge&logo=Yarn&logoColor=white">
 <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white">
 <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white">
-
 </div>
-
 <br>
 <br>
 <h3 align="left">💻version</h3>  
@@ -80,7 +69,6 @@
 | immer |9.0.12|
   
 </div>
-  
   <br>
   <br>
  <h3 align="left">🤔FE Trouble Shooting</h3>  
@@ -109,8 +97,6 @@
   
   <br>
   <br>
-  <br>
-  
  <h3 align="left">👨‍💻FE Contributions</h3>  
   
 |   Name  | GitHub | Role | 자기소개 |
