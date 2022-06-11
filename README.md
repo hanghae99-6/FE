@@ -68,7 +68,7 @@
 <br>
 <br>
 <h3 align="left">💻version</h3>
-[Generic badge](https://img.shields.io/badge/version-0.0.1-critical.svg)
+![Badge](https://img.shields.io/badge/{ label }-{ message }-{ color }.svg?{ style(optional) })
 <div align="center">
   
   |name|ver|
