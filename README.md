@@ -9,13 +9,11 @@
 
 <br>
 <br>
-<br>
-<br>
 <div align="left">
 <h3 align="left">📅프로젝트 기간 : 2022년 4월 22일 ~ 2022년 6월 3일 (6주)</h3>
 <h4 align="left">1주차:프로젝트 아이템 선정, 와이어프레임 및 API 명세서 작성</h4>
 <p align="left">simple-peer를 통한 p2p 방식으로 화상채팅 연결 및 socket을 통해 실시간 채팅 구현 결정 </p>
-<h4 align="left">2주차: MVP 기능 확정 및 MVP 기능 구현 단계</p>
+<h4 align="left">2주차: MVP 기능 확정 및 MVP 기능 구현 단계</h4>
 <p align="left">마이크 음질 문제+러닝커브를 고려하여 openVidu라이브러리를 화상채팅을 위한 기술스택으로 채택 </p>
 <h4 align="left">3주차:MVP 기능구현 완료 및 중간평가 시연 및 피드백</h4>
 <p align="left">캠을 켜고 토론을 하는 토론자와 토론을 관전하며 채팅을 하는 관전자의 역할 구분이 되지 않는 상황<p>
