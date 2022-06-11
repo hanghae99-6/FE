@@ -23,7 +23,7 @@
 <h4 align="left">5주차:유저 피드백 사항을 바탕으로 기능 추가 및 개선</h4>
 <p align="left">-1)라이브 나우 페이지 신설 2)페이지네이션 기능 도입 3) 원클릭 찬반투표 신설</p>
   <h4 align="left">6주차: 타이머 기능 추가, 버그 픽스 및 최종 발표회 시연
-    <span><a link="https://www.youtube.com/watch?v=5qY561bkSC0&list=LLfeaWtXls2z-RNH8pkEwBuw">(🔗위피치 시연영상 바로가기)</a></span></h4>
+    <span><a href="https://www.youtube.com/watch?v=5qY561bkSC0&list=LLfeaWtXls2z-RNH8pkEwBuw">(🔗위피치 시연영상 바로가기)</a></span></h4>
 <p align="left">-SSE를 통해 토론방내 타이머 기능 도입 및 최종 배포 후 버그 픽스</p>
 </div>
   
