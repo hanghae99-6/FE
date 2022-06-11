@@ -15,8 +15,8 @@
     <span><a href="https://www.notion.so/6-1b78959a59204708bb4a3b440986abfa">(🔗위피치 기획 노션 바로가기)</a></span></h4>
 <p align="left">-simple-peer를 통한 p2p 방식으로 화상채팅 연결 및 socket을 통해 실시간 채팅 구현 결정 </p>
 <h4 align="left">2주차:MVP 기능 확정 및 MVP 기능 구현 단계</h4>
-<p align="left">-마이크 음질 문제+러닝커브를 고려하여 openVidu 라이브러리를 화상 채팅을 위한 기술스택으로 채택 </p>
-<h4 align="left">3주차:MVP 기능구현 완료, 중간평가 시연 및 피드백</h4>
+<p align="left">-마이크 음질 문제+러닝커브를 고려하여 openVidu 라이브러리를 화상 채팅 및 실시간 채팅을 위한 기술 스택으로 채택 </p>
+<h4 align="left">3주차:MVP 기능구현 완료, 중간 평가 시연 및 피드백</h4>
 <p align="left">-캠을 켜고 토론을 하는 토론자와 토론을 관전하며 채팅을 하는 관전자의 역할 구분이 되지 않는 이슈<p>
 <h4 align="left">4주차:백엔드에서 openVidu를 인터셉트해 역할을 구분해 프론트에 전달, 프론트에서 데이터를 받아 캠 연결 상황 제어</h4>
 <p align="left">-기존의 openVidu에서 제공하던 채팅 기능을 분리해 socket으로 연결 후 토론방 내 화상 채팅과 실시간 채팅이 공존하도록 함 </p>
