@@ -1,16 +1,11 @@
 <h2 align="left"> 🛎️Wepeech 친구와 함께하는 1:1 토론서비스</h2>
-<a href="https://wepeech.com/"><img width="200" alt="modal1" src="https://user-images.githubusercontent.com/57132148/172310521-cca6bb2a-a351-44c3-bc38-bc0156d4111c.png" align="right"/>
-  
-  
+<a href="https://wepeech.com/">
+  <img width="200" alt="modal1" src="https://user-images.githubusercontent.com/57132148/172310521-cca6bb2a-a351-44c3-bc38-bc0156d4111c.png" align="right"/>
+</a>
 <div align=center> <img src = "https://user-images.githubusercontent.com/93530462/172346130-4733321a-f8bd-4891-97be-7152be79a21b.png"/> </div>
 
 
-<!-- <br>
-<a href="https://wepeech.com/"><img width="200" alt="modal1" src="https://user-images.githubusercontent.com/57132148/172310521-cca6bb2a-a351-44c3-bc38-bc0156d4111c.png" align="left"/>
-<div align=center> <img src = "https://user-images.githubusercontent.com/93530462/172346130-4733321a-f8bd-4891-97be-7152be79a21b.png"/> </div>
 
-<br>
-<br> -->
 <br>
 
 <div align="center">
