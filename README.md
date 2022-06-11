@@ -72,7 +72,7 @@
   
   |name|ver|
 |------|---|
-| React |18.1.0||-redux |8.0.1|
+| React |18.1.0|
 |-redux |8.0.1|
 |-router-dom |5.3.1|
 |-stomp |5.1.0|
