@@ -35,12 +35,9 @@
   
 <br>
 <br>
-<br>
-<br>
+
   
-<h2 width="60" align="center">Stacks</h2>
-  <br>
-<div width="100" align="center">
+<h3 align="left">⚒️기술스택</h3>
 
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black">
 <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white"> 
