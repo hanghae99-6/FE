@@ -83,7 +83,8 @@
   
   <br>
   <br>
- <h2 align="center">Trouble Shooting</h2>
+ <h3 align="left">🤔FE Trouble Shooting</h3>  
+ 
   <details>
     <summary>webRtc 보안</summary>
       <div markdown="1">
@@ -110,7 +111,7 @@
   <br>
   <br>
   
- <h4 align="center">wepeech의 얼굴</h4>
+ <h3 align="left">👨‍💻FE Contributions</h3>  
   
 |   Name  | GitHub | Role | 자기소개 |
 | ----- | --- | --- | --- |
