@@ -68,7 +68,7 @@
 <br>
 <br>
 <h3 align="left">💻version</h3>
-![Generic badge](https://img.shields.io/badge/version-1.1.1-green.svg)
+[![Generic badge](https://img.shields.io/badge/version-1.1.1-green.svg)](https://shields.io/)
 <div align="center">
   
   |name|ver|
