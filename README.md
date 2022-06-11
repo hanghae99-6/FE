@@ -1,4 +1,4 @@
-<h2 align="left"> 🛎️Wepeech 친구와 함께하는 1:1 토론서비스</h2>
+<h2 align="left"> 🛎️Wepeech 친구와 함께하는 1:1 화상 토론 서비스</h2>
 <div align=center> <img src = "https://user-images.githubusercontent.com/93530462/172346130-4733321a-f8bd-4891-97be-7152be79a21b.png"/> </div>
 
 <a href="https://wepeech.com/">
