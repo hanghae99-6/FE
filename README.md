@@ -9,7 +9,7 @@
 
 <br>
 
-<div align="center">
+<div align="left">
 <h3 align="center">< 프로젝트 기간 : 2022년 4월 22일 ~ 2022년 6월 3일 (6주) ></h3>
 <p align="center">아이템, 디자인 기획 (1주차)</p>
 <p align="center">- 영상 토론 페이지를 위한 페이지 구성, 기술적 난이도와 디자인 고려</p>
