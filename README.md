@@ -1,6 +1,6 @@
 <div style="display:flex; align-items:center; flex-direction:row;">
   <img src="https://user-images.githubusercontent.com/101165990/172306916-1b84c847-df2e-4801-b574-a68235437eab.png" style="width:30px; height:30px"/>
-  <div>Wepeech 친구와 함께하는 1:1 토론서비스</div>
+  <div style="color:#191919; font-size:16px; letter-spacing:-0.3em">Wepeech 친구와 함께하는 1:1 토론서비스</div>
 </div>
 
 <br>
