@@ -13,9 +13,9 @@
 <br>
 <div align="left">
 <h4 align="left">📅프로젝트 기간 : 2022년 4월 22일 ~ 2022년 6월 3일 (6주)</h3>
-<p align="left">아이템, 디자인 기획 (1주차)</p>
+<p align="left">1주차:프로젝트 아이템 선정, 와이어프레임 및 API 명세서 작성  </p>
 <p align="left">- 영상 토론 페이지를 위한 페이지 구성, 기술적 난이도와 디자인 고려</p>
-<p align="left">MVP기능에 필요한 기술 도입(2주차)</p>
+<p align="left">2주차: MVP 기능 확정 및 MVP 기능 구현 단계</p>
 <p align="left">- 영상채팅에 필요한 webrtc 도입 및 socket을 이용한 실시간 채팅 구현</p>
 <p align="left">기술 도입 완료하였으나 기술적 한계(3주차)</p>
 <p align="left">- webRtc의 simplepeer를 통한 영상통화 구현하였으나 고질적인 음질 문제로<br>
